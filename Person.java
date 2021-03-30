@@ -1,6 +1,6 @@
 package project;
 
-import java.util.Date;
+
 
 public class Person {
 
@@ -8,6 +8,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private int dob;
+	private String number;
 	
 //	private String membership;
 //	
@@ -56,10 +57,20 @@ public class Person {
 	}
 
 
+	public String getNumber() {
+		return number;
+	}
+
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + "]";
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", number=" + number
+				+ "]";
 	}
 
 
@@ -67,9 +78,8 @@ public class Person {
 		// TODO Auto-generated method stub
 
 		Person bob = new Person("Bob", "Smith", 1875);
-		
+		bob.setNumber("555-444-3332");
 		System.out.println(bob);
-			
 	}
 
 }
