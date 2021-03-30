@@ -106,11 +106,6 @@ public class Registration {
 		tester.checkCard();
 		tester.displayCardInfo();
 		
-		
-		
-	
-
-		
 	}
 
 }
