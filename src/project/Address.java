@@ -14,11 +14,11 @@ public class Address {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Address(String s, String c, String z, String st) {
-		this.street = s;
-		this.city = c;
-		this.zip = z;
-		this.state = st;
+	public Address(String street, String city, String zip, String state) {
+		this.street = street;
+		this.city = city;
+		this.zip = zip;
+		this.state = state;
 	}
 	
 	public String getStreet() {
