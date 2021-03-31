@@ -2,25 +2,22 @@ package project;
 
 public class Address {
 
-	
 	private String street;
 	private String city;
 	private String zip;
 	private String state;
-	
-	
-	
+
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Address(String street, String city, String zip, String state) {
 		this.street = street;
 		this.city = city;
 		this.zip = zip;
 		this.state = state;
 	}
-	
+
 	public String getStreet() {
 		return street;
 	}
@@ -33,11 +30,9 @@ public class Address {
 		return city;
 	}
 
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 
 	public String getZip() {
 		return zip;
@@ -47,7 +42,6 @@ public class Address {
 		this.zip = zip;
 	}
 
-	
 	public String getState() {
 		return state;
 	}
@@ -56,21 +50,17 @@ public class Address {
 		this.state = state;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "Address [street=" + street + ", city=" + city + ", zip=" + zip + ", state=" + state + "]";
 	}
-	
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Address myAddress = new Address("100", "Smith", "Staten Island" , "New York");
+		Address myAddress = new Address("100", "Smith", "Staten Island", "New York");
 		System.out.println(myAddress);
-		
+
 	}
 
 }
