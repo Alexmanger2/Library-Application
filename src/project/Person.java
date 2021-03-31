@@ -24,10 +24,10 @@ public class Person {
 	}
 
 	
-	public Person(String first, String last, int birth) {
-		this.firstName = first;
-		this.lastName = last;
-		this.dob = birth;
+	public Person(String firstName, String lastName, int birthYear) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = birthYear;
 	}
 	
 	
