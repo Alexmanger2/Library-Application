@@ -53,7 +53,7 @@ public class Registration {
 		
 		this.membershipType = type;
 		this.name = type.getFirstName() + " " + type.getLastName();
-		this.num = type.getNumber();
+		this.num = type.getPhoneNumber();
 		
 		Calendar registered = Calendar.getInstance();
 		this.issuedDate = registered.get(Calendar.YEAR);
@@ -101,7 +101,7 @@ public class Registration {
 		
 		Registration tester = new Registration();
 		Person matt = new Person("Matthew", "Smith", 1999);
-		matt.setNumber("555-444-4534");
+		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
 		tester.checkCard();
 		tester.displayCardInfo();
