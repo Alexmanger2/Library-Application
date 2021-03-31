@@ -7,7 +7,7 @@ public class Person {
 	
 	private String firstName;
 	private String lastName;
-	private int dob;
+	private int birthYear;
 	private String number;
 	
 //	private String membership;
@@ -23,11 +23,16 @@ public class Person {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	/** Constructor that updates the first and last names and birth year.
+	 * 
+	 * @param firstName String updates the firstName
+	 * @param lastName  String updates the lastName
+	 * @param birthYear  int updates the birthYear
+	 */
 	public Person(String firstName, String lastName, int birthYear) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dob = birthYear;
+		this.birthYear = birthYear;
 	}
 	
 	
@@ -49,11 +54,11 @@ public class Person {
 	}
 
 	public int getDob() {
-		return dob;
+		return birthYear;
 	}
 
 	public void setDob(int dob) {
-		this.dob = dob;
+		this.birthYear = dob;
 	}
 
 
@@ -69,7 +74,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", number=" + number
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + birthYear + ", number=" + number
 				+ "]";
 	}
 
