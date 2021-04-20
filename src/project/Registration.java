@@ -22,16 +22,18 @@ public class Registration {
 
 	}
 
-	public void checkCard() {
+	public boolean checkCard() {
 
 		checkExpired();
 
 		if (membershipType == null || expired == true || hasCard == false) {
 			// this.validCard = false;
 			System.out.println("No Library card found");
+			return false;
 		} else {
 			// this.validCard = true;
 			System.out.println("Library card found");
+			return true;
 		}
 
 	}
@@ -89,6 +91,8 @@ public class Registration {
 		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
 
 	}
+	
+	
 
 	public static void main(String[] args) {
 

@@ -12,8 +12,6 @@ class AddressTest {
 
 	void setup() {
 		address = new Address("testStreet", "testCity", "testZip", "testState");
-//		address2 = new Address("testStreet", "testCity", "testZip", "testState");
-//		address3 = new Address("testStreet3", "testCity3", "testZip3", "testState3");
 	}
 
 	@Test
