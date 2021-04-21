@@ -38,3 +38,5 @@ gradle.properties
 
 *.classpath
 *.project
+*.jar
+!libs/**/*.jar
