@@ -40,4 +40,3 @@ gradle.properties
 *.project
 *.jar
 !libs/**/*.jar
-*.csv

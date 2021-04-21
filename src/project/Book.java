@@ -133,8 +133,8 @@ public class Book {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Book b = new Book("title", "author", "publisher", 5, "genre");
-		//System.out.println(b.toCSV());
+		Book b = new Book("title", "author", "publisher", 5, "genre");
+		System.out.println(b.toCSV());
 	}
 
 }
