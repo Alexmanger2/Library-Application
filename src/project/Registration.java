@@ -27,16 +27,18 @@ public class Registration {
 	 * Checks to see if library card has expired or not
 	 * 
 	 * */
-	public void checkCard() {
+	public boolean checkForValidCard() {
 		
 		checkExpired();
 		
-		if(membershipType == null || expired == true || hasCard == false ) 
+		if(membershipType == null || expired == true || hasCard == false ) {
 			System.out.println("No Library card found");
-		else 
+			return false;
+		}
+		else {
 			System.out.println("Library card found");
-		
-		
+			return true;
+		}
 	}
 	
 	/**
@@ -128,7 +130,7 @@ public class Registration {
 		Person matt = new Person("Matthew", "Smith", 1999);
 		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
-		tester.checkCard();
+		tester.checkForValidCard();
 		tester.displayCardInfo();
 		
 		

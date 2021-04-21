@@ -11,11 +11,13 @@ import jdk.jfr.Registered;
 class RegistrationTest {
 
 	private Person p1;
+	private Person p2;
 	private Registration reg;
 	private Calendar date;
 
 	void setup() {
 		p1 = new Person("John", "Doe", 1990);
+		p2 = new Person("Jane", "Doe", 1990);
 		reg = new Registration();
 		date = Calendar.getInstance();
 
@@ -29,10 +31,10 @@ class RegistrationTest {
 	}
 
 	@Test
-	void testCheckCard() {
+	void testCheckForValidCard() {
 		setup();
 		reg.register(p1);
-		assertEquals(reg.checkCard(), true);
+		assertEquals(reg.checkForValidCard(), true);
 	}
 
 	@Test
