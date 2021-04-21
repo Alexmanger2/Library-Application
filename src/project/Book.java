@@ -7,10 +7,9 @@ public class Book {
 	private String publisher;
 	private int height;
 	private String genre;
-	
-	
+
 	public Book() {
-		
+
 	}
 
 	public Book(String title, String author, String publisher, int height, String genre) {
@@ -22,68 +21,54 @@ public class Book {
 		this.genre = genre;
 	}
 
-	
-	//getters and setters
+	// getters and setters
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getAuthor() {
 		return author;
 	}
-
 
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-
 	public String getPublisher() {
 		return publisher;
 	}
-
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
 
-
 	public int getHeight() {
 		return height;
 	}
-
 
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
-
 	public String getGenre() {
 		return genre;
 	}
-	//getters and setters
+	// getters and setters
 
-/*
- * idk if we need this 
- * 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
-		result = prime * result + height;
-		result = prime * result + ((publisher == null) ? 0 : publisher.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		return result;
-	}
-*/
+	/*
+	 * idk if we need this
+	 * 
+	 * @Override public int hashCode() { final int prime = 31; int result = 1;
+	 * result = prime * result + ((author == null) ? 0 : author.hashCode()); result
+	 * = prime * result + ((genre == null) ? 0 : genre.hashCode()); result = prime *
+	 * result + height; result = prime * result + ((publisher == null) ? 0 :
+	 * publisher.hashCode()); result = prime * result + ((title == null) ? 0 :
+	 * title.hashCode()); return result; }
+	 */
 
 	@Override
 	public boolean equals(Object obj) {
@@ -119,14 +104,9 @@ public class Book {
 		return true;
 	}
 
-
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-
-
-
-	
 
 	@Override
 	public String toString() {
@@ -147,17 +127,14 @@ public class Book {
 		sb.append(',');
 		sb.append(genre);
 		sb.append('\n');
-		
+
 		return sb.toString();
 	}
-	
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//	Book b = new Book("a","b","c", 5, "d");
-		//	System.out.println(b.toCSV());
+		Book b = new Book("title", "author", "publisher", 5, "genre");
+		System.out.println(b.toCSV());
 	}
-
-
 
 }

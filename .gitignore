@@ -35,6 +35,7 @@ gradle.properties
 .vscode
 
 *.log
-
 *.classpath
 *.project
+*.jar
+!libs/**/*.jar
