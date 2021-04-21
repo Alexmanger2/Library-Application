@@ -18,10 +18,10 @@ class RegistrationTest {
 		p1 = new Person("John", "Doe", 1990);
 		reg = new Registration();
 		date = Calendar.getInstance();
-		
+
 		p1.setPhoneNumber("999-888-777");
 	}
-	
+
 	@Test
 	void testRegistration() {
 		setup();
@@ -35,11 +35,10 @@ class RegistrationTest {
 		assertEquals(reg.checkCard(), true);
 	}
 
-
 	@Test
 	void testGetIssuedDate() {
 		setup();
 		reg.register(p1);
-		assertEquals(reg.getIssuedDate(), date.get(Calendar.YEAR) );
+		assertEquals(reg.getIssuedDate(), date.get(Calendar.YEAR));
 	}
 }

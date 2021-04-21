@@ -15,8 +15,8 @@ public class Registration {
 	private String name;
 	private String num;
 
-	/** Default constructor for Registration
-	 *  Does Nothing
+	/**
+	 * Default constructor for Registration Does Nothing
 	 */
 	public Registration() {
 
@@ -91,8 +91,6 @@ public class Registration {
 		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
 
 	}
-	
-	
 
 	public static void main(String[] args) {
 
@@ -103,7 +101,7 @@ public class Registration {
 		tester.register(matt);
 		tester.checkCard();
 		tester.displayCardInfo();
-		
+
 	}
 
 }
