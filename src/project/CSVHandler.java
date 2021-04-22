@@ -4,6 +4,7 @@ package project;
 //import java.io.FileNotFoundException;
 import java.io.Reader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,7 +24,6 @@ public class CSVHandler {
 			printer.print(book.getTitle());
 			printer.print(book.getAuthor());
 			printer.print(book.getGenre());
-			printer.print(book.getHeight());
 			printer.print(book.getPublisher());
 			printer.println();
 			
@@ -53,18 +53,16 @@ public class CSVHandler {
 			    String title = record.get("Title");
 			    String author = record.get("Author");
 			    String genre = record.get("Genre");
-			    String height = record.get("Height");
 			    String publisher = record.get("Publisher");
 			    
-			    int h = Integer.parseInt(height);
-			    Book b = new Book(title, author, genre, h, publisher);
+			    Book b = new Book(title, author, genre, publisher);
 			    String bCSV = b.toCSV();
 			    System.out.println(bCSV);
 		 }
 	}
 
 	
-	public static void removeEntry(String filePath, Book book) throws IOException
+	public static void removeBook(String filePath, Book book) throws IOException
 	{
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader() );
@@ -73,11 +71,9 @@ public class CSVHandler {
 			String title = record.get("Title");
 			String author = record.get("Author");
 			String genre = record.get("Genre");
-			String height = record.get("Height");
 			String publisher = record.get("Publisher");
 			    
-			int h = Integer.parseInt(height);
-			Book b = new Book(title, author, genre, h, publisher);
+			Book b = new Book(title, author, genre, publisher);
 			System.out.println(b);
 		   
 			if(!b.equals(book))
@@ -90,6 +86,31 @@ public class CSVHandler {
 		}
 	}
 	
+	public static Boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
+		
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
+		for (CSVRecord record : parser) {
+			//needs to be changed to some how work for any files records not just books.csv
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+			    
+			Book b = new Book(title, author, genre, publisher);
+			//System.out.println(b);
+		   
+			if(b.equals(book))
+			{
+				System.out.println("Book found!\n" + book + "\n");
+				return true;
+			} 
+		} // END FOR LOOP
+		System.out.println("Book not found!");
+		return false;
+	} // END searchEntry()
+	
 	public static void main(String[] args) {
 		
 		
@@ -100,25 +121,25 @@ public class CSVHandler {
 		String filePath = "src/books.csv";
 		
 		//display pre-edit
-		try {
-			displayCSV(filePath);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			displayCSV(filePath);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		 
 		//create book to add to csv
-		Book b = new Book("a","b","c", 5, "d");
+		//Book b = new Book("title", "author", "publisher", "genre");
 		
 		
 		//add book to csv file
-		try {
-			write(filePath, b);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			write(filePath, b);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		/*
 		//display new resulting file
 		try {
@@ -138,12 +159,12 @@ public class CSVHandler {
 		*/
 		
 		//display the new resulting csv file
-		try {
-			displayCSV(filePath);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			displayCSV(filePath);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 	}
