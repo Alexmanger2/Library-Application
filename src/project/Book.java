@@ -125,8 +125,10 @@ public class Book {
 //		Book b = new Book("title", "author", "publisher", "genre");
 //		System.out.println(b.toCSV());
 		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
+		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
 		try {
 			CSVHandler.searchForBook(filePath, b);
+			CSVHandler.searchForBook(filePath, b2);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
