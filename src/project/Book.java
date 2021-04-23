@@ -5,20 +5,19 @@ public class Book {
 	private String title;
 	private String author;
 	private String publisher;
-	private int height;
+
 	private String genre;
 	
 	
 	public Book() {
 		
 	}
-
-	public Book(String title, String author, String publisher, int height, String genre) {
+	
+	public Book(String title, String author, String genre, String publisher) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
-		this.height = height;
 		this.genre = genre;
 	}
 
@@ -51,16 +50,6 @@ public class Book {
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
-	}
-
-
-	public int getHeight() {
-		return height;
-	}
-
-
-	public void setHeight(int height) {
-		this.height = height;
 	}
 
 
@@ -104,8 +93,6 @@ public class Book {
 				return false;
 		} else if (!genre.equals(other.genre))
 			return false;
-		if (height != other.height)
-			return false;
 		if (publisher == null) {
 			if (other.publisher != null)
 				return false;
@@ -130,7 +117,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", height=" + height
+		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher
 				+ ", genre=" + genre + "]";
 	}
 
@@ -143,8 +130,6 @@ public class Book {
 		sb.append(',');
 		sb.append(publisher);
 		sb.append(',');
-		sb.append(height);
-		sb.append(',');
 		sb.append(genre);
 		sb.append('\n');
 		
@@ -156,12 +141,11 @@ public class Book {
 		// TODO Auto-generated method stub
 		//	Book b = new Book("a","b","c", 5, "d");
 		//	System.out.println(b.toCSV());
+		
+		
+		
 	}
 
 
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a895b2b9237af1d490156d2a2a858390e746cbba

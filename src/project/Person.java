@@ -1,19 +1,26 @@
 package project;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Person {
 
+	
+	
 	private String firstName;
 	private String lastName;
 	private int birthYear;
 	private String phoneNumber;
+	private double lateBalance;
+	
 
-//	private String membership;
-//	
-//	private String[] booksLentOut;
-//	private int numberOfBooksLent;
-//	private double fees = 0;
-//	
-
+	Map<Book, Date> map = new HashMap<>();
+	
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
@@ -29,6 +36,7 @@ public class Person {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthYear = birthYear;
+		this.lateBalance = 0.0;
 	}
 
 	/**
@@ -103,10 +111,55 @@ public class Person {
 		this.phoneNumber = phoneNumber;
 	}
 
+	/**
+	 * Getter for getLateBalance
+	 * 
+	 * @return balance owed by person instance
+	 */
+	
+	public double getLateBalance() {
+		return lateBalance;
+	}
+	
+	
+	/**
+	 * Setter for setLateBalance
+	 * 
+	 * @param Double variable sets update balance
+	 */
+	
+	public void setLateBalance(double lateBalance) {
+		this.lateBalance = lateBalance;
+	}
+
+	/**
+	 * Setter for setBookList
+	 * 
+	 * @param Book variable sets what book was taken out and the time
+	 */
+	public void setBookList(Book b) {
+		Calendar cal = Calendar.getInstance();
+		map.put(b, cal.getTime());
+		
+		
+	}
+	
+	
+	/**
+	 * Getter for getBookList
+	 * 
+	 * @return Map that contains the books checked out by person
+	 */
+	
+	public Map<Book,Date> getBookList() {
+		return map;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
-				+ ", phoneNumber=" + phoneNumber + "]";
+				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", map=" + map.keySet() + map.values() + "]";
 	}
 
 	public static void main(String[] args) {
@@ -115,6 +168,11 @@ public class Person {
 		Person bob = new Person("Bob", "Smith", 1875);
 		bob.setPhoneNumber("555-444-3332");
 		System.out.println(bob);
+		
+		
+		
 	}
+
+
 
 }
