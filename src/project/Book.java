@@ -2,6 +2,8 @@ package project;
 
 public class Book {
 
+	public static final String filePath = "src/books.csv";
+	
 	private String title;
 	private String author;
 	private String publisher;
@@ -56,6 +58,8 @@ public class Book {
 	public String getGenre() {
 		return genre;
 	}
+	
+	
 	//getters and setters
 
 /*

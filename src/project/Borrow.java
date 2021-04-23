@@ -9,7 +9,7 @@ public class Borrow {
 
 	
 	private boolean canBorrow = true;
-	private int bookCount = 0;
+	public static int bookCount = 0;
 	
 
 	
@@ -26,7 +26,7 @@ public class Borrow {
 		
 		try {
 		
-		if(CSVHandler.searchForBook("src/books.csv",b)) {
+		if(CSVHandler.searchForBook(Book.filePath,b)) {
 				
 			
 			//Needs to check if quantity is > 0 and when the book will be available again...
@@ -84,25 +84,12 @@ public class Borrow {
 		
 	}
 	
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Person alex = new Person();
-		Book b = new Book("This is the title", "Bob smith", "publisher", "Fiction");
-		//Book c = new Book("This is the title", "Bob smith", "publisher", "Fiction");
-		//b.setTitle("This is the title");
-		Borrow checkout = new Borrow();
-		checkout.borrowBook(alex,b);
-		//checkout.borrowBook(alex,c);
+	public static void BookReturned()
+	{
 		
-		System.out.println(alex.toString());
-	
-		
-	//	System.out.println(bookList);
-		
+		bookCount = bookCount - 1;
 	}
+	
 
 }
 

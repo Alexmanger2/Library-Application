@@ -2,12 +2,14 @@ package project;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+
 
 public class Return {
 
-
+boolean remove;
+int count = 0;
+boolean check = true;
 	
 	public Return() {
 		// TODO Auto-generated constructor stub
@@ -20,54 +22,59 @@ public class Return {
 	
 	public void returnBook(Person p1, Book b) {
 		
-		for (Map.Entry<Book, Date> entry : p1.map.entrySet()) {
-
-			if(entry.getKey() == b) {
-				p1.map.remove(entry.getKey());
-														
-				Calendar cal = Calendar.getInstance();  
-				cal.add(Calendar.MONTH, -3);
-				if(cal.getTime().compareTo(entry.getValue()) > 0) {
-					p1.setLateBalance(1.0);
-					System.out.println("You returned the book late, fee has been added to account");
+		
 				
-				}
-				if(cal.getTime().compareTo(entry.getValue()) == 0) {
+		Book rBook = new Book();
+		Book holdBook = b;
+				for (Map.Entry<Book, Date> date : p1.map.entrySet()) {	
 					
-					p1.setLateBalance(0.0);
-					System.out.println("You returned the book on time");
-				}
-				if(cal.getTime().compareTo(entry.getValue()) < 0) {
-					p1.setLateBalance(0.0);
-					System.out.println("You returned the book on time");
+					
+					if(date.getKey() == b) {
+						
+						rBook = b;
+						this.remove = true;
+						this.check = false;
+						
+					Calendar cal = Calendar.getInstance();  
+					cal.add(Calendar.MONTH, -3);
+					if(cal.getTime().compareTo(date.getValue()) > 0) {
+						p1.setLateBalance(1.0);
+						System.out.println("You returned the book" + rBook + " late, fee has been added to account");
+						System.out.println("");
+					
+					}
+					if(cal.getTime().compareTo(date.getValue()) == 0) {
+						
+						p1.setLateBalance(0.0);
+						System.out.println("You returned " + rBook + " on time");
+						System.out.println("");
+					}
+					if(cal.getTime().compareTo(date.getValue()) < 0) {
+						p1.setLateBalance(0.0);
+						System.out.println("You returned " + rBook + " on time");
+						System.out.println("");
+					}
+				
 				}
 				
-			}
+				
+				}
+				
+				if(this.check == true) {
+						System.out.println("You did not checkout this book: " + holdBook.getTitle());
+						System.out.println("");	
+				}
+				this.check = true;
+				
+				
+		
+		if(this.remove == true) {
+		p1.map.remove(rBook);
+		Borrow.BookReturned();
+		rBook = new Book();
+		this.remove = false;
 		}
 	}
 	
 	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Person alex = new Person();
-		Book b = new Book("This is the title", "Bob smith", "publisher", "Fiction");
-		Book c = new Book("Data Smart", "Foreman,John", "data_science", "Wiley");
-	//	Book c = new Book("This is the title", "Bob smith", "publisher", "Fiction");
-		//b.setTitle("This is the title");
-		Borrow checkout = new Borrow();
-		checkout.borrowBook(alex,c);
-	//	checkout.borrowBook(alex,c);
-		
-		Return checkin = new Return();
-		
-		checkin.returnBook(alex , c);
-		
-	}
-	
-	
-	
-	
-
 }
