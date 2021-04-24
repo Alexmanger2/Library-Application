@@ -98,9 +98,9 @@ public class CSVHandler {
 			String author = record.get("Author");
 			String genre = record.get("Genre");
 			String publisher = record.get("Publisher");
-			String quant = record.get("Quantity");
+			String tempQuantity = record.get("Quantity");
 			
-			int quantity = Integer.parseInt(quant);
+			int quantity = Integer.parseInt(tempQuantity);
 			Book b = new Book(title, author, genre, publisher);
 			System.out.println(b);
 		   
