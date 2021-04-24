@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/bin/
-=======
 ##----------Android----------
 # build
 *.apk
@@ -42,3 +39,4 @@ gradle.properties
 *.classpath
 *.project
 >>>>>>> origin/master
+.project
