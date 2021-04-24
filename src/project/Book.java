@@ -5,6 +5,8 @@ import java.io.IOException;
 
 public class Book {
 
+	public static final String filePath = "src/books.csv";
+	
 	private String title;
 	private String author;
 	private String publisher;
@@ -13,7 +15,7 @@ public class Book {
 	public Book() {
 
 	}
-
+	
 	public Book(String title, String author, String genre, String publisher) {
 		super();
 		this.title = title;
