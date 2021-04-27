@@ -1,89 +1,73 @@
 package project;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Book {
 
+	public static final String filePath = "src/books.csv";
+	
 	private String title;
 	private String author;
 	private String publisher;
-	private int height;
 	private String genre;
-	
-	
-	public Book() {
-		
-	}
 
-	public Book(String title, String author, String publisher, int height, String genre) {
+	public Book() {
+
+	}
+	
+	public Book(String title, String author, String genre, String publisher) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.publisher = publisher;
-		this.height = height;
 		this.genre = genre;
+		this.publisher = publisher;
 	}
 
-	
-	//getters and setters
+	// getters and setters
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getAuthor() {
 		return author;
 	}
-
 
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-
 	public String getPublisher() {
 		return publisher;
 	}
-
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
 
-
-	public int getHeight() {
-		return height;
-	}
-
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-
 	public String getGenre() {
 		return genre;
 	}
-	//getters and setters
+	// getters and setters
 
-/*
- * idk if we need this 
- * 
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
-		result = prime * result + height;
 		result = prime * result + ((publisher == null) ? 0 : publisher.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-*/
 
 	@Override
 	public boolean equals(Object obj) {
@@ -104,8 +88,6 @@ public class Book {
 				return false;
 		} else if (!genre.equals(other.genre))
 			return false;
-		if (height != other.height)
-			return false;
 		if (publisher == null) {
 			if (other.publisher != null)
 				return false;
@@ -119,45 +101,43 @@ public class Book {
 		return true;
 	}
 
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-
-
-	
-
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", height=" + height
-				+ ", genre=" + genre + "]";
+		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre + "]";
 	}
 
 	public String toCSV() {
 		StringBuilder sb = new StringBuilder();
-		String test = new String("aaaaa");
+		
 		sb.append(title);
 		sb.append(',');
 		sb.append(author);
 		sb.append(',');
 		sb.append(publisher);
 		sb.append(',');
-		sb.append(height);
-		sb.append(',');
 		sb.append(genre);
 		sb.append('\n');
-		
+
 		return sb.toString();
 	}
-	
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//	Book b = new Book("a","b","c", 5, "d");
-		//	System.out.println(b.toCSV());
+		String filePath = "src/books.csv";
+//		Book b = new Book("title", "author", "publisher", "genre");
+//		System.out.println(b.toCSV());
+		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
+		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
+		try {
+			CSVHandler.searchForBook(filePath, b);
+			CSVHandler.searchForBook(filePath, b2);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
-
 
 }
