@@ -86,6 +86,37 @@ public class CSVHandler {
 		}
 	}
 	
+	public static void updateQuantity(String filePath, Book book) throws IOException
+	{
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader() );
+		CSVPrinter printer = new CSVPrinter(new FileWriter(filePath), CSVFormat.EXCEL);
+
+		for (CSVRecord record : parser) {
+			//needs to be changed to some how work for any files records not just books.csv
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+			String quant = record.get("Quantity");
+			
+			int quantity = Integer.parseInt(quant);
+			Book b = new Book(title, author, genre, publisher);
+			System.out.println(b);
+		   
+			if(b.equals(book))
+			{
+				//write(filePath, b);
+				printer.print(book.getTitle());
+				printer.print(book.getAuthor());
+				printer.print(book.getGenre());
+				printer.print(book.getPublisher());
+				printer.print(--quantity);
+			} 
+			//else ignore so this book effectively gets removed from the file
+		}
+	}
+	
 	public static Boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
 		
 		Reader csvData = new FileReader(filePath);
