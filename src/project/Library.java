@@ -1,8 +1,5 @@
 package project;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class Library {
 
 	public Library() {
@@ -12,9 +9,9 @@ public class Library {
 		
 		
 	
-		
+		Address myAddress = new Address("100", "Smith", "Staten Island", "New York");
 		String filePath = "src/books.csv";
-		Person bobby = new Person("Bob", "Smith", 1875);
+		Person bobby = new Person("Bob", "Smith", 1875, myAddress);
 		Return checkin = new Return();
 		
 		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
@@ -22,8 +19,9 @@ public class Library {
         Book c = new Book("Trial, The", "Kafka, Frank", "fiction", "Random House");
         Book c2 = new Book("Orientalism", "Said, Edward", "history", "Penguin");
         
-        
+ 
 		Borrow checkout = new Borrow();
+		
 		checkout.borrowBook(bobby,b);
 		//checkout.borrowBook(bobby,b2);
 		//checkout.borrowBook(bobby,c);

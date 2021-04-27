@@ -14,11 +14,8 @@ boolean check = true;
 	public Return() {
 		// TODO Auto-generated constructor stub
 		
-		
-		
 	}
 
-	
 	
 	public void returnBook(Person p1, Book b) {
 		

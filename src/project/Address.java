@@ -101,7 +101,7 @@ public class Address {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Address myAddress = new Address("100", "Smith", "Staten Island", "New York");
+		Address myAddress = new Address("100", "Staten Island", "10301" ,"New York");
 		System.out.println(myAddress);
 
 	}

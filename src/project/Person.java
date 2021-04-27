@@ -18,8 +18,9 @@ public class Person {
 	private String phoneNumber;
 	private double lateBalance;
 	
+	private Address addy;
 
-	Map<Book, Date> map = new HashMap<>();
+	protected Map<Book, Date> map = new HashMap<>();
 	
 	public Person() {
 		// TODO Auto-generated constructor stub
@@ -32,11 +33,13 @@ public class Person {
 	 * @param lastName  String updates the lastName
 	 * @param birthYear int updates the birthYear
 	 */
-	public Person(String firstName, String lastName, int birthYear) {
+	public Person(String firstName, String lastName, int birthYear, Address add) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthYear = birthYear;
 		this.lateBalance = 0.0;
+		this.setAddy(add);
+	
 	}
 
 	/**
@@ -121,6 +124,26 @@ public class Person {
 		return lateBalance;
 	}
 	
+	/**
+	 * Getter for getAddy
+	 * 
+	 * @return Address
+	 */
+	
+	
+	public Address getAddy() {
+		return addy;
+	}
+
+	
+	/**
+	 * Setter for setAddy
+	 * 
+	 * @param address assigned to person
+	 */
+	public void setAddy(Address addy) {
+		this.addy = addy;
+	}
 	
 	/**
 	 * Setter for setLateBalance
@@ -141,7 +164,6 @@ public class Person {
 		Calendar cal = Calendar.getInstance();
 		map.put(b, cal.getTime());
 		
-		
 	}
 	
 	
@@ -155,17 +177,25 @@ public class Person {
 		return map;
 	}
 	
-	
+/*
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
 				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", map=" + map.keySet() + map.values() + "]";
+		
+	}
+	*/
+	
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
+				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", addy=" + addy + ", map=" + map.keySet() + map.values() + "]";
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		Person bob = new Person("Bob", "Smith", 1875);
+		Address myAddress = new Address("100", "Staten Island", "10301" ,"New York");
+		Person bob = new Person("Bob", "Smith", 1875, myAddress);
 		bob.setPhoneNumber("555-444-3332");
 		System.out.println(bob);
 		
@@ -173,6 +203,7 @@ public class Person {
 		
 	}
 
+	
 
 
 }
