@@ -15,9 +15,11 @@ public class Registration {
 	private String name; // name of person
 	private String num; // phone number
 	private String type; // child/adult
-
+	
+	private Address holdAddress;
+	
 	public Registration() {
-
+		
 	}
 
 	/**
@@ -63,6 +65,7 @@ public class Registration {
 		this.membershipType = type;
 		this.name = type.getFirstName() + " " + type.getLastName();
 		this.num = type.getPhoneNumber();
+		this.holdAddress = type.getAddy();
 
 		Calendar registered = Calendar.getInstance();
 		this.issuedDate = registered.get(Calendar.YEAR);
@@ -114,12 +117,13 @@ public class Registration {
 		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
 		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
 		System.out.printf("%13s %9s \n", "Type:", this.type);
+		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState() );
 	}
 
 	public static void main(String[] args) {
-
+		Address myAddress = new Address("100", "Staten Island", "10301" ,"New York");
 		Registration tester = new Registration();
-		Person matt = new Person("Matthew", "Smith", 1999);
+		Person matt = new Person("Matthew", "Smith", 1999, myAddress);
 		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
 		tester.checkForValidCard();
