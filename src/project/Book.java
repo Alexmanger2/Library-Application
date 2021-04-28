@@ -235,14 +235,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		String stringRet = null;
-		try {
-			stringRet = "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre
-					+ ", quantity=" + CSVHandler.getCSVQuantity(filePath, this) + "]";
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return stringRet;
+		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre + "]";
 	}
 
 	/**
