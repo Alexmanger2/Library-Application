@@ -257,7 +257,7 @@ public class CSVHandler {
 	 *                               reason cannot be opened for reading.
 	 */
 	public static boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
-		
+
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
