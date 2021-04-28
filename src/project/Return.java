@@ -73,6 +73,9 @@ boolean check = true;
 		try {
 			
 			CSVHandler.updateQuantity(Book.filePath, b, false);
+			rBook = new Book();
+			this.remove = false;
+			
 			
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
@@ -83,8 +86,7 @@ boolean check = true;
 		}
 		
 		
-		rBook = new Book();
-		this.remove = false;
+		
 		}
 	}
 	

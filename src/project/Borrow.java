@@ -66,7 +66,7 @@ public class Borrow {
 				
 					
 					
-				if(p1.getBookList().size() > MAX_SIZE) {
+				if(p1.getBookList().size() < MAX_SIZE) {
 					
 					try {
 						CSVHandler.searchForBook(Book.filePath, b);
