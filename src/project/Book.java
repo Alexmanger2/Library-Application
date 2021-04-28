@@ -11,11 +11,23 @@ public class Book {
 	private String author;
 	private String publisher;
 	private String genre;
+	private String stringQuantity;
+	private int intQuantity;
 
+	/** Default constructor for Book class.
+	 * 
+	 */
 	public Book() {
 
 	}
-	
+
+	/** Constructor that takes in 4 fields and assigns them to the private state data.
+	 * 
+	 * @param title Title of book.
+	 * @param author Author of book.
+	 * @param genre Genre of book.
+	 * @param publisher Publisher of book.
+	 */
 	public Book(String title, String author, String genre, String publisher) {
 		super();
 		this.title = title;
@@ -24,40 +36,140 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	// getters and setters
+	/** Constructor that takes in 5 fields and assigns them to the private state data.
+	 *  This constructor takes in a String quantity and sets variable stringQuantity to it.
+	 * @param title Title of book.
+	 * @param author Author of book.
+	 * @param genre Genre of book.
+	 * @param publisher Publisher of book.
+	 * @param quantity String quantity, meant to be used/set as "Quantity" for the header of the CSV.
+	 */
+	public Book(String title, String author, String genre, String publisher, String quantity) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
+		this.publisher = publisher;
+		this.stringQuantity = quantity;
+	}
+	
+	/** Constructor that takes 5 fields and assigns them to the private state data.
+	 *  This constructor takes in a int of quantity that will temporarily represent
+	 *  the quantity of this book that is available in the library. This is to assist
+	 *  CSVHandler methods when removing or updatating quantity of a book.
+	 * @param title Title of book.
+	 * @param author Author of book.
+	 * @param genre Genre of book.
+	 * @param publisher Publisher of book.
+	 * @param intQuantity int quantity, meant to be used/set as "Quantity" for the header of the CSV.
+	 */
+	public Book(String title, String author, String genre, String publisher, int intQuantity) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
+		this.publisher = publisher;
+		this.intQuantity = intQuantity;
+	}
+
+	
+	/** Getter for title
+	 * 
+	 * @return String title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/** Setter for title
+	 * 
+	 * @param title String  sets title
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/** Getter for author
+	 * 
+	 * @return String author
+	 */
 	public String getAuthor() {
 		return author;
 	}
 
+	/** Sets author
+	 * 
+	 * @param author String sets author
+	 */
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
+	/** Getter for Publisher
+	 * 
+	 * @return String publisher
+	 */
 	public String getPublisher() {
 		return publisher;
 	}
 
+	/** Setter for publisher
+	 * 
+	 * @param publisher String sets publisher
+	 */
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
 
+	/** Getter for genre
+	 * 
+	 * @return String genre
+	 */
 	public String getGenre() {
 		return genre;
 	}
-	// getters and setters
-
+	
+	/** Setter for genre
+	 * 
+	 * @param genre String sets genre
+	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+	
+	/** Getter for stringQuantity
+	 * 
+	 * @return String stringQuantity
+	 */
+	public String getStringQuantity() {
+		return stringQuantity;
+	}
 
+	/** Setter for intQuantity
+	 * 
+	 * @param stringQuantity String sets stringQuantity
+	 */
+	public void setStringQuantity(String stringQuantity) {
+		this.stringQuantity = stringQuantity;
+	}
+
+	/** Getter for intQuantity
+	 * 
+	 * @return int: intQuantity
+	 */
+	public int getIntQuantity() {
+		return intQuantity;
+	}
+
+	/** Setter for intQuantity
+	 * 
+	 * @param intQuantity int: Sets intQuantity
+	 */
+	public void setIntQuantity(int intQuantity) {
+		this.intQuantity = intQuantity;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -103,9 +215,20 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre + "]";
+		String stringRet = null;
+		try {
+			stringRet = "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre + 
+					", quantity=" + CSVHandler.getCSVQuantity(filePath, this) + "]";
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return stringRet;
 	}
 
+	/** Turns a book into a CSV
+	 * 
+	 * @return String a books data in a CSV state.
+	 */
 	public String toCSV() {
 		StringBuilder sb = new StringBuilder();
 		String test = new String("aaaaa");
@@ -123,21 +246,28 @@ public class Book {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String filePath = "src/books.csv";
 //		Book b = new Book("title", "author", "publisher", "genre");
 //		System.out.println(b.toCSV());
 		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
 		try {
-			CSVHandler.searchForBook(filePath, b);
+//			CSVHandler.addNewBook(filePath, b);
+//			CSVHandler.searchForBook(filePath, b);
+//			CSVHandler.removeBook(filePath, b);
+//			CSVHandler.searchForBook(filePath, b);
+//			CSVHandler.addNewBook(filePath, b);
+//			CSVHandler.searchForBook(filePath, b);
+			
 			CSVHandler.searchForBook(filePath, b2);
+			CSVHandler.updateQuantity(filePath, b2, true);
+			CSVHandler.updateQuantity(filePath, b2, true);
+			CSVHandler.updateQuantity(filePath, b2, false);
+			CSVHandler.searchForBook(filePath, b2);
+			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 }
