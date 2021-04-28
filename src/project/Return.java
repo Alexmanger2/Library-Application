@@ -14,7 +14,6 @@ int count = 0;
 boolean check = true;
 	
 	public Return() {
-		// TODO Auto-generated constructor stub
 		
 	}
 
@@ -72,7 +71,7 @@ boolean check = true;
 		//Borrow.BookReturned();
 		try {
 			
-			CSVHandler.updateQuantity(Book.filePath, b, false);
+			CSVHandler.updateQuantity(Book.filePath, b, true);
 			rBook = new Book();
 			this.remove = false;
 			
