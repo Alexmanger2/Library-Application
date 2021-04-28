@@ -1,5 +1,7 @@
+
 package project;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -36,19 +38,19 @@ boolean check = true;
 					cal.add(Calendar.MONTH, -3);
 					if(cal.getTime().compareTo(date.getValue()) > 0) {
 						p1.setLateBalance(1.0);
-						System.out.println("You returned the book" + rBook + " late, fee has been added to account");
+						System.out.println("\n" + "You returned the book" + rBook + " late, fee has been added to account");
 						System.out.println("");
 					
 					}
 					if(cal.getTime().compareTo(date.getValue()) == 0) {
 						
 						p1.setLateBalance(0.0);
-						System.out.println("You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time");
 						System.out.println("");
 					}
 					if(cal.getTime().compareTo(date.getValue()) < 0) {
 						p1.setLateBalance(0.0);
-						System.out.println("You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time");
 						System.out.println("");
 					}
 				
@@ -67,9 +69,24 @@ boolean check = true;
 		
 		if(this.remove == true) {
 		p1.map.remove(rBook);
-		Borrow.BookReturned();
-		rBook = new Book();
-		this.remove = false;
+		//Borrow.BookReturned();
+		try {
+			
+			CSVHandler.updateQuantity(Book.filePath, b, false);
+			rBook = new Book();
+			this.remove = false;
+			
+			
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		}
 	}
 	

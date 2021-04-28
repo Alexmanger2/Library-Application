@@ -206,13 +206,13 @@ public class CSVHandler {
 				try {
 					if (incTrueDecFalse == true) {
 						b.setIntQuantity(b.getIntQuantity() + 1);
-						System.out.println(
-								"Book " + b.getTitle() + ", stock has been incremented to " + b.getIntQuantity());
+//						System.out.println(
+//								"Book " + b.getTitle() + ", stock has been incremented to " + b.getIntQuantity());
 						success = true;
 					} else if (!incTrueDecFalse && b.getIntQuantity() >= 1) {
 						b.setIntQuantity(b.getIntQuantity() - 1);
-						System.out.println(
-								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
+//						System.out.println(
+//								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
 						success = true;
 					} else
 						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
@@ -256,7 +256,7 @@ public class CSVHandler {
 	 *                               reason cannot be opened for reading.
 	 */
 	public static boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
-
+		
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
