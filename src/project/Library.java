@@ -30,12 +30,12 @@ public class Library {
 
 	//	bobby.getBookList().clear();
 	//	checkin.returnBook(bobby , b);
-		checkout.borrowBook(bobby,c2);
+	//	checkout.borrowBook(bobby,c2);
 	//	checkout.borrowBook(bobby , c);
 		
 	
 		
-	    checkin.returnBook(bobby , b);
+	//    checkin.returnBook(bobby , c);
 
 	//	checkin.returnBook(bobby , b2);
 //		checkout.borrowBook(bobby,c2);
