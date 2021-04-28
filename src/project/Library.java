@@ -29,9 +29,7 @@ public class Library {
 		checkin.returnBook(bobby , b2);
 		checkout.borrowBook(bobby,c2);
 		checkout.borrowBook(bobby , c);
-		
-		
-		
+
 		checkin.returnBook(bobby , b);
 		
 		System.out.println(bobby.getBookList());

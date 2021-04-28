@@ -138,7 +138,7 @@ public class CSVHandler {
 
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
+		//System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
 		for (CSVRecord record : parser) {
 			String title = record.get("Title");
 			String author = record.get("Author");
@@ -259,7 +259,7 @@ public class CSVHandler {
 
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		//System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
+		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
 
 		for (CSVRecord record : parser) {
 			// needs to be changed to some how work for any files records not just books.csv
@@ -271,12 +271,12 @@ public class CSVHandler {
 			Book b = new Book(title, author, genre, publisher);
 
 			if (b.equals(book)) {
-				//System.out.println("Book found!\n" + book + "\n");
+				System.out.println("Book found!\n" + book + "\n");
 				csvData.close();
 				return true;
 			}
 		} // END FOR LOOP
-		//System.out.println("Book not found!");
+		System.out.println("Book not found!");
 		csvData.close();
 		parser.close();
 
