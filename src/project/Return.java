@@ -38,19 +38,19 @@ boolean check = true;
 					cal.add(Calendar.MONTH, -3);
 					if(cal.getTime().compareTo(date.getValue()) > 0) {
 						p1.setLateBalance(1.0);
-						System.out.println("You returned the book" + rBook + " late, fee has been added to account");
+						System.out.println("\n" + "You returned the book" + rBook + " late, fee has been added to account");
 						System.out.println("");
 					
 					}
 					if(cal.getTime().compareTo(date.getValue()) == 0) {
 						
 						p1.setLateBalance(0.0);
-						System.out.println("You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time");
 						System.out.println("");
 					}
 					if(cal.getTime().compareTo(date.getValue()) < 0) {
 						p1.setLateBalance(0.0);
-						System.out.println("You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time");
 						System.out.println("");
 					}
 				

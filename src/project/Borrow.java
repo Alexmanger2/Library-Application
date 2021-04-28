@@ -24,9 +24,9 @@ public class Borrow {
 	public void borrowBook(Person p1 ,Book b) {
 		
 		
-		try {
+	//	try {
 		
-		if(CSVHandler.searchForBook(Book.filePath,b)) {
+	//	if(CSVHandler.searchForBook(Book.filePath,b)) {
 				
 			
 			//Needs to check if quantity is > 0 and when the book will be available again...
@@ -37,17 +37,17 @@ public class Borrow {
 				System.out.println("Can't borrow book, must pay fee");
 			}
 			
-		}
+//		}
 		
 		
-		}
-		catch(FileNotFoundException ex) {
-			ex.printStackTrace();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		}
+//		catch(FileNotFoundException ex) {
+//			ex.printStackTrace();
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 			
 				
 	}
@@ -71,10 +71,11 @@ public class Borrow {
 					try {
 						CSVHandler.searchForBook(Book.filePath, b);
 						CSVHandler.updateQuantity(Book.filePath, b, true);
-						
+				
 						//++bookCount;
 						p1.setBookList(b);
 						
+						System.out.println(p1.getBookList() + "\n");
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
