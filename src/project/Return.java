@@ -1,5 +1,7 @@
+
 package project;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -67,7 +69,20 @@ boolean check = true;
 		
 		if(this.remove == true) {
 		p1.map.remove(rBook);
-		Borrow.BookReturned();
+		//Borrow.BookReturned();
+		try {
+			
+			CSVHandler.updateQuantity(Book.filePath, b, false);
+			
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		rBook = new Book();
 		this.remove = false;
 		}
