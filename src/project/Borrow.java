@@ -63,6 +63,7 @@ public class Borrow {
 				//p1.setBooksLentOut(null);
 			//	bookList.add(b.getTitle());
 				p1.setBookList(b);
+				System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has the following books checked out: " + p1.getBookList() +"\n");
 				
 			}else {
 				System.out.println("You have checked out the max amount of books, please return a book before trying to rent a new book");

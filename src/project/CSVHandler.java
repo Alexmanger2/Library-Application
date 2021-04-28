@@ -255,7 +255,7 @@ public class CSVHandler {
 	 *                               rather than a regular file,or for some other
 	 *                               reason cannot be opened for reading.
 	 */
-	public static Boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
+	public static boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
 
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
@@ -271,7 +271,7 @@ public class CSVHandler {
 			Book b = new Book(title, author, genre, publisher);
 
 			if (b.equals(book)) {
-				System.out.println("Book found!\n" + book + "\n");
+				System.out.println("Book found!\n");
 				csvData.close();
 				return true;
 			}
