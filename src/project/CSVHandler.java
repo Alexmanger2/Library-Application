@@ -177,6 +177,7 @@ public class CSVHandler {
 	 *                                  for any other reason
 	 * @throws IllegalArgumentException If false is passed for inTrueDecFalse and
 	 *                                  the current quantity is 0
+	 * @return boolean True if update was successful, false if it was not.
 	 */
 	public static boolean updateQuantity(String filePath, Book book, boolean incTrueDecFalse)
 			throws IOException, IllegalArgumentException {
