@@ -23,18 +23,18 @@ public class Library {
 		Borrow checkout = new Borrow();
 		
 		checkout.borrowBook(bobby,b);
-		//checkout.borrowBook(bobby,b2);
-		//checkout.borrowBook(bobby,c);
+		checkout.borrowBook(bobby,b2);
+		checkout.borrowBook(bobby,c);
 	
-	//	checkin.returnBook(bobby , b2);
-	//	checkout.borrowBook(bobby,c2);
-	//	checkout.borrowBook(bobby , c);
+		checkin.returnBook(bobby , b2);
+		checkout.borrowBook(bobby,c2);
+		checkout.borrowBook(bobby , c);
 		
 		
 		
-		//checkin.returnBook(bobby , b);
+		checkin.returnBook(bobby , b);
 		
-	//	System.out.println(bobby.getBookList());
+		System.out.println(bobby.getBookList());
 		
 	}
 
