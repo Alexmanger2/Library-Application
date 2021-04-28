@@ -10,18 +10,16 @@ import java.util.Map;
 
 public class Person {
 
-	
-	
 	private String firstName;
 	private String lastName;
 	private int birthYear;
 	private String phoneNumber;
 	private double lateBalance;
-	
+
 	private Address addy;
 
 	protected Map<Book, Date> map = new HashMap<>();
-	
+
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
@@ -39,7 +37,7 @@ public class Person {
 		this.birthYear = birthYear;
 		this.lateBalance = 0.0;
 		this.setAddy(add);
-	
+
 	}
 
 	/**
@@ -119,23 +117,21 @@ public class Person {
 	 * 
 	 * @return balance owed by person instance
 	 */
-	
+
 	public double getLateBalance() {
 		return lateBalance;
 	}
-	
+
 	/**
 	 * Getter for getAddy
 	 * 
 	 * @return Address
 	 */
-	
-	
+
 	public Address getAddy() {
 		return addy;
 	}
 
-	
 	/**
 	 * Setter for setAddy
 	 * 
@@ -144,13 +140,13 @@ public class Person {
 	public void setAddy(Address addy) {
 		this.addy = addy;
 	}
-	
+
 	/**
 	 * Setter for setLateBalance
 	 * 
 	 * @param Double variable sets update balance
 	 */
-	
+
 	public void setLateBalance(double lateBalance) {
 		this.lateBalance = lateBalance;
 	}
@@ -163,47 +159,42 @@ public class Person {
 	public void setBookList(Book b) {
 		Calendar cal = Calendar.getInstance();
 		map.put(b, cal.getTime());
-		
+
 	}
-	
-	
+
 	/**
 	 * Getter for getBookList
 	 * 
 	 * @return Map that contains the books checked out by person
 	 */
-	
-	public Map<Book,Date> getBookList() {
+
+	public Map<Book, Date> getBookList() {
 		return map;
 	}
-	
-/*
+
+	/*
+	 * @Override public String toString() { return "Person [firstName=" + firstName
+	 * + ", lastName=" + lastName + ", birthYear=" + birthYear + ", phoneNumber=" +
+	 * phoneNumber + ", lateBalance=" + lateBalance + ", map=" + map.keySet() +
+	 * map.values() + "]";
+	 * 
+	 * }
+	 */
+
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
-				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", map=" + map.keySet() + map.values() + "]";
-		
-	}
-	*/
-	
-	@Override
-	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", birthYear=" + birthYear
-				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", addy=" + addy + ", map=" + map.keySet() + map.values() + "]";
+				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", addy=" + addy + ", map="
+				+ map.keySet() + map.values() + "]";
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Address myAddress = new Address("100", "Staten Island", "10301" ,"New York");
+		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Person bob = new Person("Bob", "Smith", 1875, myAddress);
 		bob.setPhoneNumber("555-444-3332");
 		System.out.println(bob);
-		
-		
-		
+
 	}
-
-	
-
 
 }

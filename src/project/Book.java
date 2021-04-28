@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Book {
 
 	public static final String filePath = "src/books.csv";
-	
+
 	private String title;
 	private String author;
 	private String publisher;
@@ -14,18 +14,21 @@ public class Book {
 	private String stringQuantity;
 	private int intQuantity;
 
-	/** Default constructor for Book class.
+	/**
+	 * Default constructor for Book class.
 	 * 
 	 */
 	public Book() {
 
 	}
 
-	/** Constructor that takes in 4 fields and assigns them to the private state data.
+	/**
+	 * Constructor that takes in 4 fields and assigns them to the private state
+	 * data.
 	 * 
-	 * @param title Title of book.
-	 * @param author Author of book.
-	 * @param genre Genre of book.
+	 * @param title     Title of book.
+	 * @param author    Author of book.
+	 * @param genre     Genre of book.
 	 * @param publisher Publisher of book.
 	 */
 	public Book(String title, String author, String genre, String publisher) {
@@ -36,13 +39,17 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	/** Constructor that takes in 5 fields and assigns them to the private state data.
-	 *  This constructor takes in a String quantity and sets variable stringQuantity to it.
-	 * @param title Title of book.
-	 * @param author Author of book.
-	 * @param genre Genre of book.
+	/**
+	 * Constructor that takes in 5 fields and assigns them to the private state
+	 * data. This constructor takes in a String quantity and sets variable
+	 * stringQuantity to it.
+	 * 
+	 * @param title     Title of book.
+	 * @param author    Author of book.
+	 * @param genre     Genre of book.
 	 * @param publisher Publisher of book.
-	 * @param quantity String quantity, meant to be used/set as "Quantity" for the header of the CSV.
+	 * @param quantity  String quantity, meant to be used/set as "Quantity" for the
+	 *                  header of the CSV.
 	 */
 	public Book(String title, String author, String genre, String publisher, String quantity) {
 		super();
@@ -52,16 +59,19 @@ public class Book {
 		this.publisher = publisher;
 		this.stringQuantity = quantity;
 	}
-	
-	/** Constructor that takes 5 fields and assigns them to the private state data.
-	 *  This constructor takes in a int of quantity that will temporarily represent
-	 *  the quantity of this book that is available in the library. This is to assist
-	 *  CSVHandler methods when removing or updatating quantity of a book.
-	 * @param title Title of book.
-	 * @param author Author of book.
-	 * @param genre Genre of book.
-	 * @param publisher Publisher of book.
-	 * @param intQuantity int quantity, meant to be used/set as "Quantity" for the header of the CSV.
+
+	/**
+	 * Constructor that takes 5 fields and assigns them to the private state data.
+	 * This constructor takes in a int of quantity that will temporarily represent
+	 * the quantity of this book that is available in the library. This is to assist
+	 * CSVHandler methods when removing or updatating quantity of a book.
+	 * 
+	 * @param title       Title of book.
+	 * @param author      Author of book.
+	 * @param genre       Genre of book.
+	 * @param publisher   Publisher of book.
+	 * @param intQuantity int quantity, meant to be used/set as "Quantity" for the
+	 *                    header of the CSV.
 	 */
 	public Book(String title, String author, String genre, String publisher, int intQuantity) {
 		super();
@@ -72,8 +82,8 @@ public class Book {
 		this.intQuantity = intQuantity;
 	}
 
-	
-	/** Getter for title
+	/**
+	 * Getter for title
 	 * 
 	 * @return String title
 	 */
@@ -81,15 +91,17 @@ public class Book {
 		return title;
 	}
 
-	/** Setter for title
+	/**
+	 * Setter for title
 	 * 
-	 * @param title String  sets title
+	 * @param title String sets title
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	/** Getter for author
+	/**
+	 * Getter for author
 	 * 
 	 * @return String author
 	 */
@@ -97,7 +109,8 @@ public class Book {
 		return author;
 	}
 
-	/** Sets author
+	/**
+	 * Sets author
 	 * 
 	 * @param author String sets author
 	 */
@@ -105,7 +118,8 @@ public class Book {
 		this.author = author;
 	}
 
-	/** Getter for Publisher
+	/**
+	 * Getter for Publisher
 	 * 
 	 * @return String publisher
 	 */
@@ -113,7 +127,8 @@ public class Book {
 		return publisher;
 	}
 
-	/** Setter for publisher
+	/**
+	 * Setter for publisher
 	 * 
 	 * @param publisher String sets publisher
 	 */
@@ -121,23 +136,26 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	/** Getter for genre
+	/**
+	 * Getter for genre
 	 * 
 	 * @return String genre
 	 */
 	public String getGenre() {
 		return genre;
 	}
-	
-	/** Setter for genre
+
+	/**
+	 * Setter for genre
 	 * 
 	 * @param genre String sets genre
 	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	
-	/** Getter for stringQuantity
+
+	/**
+	 * Getter for stringQuantity
 	 * 
 	 * @return String stringQuantity
 	 */
@@ -145,7 +163,8 @@ public class Book {
 		return stringQuantity;
 	}
 
-	/** Setter for intQuantity
+	/**
+	 * Setter for intQuantity
 	 * 
 	 * @param stringQuantity String sets stringQuantity
 	 */
@@ -153,7 +172,8 @@ public class Book {
 		this.stringQuantity = stringQuantity;
 	}
 
-	/** Getter for intQuantity
+	/**
+	 * Getter for intQuantity
 	 * 
 	 * @return int: intQuantity
 	 */
@@ -161,7 +181,8 @@ public class Book {
 		return intQuantity;
 	}
 
-	/** Setter for intQuantity
+	/**
+	 * Setter for intQuantity
 	 * 
 	 * @param intQuantity int: Sets intQuantity
 	 */
@@ -169,7 +190,6 @@ public class Book {
 		this.intQuantity = intQuantity;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -217,15 +237,16 @@ public class Book {
 	public String toString() {
 		String stringRet = null;
 		try {
-			stringRet = "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre + 
-					", quantity=" + CSVHandler.getCSVQuantity(filePath, this) + "]";
+			stringRet = "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre
+					+ ", quantity=" + CSVHandler.getCSVQuantity(filePath, this) + "]";
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return stringRet;
 	}
 
-	/** Turns a book into a CSV
+	/**
+	 * Turns a book into a CSV
 	 * 
 	 * @return String a books data in a CSV state.
 	 */
@@ -257,13 +278,13 @@ public class Book {
 //			CSVHandler.searchForBook(filePath, b);
 //			CSVHandler.addNewBook(filePath, b);
 //			CSVHandler.searchForBook(filePath, b);
-			
+
 			CSVHandler.searchForBook(filePath, b2);
 			CSVHandler.updateQuantity(filePath, b2, true);
 			CSVHandler.updateQuantity(filePath, b2, true);
 			CSVHandler.updateQuantity(filePath, b2, false);
 			CSVHandler.searchForBook(filePath, b2);
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

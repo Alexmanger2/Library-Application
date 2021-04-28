@@ -178,8 +178,9 @@ public class CSVHandler {
 	 * @throws IllegalArgumentException If false is passed for inTrueDecFalse and
 	 *                                  the current quantity is 0
 	 */
-	public static void updateQuantity(String filePath, Book book, boolean incTrueDecFalse)
+	public static boolean updateQuantity(String filePath, Book book, boolean incTrueDecFalse)
 			throws IOException, IllegalArgumentException {
+		boolean success = false;
 		List<Book> books = new ArrayList<Book>();
 
 		Reader csvData = new FileReader(filePath);
@@ -206,10 +207,12 @@ public class CSVHandler {
 						b.setIntQuantity(b.getIntQuantity() + 1);
 						System.out.println(
 								"Book " + b.getTitle() + ", stock has been incremented to " + b.getIntQuantity());
+						success = true;
 					} else if (!incTrueDecFalse && b.getIntQuantity() >= 1) {
 						b.setIntQuantity(b.getIntQuantity() - 1);
 						System.out.println(
 								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
+						success = true;
 					} else
 						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
@@ -233,6 +236,7 @@ public class CSVHandler {
 			write(filePath, true, b);
 		}
 		newBooksCSV.close();
+		return success;
 	}
 
 	/**
