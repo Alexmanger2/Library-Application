@@ -6,19 +6,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
+
 public class Return {
 
-	boolean remove;
-	int count = 0;
-	boolean check = true;
-
+boolean remove;
+int count = 0;
+boolean check = true;
+	
 	public Return() {
-		// TODO Auto-generated constructor stub
-
+		
 	}
 
+	
 	public void returnBook(Person p1, Book b) {
-
+		
+		
+				
 		Book rBook = new Book();
 		Book holdBook = b;
 				for (Map.Entry<Book, Date> date : p1.map.entrySet()) {	
@@ -51,16 +54,13 @@ public class Return {
 					}
 				
 				}
-				if (cal.getTime().compareTo(date.getValue()) == 0) {
-
-					p1.setLateBalance(0.0);
-					System.out.println("You returned " + rBook + " on time");
-					System.out.println("");
+				
+				
 				}
-				if (cal.getTime().compareTo(date.getValue()) < 0) {
-					p1.setLateBalance(0.0);
-					System.out.println("You returned " + rBook + " on time");
-					System.out.println("");
+				
+				if(this.check == true) {
+						System.out.println("You did not checkout this book: " + holdBook.getTitle());
+						System.out.println("");	
 				}
 				this.check = true;
 				
@@ -71,7 +71,7 @@ public class Return {
 		//Borrow.BookReturned();
 		try {
 			
-			CSVHandler.updateQuantity(Book.filePath, b, false);
+			CSVHandler.updateQuantity(Book.filePath, b, true);
 			rBook = new Book();
 			this.remove = false;
 			
@@ -88,5 +88,6 @@ public class Return {
 		
 		}
 	}
-
+	
+	
 }

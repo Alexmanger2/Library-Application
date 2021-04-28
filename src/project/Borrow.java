@@ -16,25 +16,24 @@ public class Borrow {
 		// TODO Auto-generated constructor stub
 	}
 
-	//--------------book status (checks to see if book is available or taken out and for how long)---------------
-	public void borrowBook(Person p1 ,Book b) {
-		
-		
-	//	try {
-		
-	//	if(CSVHandler.searchForBook(Book.filePath,b)) {
-				
-			
-			//Needs to check if quantity is > 0 and when the book will be available again...
-			if(this.canBorrow == true) {
-				init(p1,b);
-				}
+	// --------------book status (checks to see if book is available or taken out
+	// and for how long)---------------
+	public void borrowBook(Person p1, Book b) {
 
-			}
-			
+		// try {
+
+		// if(CSVHandler.searchForBook(Book.filePath,b)) {
+
+		// Needs to check if quantity is > 0 and when the book will be available
+		// again...
+		if (this.canBorrow == true) {
+			init(p1, b);
+		}
+
+	}
+
 //		}
-		
-		
+
 //		}
 //		catch(FileNotFoundException ex) {
 //			ex.printStackTrace();
@@ -43,7 +42,6 @@ public class Borrow {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-			
 
 	// updateQuantity
 	// getCSVQuantity
@@ -61,18 +59,19 @@ public class Borrow {
 
 						try {
 							CSVHandler.searchForBook(Book.filePath, b);
-							CSVHandler.updateQuantity(Book.filePath, b, true);
+							CSVHandler.updateQuantity(Book.filePath, b, false);
 
 							// ++bookCount;
 							p1.setBookList(b);
 
+							System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has checked out: "
+									+ b.getTitle() + " by " + b.getAuthor());
+
 							System.out.println(p1.getBookList() + "\n");
 
 						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 
