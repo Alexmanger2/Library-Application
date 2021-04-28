@@ -138,7 +138,8 @@ public class CSVHandler {
 
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		//System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
+		// System.out.println("Searching for " + book.getTitle() + " by Author " +
+		// book.getAuthor() + "...");
 		for (CSVRecord record : parser) {
 			String title = record.get("Title");
 			String author = record.get("Author");
@@ -207,12 +208,12 @@ public class CSVHandler {
 					if (incTrueDecFalse == true) {
 						b.setIntQuantity(b.getIntQuantity() + 1);
 						System.out.println(
-								"Book " + b.getTitle() + ", stock has been incremented to " + b.getIntQuantity());
+								"Book: " + b.getTitle() + ", stock has been incremented to " + b.getIntQuantity());
 						success = true;
 					} else if (!incTrueDecFalse && b.getIntQuantity() >= 1) {
 						b.setIntQuantity(b.getIntQuantity() - 1);
 						System.out.println(
-								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
+								"Book: " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
 						success = true;
 					} else
 						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
@@ -262,7 +263,6 @@ public class CSVHandler {
 		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
 
 		for (CSVRecord record : parser) {
-			// needs to be changed to some how work for any files records not just books.csv
 			String title = record.get("Title");
 			String author = record.get("Author");
 			String genre = record.get("Genre");
