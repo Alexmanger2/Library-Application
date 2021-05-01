@@ -108,6 +108,9 @@ public class Registration {
 	 * card in a neat fashion
 	 * 
 	 */
+	
+
+	
 	public void displayCardInfo() {
 
 		System.out.println();
@@ -128,7 +131,7 @@ public class Registration {
 		tester.register(matt);
 		tester.checkForValidCard();
 		tester.displayCardInfo();
-
+		
 	}
 
 }
