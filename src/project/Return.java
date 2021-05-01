@@ -26,9 +26,8 @@ boolean check = true;
 		Book holdBook = b;
 				for (Map.Entry<Book, Date> date : p1.map.entrySet()) {	
 					
-					
-					if(date.getKey() == b) {
-						
+					if(date.getKey().equals(b)) {
+			
 						rBook = b;
 						this.remove = true;
 						this.check = false;
