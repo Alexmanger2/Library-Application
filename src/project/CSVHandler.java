@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 public class CSVHandler {
-	private final static String DELIMITER = ",";
+private final static String DELIMITER = ",";
 
 	/**
 	 * Writes book objects into a CSV or appends into an existing CSV.
@@ -65,6 +65,13 @@ public class CSVHandler {
 		}
 	}
 
+	/** Displays a .csv file
+	 * 
+	 * @param filePath String filepath of the location of 
+	 * @throws IOException if the named file exists but is a directory rather than a
+	 *                     regular file, does not exist but cannot be created, or
+	 *                     cannot be opened for any other reason
+	 */
 	public static void displayCSV(String filePath) throws IOException {
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
@@ -83,11 +90,28 @@ public class CSVHandler {
 		parser.close();
 	}
 
+	/** Manually add a book to the list
+	 * 
+	 * @param filePath String filepath of the .csv file to add the book to.
+	 * @param book Book to add to the .csv database.
+	 * @throws IOException if the named file exists but is a directory rather than a
+	 *                     regular file, does not exist but cannot be created, or
+	 *                     cannot be opened for any other reason
+	 */
 	public static void addNewBook(String filePath, Book book) throws IOException {
 		write(filePath, true, book);
 		System.out.println("Added to CSV: " + book);
 	}
 
+	/** Removes a book from the .csv book database
+	 *
+	 * 
+	 * @param filePath String the filepath of the location of the .csv
+	 * @param book     Book the book to be removed from the .csv
+	 * @throws IOException if the named file exists but is a directory rather than a
+	 *                     regular file, does not exist but cannot be created, or
+	 *                     cannot be opened for any other reason
+	 */
 	public static void removeBook(String filePath, Book book) throws IOException {
 		List<Book> books = new ArrayList<Book>();
 
