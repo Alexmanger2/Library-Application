@@ -36,19 +36,41 @@ boolean check = true;
 					cal.add(Calendar.MONTH, -3);
 					if(cal.getTime().compareTo(date.getValue()) > 0) {
 						p1.setLateBalance(1.0);
-						System.out.println("\n" + "You returned the book" + rBook + " late, fee has been added to account");
+						System.out.println("\n" + "You returned the book" + rBook + " late, fee has been added to account".toUpperCase());
 						System.out.println("");
 					
 					}
 					if(cal.getTime().compareTo(date.getValue()) == 0) {
 						
 						p1.setLateBalance(0.0);
-						System.out.println("\n" + "You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time".toUpperCase());
+						
+
+
+						System.out.println("-----------------------------------------------------------");
+								/*System.out.printf("|");*/		    System.out.printf("|          %30s                 ", b.getTitle().toUpperCase(),"|");		System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getAuthor().toUpperCase(), "|");	System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getGenre().toUpperCase(), "|");		System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getPublisher().toUpperCase(), "|");	System.out.printf("|\n");
+								
+											System.out.println("-----------------------------------------------------------");
+						
 						System.out.println("");
 					}
 					if(cal.getTime().compareTo(date.getValue()) < 0) {
 						p1.setLateBalance(0.0);
-						System.out.println("\n" + "You returned " + rBook + " on time");
+						System.out.println("\n" + "You returned " + rBook + " on time".toUpperCase());
+						
+
+
+						System.out.println("-----------------------------------------------------------");
+								/*System.out.printf("|");*/		    System.out.printf("|          %30s                 ", b.getTitle().toUpperCase(),"|");		System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getAuthor().toUpperCase(), "|");	System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getGenre().toUpperCase(), "|");		System.out.printf("|\n");
+								/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getPublisher().toUpperCase(), "|");	System.out.printf("|\n");
+								
+											System.out.println("-----------------------------------------------------------");
+						
 						System.out.println("");
 					}
 				
@@ -58,7 +80,7 @@ boolean check = true;
 				}
 				
 				if(this.check == true) {
-						System.out.println("You did not checkout this book: " + holdBook.getTitle());
+						System.out.println("You did not checkout this book: " + holdBook.getTitle().toUpperCase());
 						System.out.println("");	
 				}
 				this.check = true;

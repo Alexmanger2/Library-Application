@@ -68,6 +68,14 @@ public class Borrow {
 									+ b.getTitle() + " by " + b.getAuthor());
 
 							System.out.println(p1.getBookList() + "\n");
+							
+							System.out.println("-----------------------------------------------------------");
+				/*System.out.printf("|");*/		    System.out.printf("|          %30s                 ", b.getTitle().toUpperCase(),"|");		System.out.printf("|\n");
+				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getAuthor().toUpperCase(), "|");	System.out.printf("|\n");
+				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getGenre().toUpperCase(), "|");		System.out.printf("|\n");
+				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getPublisher().toUpperCase(), "|");	System.out.printf("|\n");
+				
+							System.out.println("-----------------------------------------------------------");
 
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();
