@@ -227,7 +227,8 @@ public class CSVHandler {
 //								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
 						success = true;
 					} else
-						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
+						System.out.println("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
+					throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
 				}
@@ -369,7 +370,8 @@ public class CSVHandler {
 				// If book is in stock, return the book
 				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
 					return b;
-			}
+			} else
+				return null;
 		} // END FOR LOOP
 		System.out.println("Book not found!");
 		csvData.close();
