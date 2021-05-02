@@ -175,6 +175,59 @@ private final static String DELIMITER = ",";
 		}
 		newBooksCSV.close();
 	}
+	
+	public static boolean removePerson(String filePath, Person person) throws IOException {
+		List<Person> persons = new ArrayList<Person>();
+		
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+		for (CSVRecord record : parser) {
+			
+			String firstName = record.get("First Name");
+			String lastName = record.get("Last Name");
+			String phoneNumber = record.get("Phone Number");
+			int birthYear = Integer.parseInt(record.get("Birth Year"));
+			String street = record.get("Street");
+			String city = record.get("City");
+			String state = record.get("State");
+			String zip = record.get("Zipcode");
+			
+
+			Address addy = new Address(street, city, state, zip);
+			Person p1 = new Person(firstName, lastName, birthYear, phoneNumber, addy);
+
+			if (!person.equals(p1)) {
+				persons.add(p1);
+			}
+			// else ignore so this book effectively gets removed from books list
+			// and effectively the file
+		}
+		csvData.close();
+		parser.close();
+
+		// create a new empty books.csv to be populated with the books data
+		CSVPrinter newPersonsCSV = new CSVPrinter(new FileWriter(filePath), CSVFormat.EXCEL);
+
+		// add header to top of csv
+		// This could be done better
+		//Book header = new Book("Title", "Author", "Genre", "Publisher", "Quantity");
+
+		newPersonsCSV.print("First Name");
+		newPersonsCSV.print("Last Name");
+		newPersonsCSV.print("Birth Year");
+		newPersonsCSV.print("Phone Number");
+		newPersonsCSV.print("Street");
+		newPersonsCSV.print("City");
+		newPersonsCSV.print("State");
+		newPersonsCSV.print("Zipcode");
+		newPersonsCSV.print("\n");
+		//write(filePath, false, header);
+		for (Person p : persons) {
+			addPerson(filePath, true, p);
+		}
+		newPersonsCSV.close();
+		return true;
+	}
 
 	/**
 	 * Getter for the quantity field of a CSV
@@ -309,7 +362,6 @@ private final static String DELIMITER = ",";
 	 *                               reason cannot be opened for reading.
 	 */
 	public static boolean searchForBook(String filePath, Book book) throws IOException, FileNotFoundException {
-
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		System.out.println("Searching for " + book.getTitle() + " by Author " + book.getAuthor() + "...");
@@ -348,8 +400,7 @@ private final static String DELIMITER = ",";
 	 *                               rather than a regular file,or for some other
 	 *                               reason cannot be opened for reading.
 	 */
-	public static Person getPerson(String filePath, String phoneNum) throws IOException, FileNotFoundException {
-
+	public static Person getPersonFromCSV(String filePath, String phoneNum) throws IOException, FileNotFoundException {
 		Person p1 = new Person();
 		Address addy = new Address();
 		

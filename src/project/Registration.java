@@ -22,9 +22,9 @@ public class Registration {
 		
 	}
 
-	/**
-	 * Checks to see if library card has expired or not
+	/**Checks to see if library card has expired or not
 	 * 
+	 * @return true if it is valid and vice versa
 	 */
 	public boolean checkForValidCard() {
 

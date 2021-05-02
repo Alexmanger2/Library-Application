@@ -54,13 +54,13 @@ public class Borrow {
 			
 					//if(CSVHandler.getCSVQuantity(Book.filePath, b) < 0) 
 			try {
-				if (CSVHandler.getCSVQuantity(Book.filePath, b) > 0) {
+				if (CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, b) > 0) {
 
 					if (p1.getBookList().size() < MAX_SIZE) {
 
 						try {
-							CSVHandler.searchForBook(Book.filePath, b);
-							CSVHandler.updateQuantity(Book.filePath, b, false);
+							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
+							CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false);
 
 							// ++bookCount;
 							p1.setBookList(b);

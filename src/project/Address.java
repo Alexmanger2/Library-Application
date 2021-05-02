@@ -11,11 +11,11 @@ public class Address {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Address(String street, String city, String zip, String state) {
+	public Address(String street, String city, String state, String zip) {
 		this.street = street;
 		this.city = city;
-		this.zip = zip;
 		this.state = state;
+		this.zip = zip;
 	}
 
 	public String getStreet() {
