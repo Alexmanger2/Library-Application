@@ -227,9 +227,10 @@ public class CSVHandler {
 //								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
 						success = true;
 					} else
-						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
+//						System.out.println("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
+					throw new IllegalArgumentException("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				books.add(b);
 			}
@@ -363,15 +364,15 @@ public class CSVHandler {
 			Book b = new Book(title, author, genre, publisher);
 
 			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
-				System.out.println("Book found!\n");
+				System.out.println("Book found in library. Checking for Stock...\n");
 				csvData.close();
 
 				// If book is in stock, return the book
 				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
 					return b;
-			}
+			} else
+				return null;
 		} // END FOR LOOP
-		System.out.println("Book not found!");
 		csvData.close();
 		parser.close();
 
