@@ -86,7 +86,8 @@ public class Library {
 	
 	public void yes(Registration reg)
 	{
-		  System.out.println(reg.getPersonList());
+		//displays the current list of people
+		//  System.out.println(reg.getPersonList());
 		  
 		  System.out.println("What is your phone number?");
 		  String phoneNumber;
@@ -94,48 +95,62 @@ public class Library {
 		  phoneNumber = pNum.nextLine();
 		  
 		  
+//		  
+//		  if(reg.checkForValidCard() == true) {
+//			  reg.displayCardInfo();
+//			  System.out.println("");
+			
 		  
 		  
-		 //needs to get info from already created user and use that prev user with registration instance...
-		 // check "no" option to see how its done. Probably need to ask the first/last name and then use gets methods to set 
-		  if(reg.checkForValidCard() == true) {
-			  reg.displayCardInfo();
-			  System.out.println("");
-			  
 			  for(Person element :  reg.getPersonList()) {
 				 if( element.getPhoneNumber().equals( phoneNumber) ) {
+					 
+				//	 System.out.println("This is the phone" + element + "This is the phone number" + phoneNumber);
+					 
 					 Person p = element;
+					 
+
 					  if(reg.checkForValidCard() == true) {
-						//  reg.displayCardInfo();
-						  System.out.println("");
+						  reg.displayCardInfo(p);
+						  System.out.println("");	
+				
+					  while(true) {
+						  String answer = "";  
+						  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+						  Scanner ans = new Scanner(System.in);
+						  answer = ans.nextLine();
+						  
+						  
+						  if(answer.equals("1"))
+						  takeOut(p);
+						  if(answer.equals("2"))
+					      putBack(p);
+						  if(answer.equals("3"))
+					      run(reg);
+						  if(answer.equals("4"))
+						  break;
+						  
+					  }
+					 
+					 
+					 	  
+						  
 				 }
+					  
 				  
 				  
-			  }
+			 // }
 			 
 			  
-			 //-------   can't uncomment till above lines are fixed	  --------
+			 
 			  
-//			  while(true) {
-//				  String answer = "";  
-//				  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-//				  Scanner ans = new Scanner(System.in);
-//				  answer = ans.nextLine();
-//				  
-//				  
-//				  if(answer.equals("1"))
-//				  takeOut(user);
-//				  if(answer.equals("2"))
-//			      putBack(user);
-//				  if(answer.equals("3"))
-//			      run();
-//				  if(answer.equals("4"))
-//				  break;
-//				  
-//			  }
 			  
 			   
-	}}}
+	}}
+			  System.out.println("Phone number not found, please try again");
+			  ask();  
+	
+	}
 	
 	
 	public void ask() {
@@ -200,7 +215,8 @@ public class Library {
 		  reg.displayCardInfo();
 		  System.out.println("");
 		  
-		  System.out.println(reg.getPersonList().toString());
+		  //checks to see what users are in the list
+		//  System.out.println(reg.getPersonList().toString());
 		  
 		  
 		  while(true) {
