@@ -7,14 +7,16 @@ public class Address {
 	private String zip;
 	private String state;
 
-	public Address() {}
+	public Address() {
+	}
 
-	/** Address constructor
+	/**
+	 * Address constructor
 	 * 
 	 * @param street String sets the street
-	 * @param city String sets the city
-	 * @param state String sets the state
-	 * @param zip String sets the zipcode
+	 * @param city   String sets the city
+	 * @param state  String sets the state
+	 * @param zip    String sets the zipcode
 	 */
 	public Address(String street, String city, String state, String zip) {
 		this.street = street;
@@ -23,7 +25,8 @@ public class Address {
 		this.zip = zip;
 	}
 
-	/** Getter for street
+	/**
+	 * Getter for street
 	 * 
 	 * @return String street
 	 */
@@ -31,7 +34,8 @@ public class Address {
 		return street;
 	}
 
-	/** Setter for Street
+	/**
+	 * Setter for Street
 	 * 
 	 * @param street String sets the street
 	 */
@@ -39,7 +43,8 @@ public class Address {
 		this.street = street;
 	}
 
-	/** getter for city
+	/**
+	 * getter for city
 	 * 
 	 * @return String city
 	 */
@@ -47,7 +52,8 @@ public class Address {
 		return city;
 	}
 
-	/** Setter for City
+	/**
+	 * Setter for City
 	 * 
 	 * @param city String sets the city
 	 */
@@ -55,7 +61,8 @@ public class Address {
 		this.city = city;
 	}
 
-	/** Getter for zip
+	/**
+	 * Getter for zip
 	 * 
 	 * @return String return zip
 	 */
@@ -63,7 +70,8 @@ public class Address {
 		return zip;
 	}
 
-	/** Setter for zip
+	/**
+	 * Setter for zip
 	 * 
 	 * @param zip String sets the zip (zipcode)
 	 */
@@ -71,7 +79,8 @@ public class Address {
 		this.zip = zip;
 	}
 
-	/** Getter for state
+	/**
+	 * Getter for state
 	 * 
 	 * @return String returns the state
 	 */
@@ -79,7 +88,8 @@ public class Address {
 		return state;
 	}
 
-	/** Setter for state
+	/**
+	 * Setter for state
 	 * 
 	 * @param state String sets the state.
 	 */
