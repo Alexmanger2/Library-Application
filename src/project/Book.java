@@ -266,6 +266,16 @@ public class Book {
 		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
 		try {
 			CSVHandler.searchForBook(BOOK_FILEPATH, "Machine Learning For hackers");
+			Address myAddress = new Address("100", "Staten Island", "10301", "New York");
+
+			Person bob = new Person("Bob", "Smith", 1875, myAddress);
+			bob.setPhoneNumber("555-444-3332");
+
+			Book b1 = new Book();
+			System.out.println("b1 before searchAndCheckoutBook: " + b1);
+			b1 = CSVHandler.searchAndCheckoutBook(BOOK_FILEPATH, "   ");
+			System.out.println("b1 after searchAndCheckoutBook: " + b1);
+
 //			CSVHandler.addNewBook(BOOK_FILEPATH, b);
 //			CSVHandler.searchForBook(BOOK_FILEPATH, b);
 //			CSVHandler.removeBook(BOOK_FILEPATH, b);

@@ -137,18 +137,19 @@ public class Registration {
 		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState());
 		System.out.println("--------------------------------------------------");
 	}
-	
+
 	/**
 	 * 
 	 * Displays all the information about the person who registered for a library
-	 * card in a neat fashion with person parameter to get specific information from another class
+	 * card in a neat fashion with person parameter to get specific information from
+	 * another class
 	 * 
 	 */
 
 	public void displayCardInfo(Person p) {
-		
+
 		Address myAdd = p.getAddy();
-	
+
 		System.out.println();
 		System.out.println("--------------------------------------------------");
 		System.out.printf("%24s \n\n", "Card Information");
@@ -161,8 +162,6 @@ public class Registration {
 		System.out.println("--------------------------------------------------");
 	}
 
-	
-	
 	public static void main(String[] args) {
 		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Registration tester = new Registration();
