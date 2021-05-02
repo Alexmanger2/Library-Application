@@ -365,7 +365,10 @@ public class CSVHandler {
 			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
 				System.out.println("Book found!\n");
 				csvData.close();
-				return b;
+
+				// If book is in stock, return the book
+				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
+					return b;
 			}
 		} // END FOR LOOP
 		System.out.println("Book not found!");
