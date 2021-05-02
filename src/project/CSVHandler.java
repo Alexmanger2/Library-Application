@@ -65,6 +65,15 @@ private final static String DELIMITER = ",";
 		}
 	}
 	
+	/** addPerson will add a Person object to the Persons.csv file.
+	 * 
+	 * @param filePath String filepath of where the Persons.csv is located.
+	 * @param append boolean  True for appending to csv, false to rewrite
+	 * @param p0 Person object to add to .csv
+	 * @throws IOException if the named file exists but is a directory rather than a
+	 *                     regular file, does not exist but cannot be created, or
+	 *                     cannot be opened for any other reason
+	 */
 	public static void addPerson(String filePath, boolean append, Person p0) throws IOException { // true = append mode
 		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filePath, append), CSVFormat.EXCEL.withFirstRecordAsHeader())) {
 			printer.print(p0.getFirstName());
@@ -328,11 +337,16 @@ private final static String DELIMITER = ",";
 	
 	/** Searches Persons.csv for a person.
 	 * 
-	 * @param filePath
-	 * @param phoneNum
-	 * @return
-	 * @throws IOException
-	 * @throws FileNotFoundException
+	 * @param filePath  String filepath for where Persons.csv is located
+	 * @param phoneNum String  The phone number to be searched.
+	 * @return Will return a Person object or null if their is no person with passed phoneNumber found in DB.
+	 * @throws IOException if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
 	 */
 	public static Person getPerson(String filePath, String phoneNum) throws IOException, FileNotFoundException {
 
