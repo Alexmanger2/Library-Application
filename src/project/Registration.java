@@ -140,7 +140,12 @@ public class Registration {
 		System.out.println("--------------------------------------------------");
 	}
 	
-	
+	/**
+	 * 
+	 * Displays all the information about the person who registered for a library
+	 * card in a neat fashion with person parameter to get specific information from another class
+	 * 
+	 */
 
 	public void displayCardInfo(Person p) {
 		

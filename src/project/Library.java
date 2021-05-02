@@ -99,7 +99,9 @@ public class Library {
 //		  if(reg.checkForValidCard() == true) {
 //			  reg.displayCardInfo();
 //			  System.out.println("");
-			  
+			
+		  
+		  
 			  for(Person element :  reg.getPersonList()) {
 				 if( element.getPhoneNumber().equals( phoneNumber) ) {
 					 
@@ -144,7 +146,11 @@ public class Library {
 			  
 			  
 			   
-	}}}
+	}}
+			  System.out.println("Phone number not found, please try again");
+			  ask();  
+	
+	}
 	
 	
 	public void ask() {
