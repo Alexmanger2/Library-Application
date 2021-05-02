@@ -62,7 +62,6 @@ public class CSVHandler {
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		for (CSVRecord record : parser) {
-			// needs to be changed to some how work for any files records not just books.csv
 			String title = record.get("Title");
 			String author = record.get("Author");
 			String genre = record.get("Genre");
@@ -167,9 +166,9 @@ public class CSVHandler {
 				return quantity;
 			}
 		} // END FOR LOOP
-		
-		if(!book.getTitle().equals(" "))  // if book had nothing entered, don't display not found. (other display takes care of it in borrow)
+	//do something about this
 		System.out.println("Book not found!");
+		
 		csvData.close();
 		parser.close();
 
@@ -230,7 +229,8 @@ public class CSVHandler {
 						success = true;
 					} else
 //						System.out.println("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
-					throw new IllegalArgumentException("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
+						throw new IllegalArgumentException(
+								"Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
 					System.out.println(e.getMessage());
 				}
@@ -357,6 +357,12 @@ public class CSVHandler {
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		System.out.println("Searching for " + _title);
 
+		// Checks to see if a title was passed.
+		if (_title.isBlank()) {
+			System.out.println("You didn't enter a title.\n");
+			return null;
+		}
+
 		for (CSVRecord record : parser) {
 			String title = record.get("Title");
 			String author = record.get("Author");
@@ -372,14 +378,115 @@ public class CSVHandler {
 				// If book is in stock, return the book
 				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
 					return b;
-			} else
-				return null;
+				else
+					return null;
+			}
+
 		} // END FOR LOOP
 		csvData.close();
 		parser.close();
 
 		return null;
-	} // END searchForBook()
+	} // END searchAndCheckoutBook()
+
+	/**
+	 * Returns a book to the library.
+	 * 
+	 * @param filePath String filepath of location of books.csv
+	 * @param _title   String title of book to return
+	 * @return boolean true if return successful, false if not
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	public static boolean returnBookToLibrary(String filePath, String _title)
+			throws IOException, FileNotFoundException {
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+
+		// Checks to see if a title was passed.
+		if (_title.isBlank()) {
+			System.out.println("You didn't enter a title.\n");
+			return false;
+		}
+
+		for (CSVRecord record : parser) {
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+
+			Book b = new Book(title, author, genre, publisher);
+
+			// Checks to see if book title matches passed title parameter to match books.
+			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
+				// If book can successfully decrement stock, return true for successful return.
+				if (updateQuantity(Book.BOOK_FILEPATH, b, true)) {
+					csvData.close();
+					parser.close();
+					return true;
+				} else {
+					csvData.close();
+					parser.close();
+					return false;
+				}
+			}
+
+		} // END FOR LOOP
+		csvData.close();
+		parser.close();
+
+		return false;
+	} // END returnBookToLibrary()
+
+	/**
+	 * Method searches for a book and retrieves it from the .csv. It will return a
+	 * book object based off of the passed in title.
+	 * 
+	 * @param filePath String filepath of location of books.csv
+	 * @param _title   String title of book to return
+	 * @return Book object if book with mathing title was found in database or null
+	 *         if none was found.
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	public static Book getBookFromLib(String filePath, String _title) throws IOException, FileNotFoundException {
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+
+		// Checks to see if a title was passed.
+		if (_title.isBlank()) {
+			System.out.println("You didn't enter a title.\n");
+			return null;
+		}
+
+		for (CSVRecord record : parser) {
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+
+			Book b = new Book(title, author, genre, publisher);
+
+			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
+				csvData.close();
+				return b;
+			}
+		} // END FOR LOOP
+		csvData.close();
+		parser.close();
+
+		return null;
+	} // END getBookFromLib()
 
 	public static void main(String[] args) {
 

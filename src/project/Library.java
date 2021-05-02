@@ -1,6 +1,8 @@
 
 package project;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Library {
@@ -21,25 +23,40 @@ public class Library {
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-		System.out.println("Enter the Title/Author/Genre/Publisher");
-
+	//	System.out.println("Enter the Title/Author/Genre/Publisher");
+		System.out.println("Enter the Title of the book you want the rent");
+		
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
 
-		Scanner pickauthor = new Scanner(System.in);
-		author = pickauthor.nextLine();
+//		Scanner pickauthor = new Scanner(System.in);
+//		author = pickauthor.nextLine();
+//
+//		Scanner pickgenre = new Scanner(System.in);
+//		genre = pickgenre.nextLine();
+//
+//		Scanner pickpublisher = new Scanner(System.in);
+//		publisher = pickpublisher.nextLine();
 
-		Scanner pickgenre = new Scanner(System.in);
-		genre = pickgenre.nextLine();
+//		Book take = new Book(title, author, genre, publisher);
+		
+		//Book take;
+		try {
+			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH , title );
+			Borrow checkout = new Borrow();
+			checkout.borrowBook(p, take);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		Scanner pickpublisher = new Scanner(System.in);
-		publisher = pickpublisher.nextLine();
-
-		Book take = new Book(title, author, genre, publisher);
-
-		Borrow checkout = new Borrow();
-
-		checkout.borrowBook(p, take);
+//		Borrow checkout = new Borrow();
+//
+//		checkout.borrowBook(p, take);
 
 	}
 
@@ -56,23 +73,36 @@ public class Library {
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-		System.out.println("Enter the Title/Author/Genre/Publisher");
+		System.out.println("Enter the Title of the book you want to return");
 
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
 
-		Scanner pickauthor = new Scanner(System.in);
-		author = pickauthor.nextLine();
+//		Scanner pickauthor = new Scanner(System.in);
+//		author = pickauthor.nextLine();
+//
+//		Scanner pickgenre = new Scanner(System.in);
+//		genre = pickgenre.nextLine();
+//
+//		Scanner pickpublisher = new Scanner(System.in);
+//		publisher = pickpublisher.nextLine();
 
-		Scanner pickgenre = new Scanner(System.in);
-		genre = pickgenre.nextLine();
+//		Book back = new Book(title, author, genre, publisher);
 
-		Scanner pickpublisher = new Scanner(System.in);
-		publisher = pickpublisher.nextLine();
-
-		Book back = new Book(title, author, genre, publisher);
-
-		checkin.returnBook(p, back);
+	
+			try {
+				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
+				checkin.returnBook(p, back);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+//		checkin.returnBook(p, back);
 
 	}
 
