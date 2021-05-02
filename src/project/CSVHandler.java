@@ -167,6 +167,8 @@ public class CSVHandler {
 				return quantity;
 			}
 		} // END FOR LOOP
+		
+		if(!book.getTitle().equals(" "))  // if book had nothing entered, don't display not found. (other display takes care of it in borrow)
 		System.out.println("Book not found!");
 		csvData.close();
 		parser.close();

@@ -89,7 +89,10 @@ public class Borrow {
 								"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book");
 					}
 				}// new
-				else {//if (CSVHandler.getCSVQuantity(Book.filePath, b) < 0) { // need to fix this
+				else {
+					if(b.getTitle().equals(" ")) {
+						System.out.println("You did not enter a book, try again");
+					}else
 					System.out.println("This book is currently out of stock, please rent another book");
 				}
 	

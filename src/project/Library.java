@@ -127,9 +127,11 @@ public class Library {
 					      putBack(p);
 						  if(answer.equals("3"))
 					      run(reg);
-						  if(answer.equals("4"))
-						  break;
-						  
+						  if(answer.equals("4")) {
+						  //break;
+					      System.out.println("Exiting program.....");		  
+						  System.exit(0);
+						  }
 					  }
 					 
 					 
@@ -232,8 +234,12 @@ public class Library {
 		      putBack(user);
 			  if(answer.equals("3"))
 		      run(reg);
-			  if(answer.equals("4"))
-			  break;
+			  if(answer.equals("4")) {
+				//break;
+				  System.out.println("Exiting program.....");		  
+				  System.exit(0);
+			  }
+			  
 			  
 		  }
 		  
