@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 public class CSVHandler {
-private final static String DELIMITER = ",";
+	private final static String DELIMITER = ",";
 
 	/**
 	 * Writes book objects into a CSV or appends into an existing CSV.
@@ -29,21 +29,6 @@ private final static String DELIMITER = ",";
 	 */
 	public static void write(String filePath, boolean append, Book book) throws IOException { // true = append mode
 		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filePath, append), CSVFormat.EXCEL)) {
-			/*
-			 * would like to make this class more generic / take CSVable objects instead of
-			 * book so that the same handler can work on any data we want to track with csv
-			 * like the people or anything else that comes up
-			 * 
-			 * String from = book.toCSV(); StringTokenizer record = new StringTokenizer(from
-			 * , DELIMITER);
-			 * 
-			 * String [] values = new String[record.countTokens()];
-			 * 
-			 * for(int i = 0; i < values.length; i++) { values[i] = record.nextToken(); }
-			 * 
-			 * for(int i = 0; i < values.length; i++) { printer.print(values[i]); }
-			 * printer.println();
-			 */
 			printer.print(book.getTitle());
 			printer.print(book.getAuthor());
 			printer.print(book.getGenre());
@@ -64,38 +49,11 @@ private final static String DELIMITER = ",";
 			ex.printStackTrace();
 		}
 	}
-	
-	/** addPerson will add a Person object to the Persons.csv file.
+
+	/**
+	 * Displays a .csv file
 	 * 
-	 * @param filePath String filepath of where the Persons.csv is located.
-	 * @param append boolean  True for appending to csv, false to rewrite
-	 * @param p0 Person object to add to .csv
-	 * @throws IOException if the named file exists but is a directory rather than a
-	 *                     regular file, does not exist but cannot be created, or
-	 *                     cannot be opened for any other reason
-	 */
-	public static void addPerson(String filePath, boolean append, Person p0) throws IOException { // true = append mode
-		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filePath, append), CSVFormat.EXCEL.withFirstRecordAsHeader())) {
-			printer.print(p0.getFirstName());
-			printer.print(p0.getLastName());
-			printer.print((p0.getBirthYear()));
-			printer.print(p0.getPhoneNumber());
-			printer.print(p0.getAddy().getStreet() );
-			printer.print(p0.getAddy().getCity() );
-			printer.print(p0.getAddy().getState() );
-			printer.print(p0.getAddy().getZip() );
-
-			printer.println();
-
-			printer.close();
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-	}
-
-	/** Displays a .csv file
-	 * 
-	 * @param filePath String filepath of the location of 
+	 * @param filePath String filepath of the location of
 	 * @throws IOException if the named file exists but is a directory rather than a
 	 *                     regular file, does not exist but cannot be created, or
 	 *                     cannot be opened for any other reason
@@ -118,10 +76,11 @@ private final static String DELIMITER = ",";
 		parser.close();
 	}
 
-	/** Manually add a book to the list
+	/**
+	 * Manually add a book to the list
 	 * 
 	 * @param filePath String filepath of the .csv file to add the book to.
-	 * @param book Book to add to the .csv database.
+	 * @param book     Book to add to the .csv database.
 	 * @throws IOException if the named file exists but is a directory rather than a
 	 *                     regular file, does not exist but cannot be created, or
 	 *                     cannot be opened for any other reason
@@ -131,7 +90,8 @@ private final static String DELIMITER = ",";
 		System.out.println("Added to CSV: " + book);
 	}
 
-	/** Removes a book from the .csv book database
+	/**
+	 * Removes a book from the .csv book database
 	 *
 	 * 
 	 * @param filePath String the filepath of the location of the .csv
@@ -175,59 +135,6 @@ private final static String DELIMITER = ",";
 		}
 		newBooksCSV.close();
 	}
-	
-	public static boolean removePerson(String filePath, Person person) throws IOException {
-		List<Person> persons = new ArrayList<Person>();
-		
-		Reader csvData = new FileReader(filePath);
-		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		for (CSVRecord record : parser) {
-			
-			String firstName = record.get("First Name");
-			String lastName = record.get("Last Name");
-			String phoneNumber = record.get("Phone Number");
-			int birthYear = Integer.parseInt(record.get("Birth Year"));
-			String street = record.get("Street");
-			String city = record.get("City");
-			String state = record.get("State");
-			String zip = record.get("Zipcode");
-			
-
-			Address addy = new Address(street, city, state, zip);
-			Person p1 = new Person(firstName, lastName, birthYear, phoneNumber, addy);
-
-			if (!person.equals(p1)) {
-				persons.add(p1);
-			}
-			// else ignore so this book effectively gets removed from books list
-			// and effectively the file
-		}
-		csvData.close();
-		parser.close();
-
-		// create a new empty books.csv to be populated with the books data
-		CSVPrinter newPersonsCSV = new CSVPrinter(new FileWriter(filePath), CSVFormat.EXCEL);
-
-		// add header to top of csv
-		// This could be done better
-		//Book header = new Book("Title", "Author", "Genre", "Publisher", "Quantity");
-
-		newPersonsCSV.print("First Name");
-		newPersonsCSV.print("Last Name");
-		newPersonsCSV.print("Birth Year");
-		newPersonsCSV.print("Phone Number");
-		newPersonsCSV.print("Street");
-		newPersonsCSV.print("City");
-		newPersonsCSV.print("State");
-		newPersonsCSV.print("Zipcode");
-		newPersonsCSV.print("\n");
-		//write(filePath, false, header);
-		for (Person p : persons) {
-			addPerson(filePath, true, p);
-		}
-		newPersonsCSV.close();
-		return true;
-	}
 
 	/**
 	 * Getter for the quantity field of a CSV
@@ -240,7 +147,6 @@ private final static String DELIMITER = ",";
 	 *                     cannot be opened for any other reason
 	 */
 	public static int getCSVQuantity(String filePath, Book book) throws IOException {
-
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		// System.out.println("Searching for " + book.getTitle() + " by Author " +
@@ -386,55 +292,6 @@ private final static String DELIMITER = ",";
 
 		return false;
 	} // END searchEntry()
-	
-	/** Searches Persons.csv for a person.
-	 * 
-	 * @param filePath  String filepath for where Persons.csv is located
-	 * @param phoneNum String  The phone number to be searched.
-	 * @return Will return a Person object or null if their is no person with passed phoneNumber found in DB.
-	 * @throws IOException if the named file exists but is a directory
-	 *                               rather than a regular file, does not exist but
-	 *                               cannot be created, or cannot be opened for any
-	 *                               other reason
-	 * @throws FileNotFoundException if the named file does not exist,is a directory
-	 *                               rather than a regular file,or for some other
-	 *                               reason cannot be opened for reading.
-	 */
-	public static Person getPersonFromCSV(String filePath, String phoneNum) throws IOException, FileNotFoundException {
-		Person p1 = new Person();
-		Address addy = new Address();
-		
-		Reader csvData = new FileReader(filePath);
-		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		System.out.println("Searching for person with phone#: " + phoneNum + "...");
-
-		for (CSVRecord record : parser) {
-			p1.setFirstName(record.get("First Name"));
-			p1.setLastName(record.get("Last Name"));	
-			p1.setPhoneNumber(record.get("Phone Number"));
-			p1.setBirthYear(Integer.parseInt(record.get("Birth Year")));
-			addy.setStreet(record.get("Street"));
-			addy.setCity(record.get("City"));
-			addy.setState(record.get("State"));
-			addy.setZip(record.get("Zipcode"));
-			
-			p1.setAddy(addy);
-
-			//System.out.println(p1.getPhoneNumber() + " is p1 phone# and " + phoneNum + " is passed phone Number");
-			
-			if (p1.getPhoneNumber().compareTo(phoneNum) == 0) {
-				System.out.println("Person found!\n");
-				csvData.close();
-				return p1;
-			}
-		} // END FOR LOOP
-		System.out.println("Person not found!");
-		csvData.close();
-		parser.close();
-
-		// If Person is not found return null
-		return null;
-	} // END searchEntry()
 
 	public static void main(String[] args) {
 
@@ -442,8 +299,6 @@ private final static String DELIMITER = ",";
 		 * CSVHandler test
 		 */
 
-		
-		
 		// display pre-edit
 //		try {
 //			displayCSV(filePath);

@@ -42,6 +42,14 @@ public class Person {
 
 	}
 
+	/**
+	 * Constructor that updates the first and last names and birth year.
+	 * 
+	 * @param firstName String updates the firstName
+	 * @param lastName  String updates the lastName
+	 * @param birthYear int updates the birthYear
+	 * @param phoneNum String updates the phoneNumber
+	 */
 	public Person(String firstName, String lastName, int birthYear, String phoneNum, Address add) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -207,11 +215,6 @@ public class Person {
 		john.setPhoneNumber("718-555-5555");
 		Person jane = new Person("Jane", "Doe", 1990, myAddress);
 		jane.setPhoneNumber("888-888-8888");
-		CSVHandler.addPerson(PERSON_FILEPATH, true, bob);
-		CSVHandler.addPerson(PERSON_FILEPATH, true, john);
-		CSVHandler.addPerson(PERSON_FILEPATH, true, jane);
-		
-		System.out.println(CSVHandler.removePerson(PERSON_FILEPATH, jane));
 		
 		// stuff to test if getPerson can find a person anywhere in the .csv
 //		Person p2 = new Person();
