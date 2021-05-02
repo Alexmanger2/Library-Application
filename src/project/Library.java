@@ -113,6 +113,8 @@ public class Library {
 		  
 		  if(option.equalsIgnoreCase("yes")) {
 			  
+			  
+			  
 			 //needs to get info from already created user and use that prev user with registration instance...
 			 // check "no" option to see how its done. Probably need to ask the first/last name and then use gets methods to set 
 			  if(reg.checkForValidCard() == true) {
