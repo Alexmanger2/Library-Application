@@ -355,6 +355,12 @@ public class CSVHandler {
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		System.out.println("Searching for " + _title);
 
+		// Checks to see if a title was passed.
+		if (_title.isBlank()) {
+			System.out.println("You didn't enter a title.\n");
+			return null;
+		}
+		
 		for (CSVRecord record : parser) {
 			String title = record.get("Title");
 			String author = record.get("Author");
