@@ -8,44 +8,91 @@ public class Address {
 	private String state;
 
 	public Address() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Address(String street, String city, String zip, String state) {
+	/**
+	 * Address constructor
+	 * 
+	 * @param street String sets the street
+	 * @param city   String sets the city
+	 * @param state  String sets the state
+	 * @param zip    String sets the zipcode
+	 */
+	public Address(String street, String city, String state, String zip) {
 		this.street = street;
 		this.city = city;
-		this.zip = zip;
 		this.state = state;
+		this.zip = zip;
 	}
 
+	/**
+	 * Getter for street
+	 * 
+	 * @return String street
+	 */
 	public String getStreet() {
 		return street;
 	}
 
+	/**
+	 * Setter for Street
+	 * 
+	 * @param street String sets the street
+	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
+	/**
+	 * getter for city
+	 * 
+	 * @return String city
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * Setter for City
+	 * 
+	 * @param city String sets the city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * Getter for zip
+	 * 
+	 * @return String return zip
+	 */
 	public String getZip() {
 		return zip;
 	}
 
+	/**
+	 * Setter for zip
+	 * 
+	 * @param zip String sets the zip (zipcode)
+	 */
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
+	/**
+	 * Getter for state
+	 * 
+	 * @return String returns the state
+	 */
 	public String getState() {
 		return state;
 	}
 
+	/**
+	 * Setter for state
+	 * 
+	 * @param state String sets the state.
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
@@ -99,7 +146,6 @@ public class Address {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		System.out.println(myAddress);

@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Person {
 
-	public static final String PERSON_FILEPATH = "src/Persons.csv";
+	public static String PERSON_FILEPATH = "src/Persons.csv";
 	
 	private String firstName;
 	private String lastName;
@@ -42,6 +42,23 @@ public class Person {
 
 	}
 
+	/**
+	 * Constructor that updates the first and last names and birth year.
+	 * 
+	 * @param firstName String updates the firstName
+	 * @param lastName  String updates the lastName
+	 * @param birthYear int updates the birthYear
+	 * @param phoneNum String updates the phoneNumber
+	 */
+	public Person(String firstName, String lastName, int birthYear, String phoneNum, Address add) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthYear = birthYear;
+		this.lateBalance = 0.0;
+		this.setAddy(add);
+		this.setPhoneNumber(phoneNum);
+	}
+	
 	/**
 	 * Getter for firstName
 	 * 
@@ -194,13 +211,17 @@ public class Person {
 		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Person bob = new Person("Bob", "Smith", 1875, myAddress);
 		bob.setPhoneNumber("555-444-3332");
-		CSVHandler.addPerson(PERSON_FILEPATH, true, bob);
-		Person p2 = new Person();
-		System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
-		p2 = CSVHandler.getPerson(PERSON_FILEPATH, bob.getPhoneNumber());
+		Person john = new Person("John", "Doe", 1990, myAddress);
+		john.setPhoneNumber("718-555-5555");
+		Person jane = new Person("Jane", "Doe", 1990, myAddress);
+		jane.setPhoneNumber("888-888-8888");
 		
-		System.out.println("Person p2 after being assigned from CSVHandler.getPerson() " + p2);
-
+		// stuff to test if getPerson can find a person anywhere in the .csv
+//		Person p2 = new Person();
+//		System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
+//		p2 = CSVHandler.getPerson(PERSON_FILEPATH, jane.getPhoneNumber());
+//		System.out.println("Person p2 after being assigned from CSVHandler.getPerson() " + p2);
+		
 	}
 
 }
