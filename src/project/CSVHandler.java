@@ -62,7 +62,6 @@ public class CSVHandler {
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 		for (CSVRecord record : parser) {
-			// needs to be changed to some how work for any files records not just books.csv
 			String title = record.get("Title");
 			String author = record.get("Author");
 			String genre = record.get("Genre");
@@ -228,7 +227,8 @@ public class CSVHandler {
 						success = true;
 					} else
 //						System.out.println("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
-					throw new IllegalArgumentException("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
+						throw new IllegalArgumentException(
+								"Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
 					System.out.println(e.getMessage());
 				}
@@ -370,8 +370,10 @@ public class CSVHandler {
 				// If book is in stock, return the book
 				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
 					return b;
-			} else
-				return null;
+				else
+					return null;
+			}
+
 		} // END FOR LOOP
 		csvData.close();
 		parser.close();
