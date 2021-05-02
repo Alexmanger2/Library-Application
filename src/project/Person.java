@@ -1,5 +1,6 @@
 package project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -10,6 +11,8 @@ import java.util.Map;
 
 public class Person {
 
+	public static final String PERSON_FILEPATH = "src/Persons.csv";
+	
 	private String firstName;
 	private String lastName;
 	private int birthYear;
@@ -19,10 +22,9 @@ public class Person {
 	private Address addy;
 
 	protected Map<Book, Date> map = new HashMap<>();
+	
 
-	public Person() {
-		// TODO Auto-generated constructor stub
-	}
+	public Person() {}
 
 	/**
 	 * Constructor that updates the first and last names and birth year.
@@ -188,12 +190,16 @@ public class Person {
 				+ map.keySet() + map.values() + "]";
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws IOException {
 		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Person bob = new Person("Bob", "Smith", 1875, myAddress);
 		bob.setPhoneNumber("555-444-3332");
-		System.out.println(bob);
+		CSVHandler.write(PERSON_FILEPATH, true, bob);
+		Person p2 = new Person();
+		System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
+		p2 = CSVHandler.getPerson(PERSON_FILEPATH, bob.getPhoneNumber());
+		
+		System.out.println("Person p2 after being assigned from CSVHandler.getPerson() " + p2);
 
 	}
 

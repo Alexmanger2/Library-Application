@@ -64,6 +64,25 @@ private final static String DELIMITER = ",";
 			ex.printStackTrace();
 		}
 	}
+	
+	public static void addPerson(String filePath, boolean append, Person p0) throws IOException { // true = append mode
+		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filePath, append), CSVFormat.EXCEL.withFirstRecordAsHeader())) {
+			printer.print(p0.getFirstName());
+			printer.print(p0.getLastName());
+			printer.print((p0.getBirthYear()));
+			printer.print(p0.getPhoneNumber());
+			printer.print(p0.getAddy().getStreet() );
+			printer.print(p0.getAddy().getCity() );
+			printer.print(p0.getAddy().getState() );
+			printer.print(p0.getAddy().getZip() );
+
+			printer.println();
+
+			printer.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
 
 	/** Displays a .csv file
 	 * 
@@ -306,6 +325,51 @@ private final static String DELIMITER = ",";
 
 		return false;
 	} // END searchEntry()
+	
+	/** Searches Persons.csv for a person.
+	 * 
+	 * @param filePath
+	 * @param phoneNum
+	 * @return
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	public static Person getPerson(String filePath, String phoneNum) throws IOException, FileNotFoundException {
+
+		Person p1 = new Person();
+		Address addy = new Address();
+		
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+		System.out.println("Searching for person with phone#: " + phoneNum + "...");
+
+		for (CSVRecord record : parser) {
+			p1.setFirstName(record.get("First Name"));
+			p1.setLastName(record.get("Last Name"));	
+			p1.setPhoneNumber(record.get("Phone Number"));
+			p1.setBirthYear(Integer.parseInt(record.get("Birth Year")));
+			addy.setStreet(record.get("Street"));
+			addy.setCity(record.get("City"));
+			addy.setState(record.get("State"));
+			addy.setZip(record.get("Zipcode"));
+			
+			p1.setAddy(addy);
+
+			//System.out.println(p1.getPhoneNumber() + " is p1 phone# and " + phoneNum + " is passed phone Number");
+			
+			if (p1.getPhoneNumber().compareTo(phoneNum) == 0) {
+				System.out.println("Person found!\n");
+				csvData.close();
+				return p1;
+			}
+		} // END FOR LOOP
+		System.out.println("Person not found!");
+		csvData.close();
+		parser.close();
+
+		// If Person is not found return null
+		return null;
+	} // END searchEntry()
 
 	public static void main(String[] args) {
 
@@ -313,6 +377,8 @@ private final static String DELIMITER = ",";
 		 * CSVHandler test
 		 */
 
+		
+		
 		// display pre-edit
 //		try {
 //			displayCSV(filePath);
