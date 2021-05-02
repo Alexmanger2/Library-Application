@@ -12,7 +12,7 @@ import java.util.Map;
 public class Person {
 
 	public static String PERSON_FILEPATH = "src/Persons.csv";
-	
+
 	private String firstName;
 	private String lastName;
 	private int birthYear;
@@ -22,9 +22,9 @@ public class Person {
 	private Address addy;
 
 	protected Map<Book, Date> map = new HashMap<>();
-	
 
-	public Person() {}
+	public Person() {
+	}
 
 	/**
 	 * Constructor that updates the first and last names and birth year.
@@ -48,7 +48,7 @@ public class Person {
 	 * @param firstName String updates the firstName
 	 * @param lastName  String updates the lastName
 	 * @param birthYear int updates the birthYear
-	 * @param phoneNum String updates the phoneNumber
+	 * @param phoneNum  String updates the phoneNumber
 	 */
 	public Person(String firstName, String lastName, int birthYear, String phoneNum, Address add) {
 		this.firstName = firstName;
@@ -58,7 +58,7 @@ public class Person {
 		this.setAddy(add);
 		this.setPhoneNumber(phoneNum);
 	}
-	
+
 	/**
 	 * Getter for firstName
 	 * 
@@ -215,13 +215,13 @@ public class Person {
 		john.setPhoneNumber("718-555-5555");
 		Person jane = new Person("Jane", "Doe", 1990, myAddress);
 		jane.setPhoneNumber("888-888-8888");
-		
+
 		// stuff to test if getPerson can find a person anywhere in the .csv
 //		Person p2 = new Person();
 //		System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
 //		p2 = CSVHandler.getPerson(PERSON_FILEPATH, jane.getPhoneNumber());
 //		System.out.println("Person p2 after being assigned from CSVHandler.getPerson() " + p2);
-		
+
 	}
 
 }

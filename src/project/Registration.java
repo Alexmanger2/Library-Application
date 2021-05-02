@@ -17,17 +17,17 @@ public class Registration {
 	private String name; // name of person
 	private String num; // phone number
 	private String type; // child/adult
-	
+
 	private Address holdAddress;
-	
-	
+
 	private List<Person> personList = new ArrayList<>();
-	
+
 	public Registration() {
-		
+
 	}
 
-	/**Checks to see if library card has expired or not
+	/**
+	 * Checks to see if library card has expired or not
 	 * 
 	 * @return true if it is valid and vice versa
 	 */
@@ -81,18 +81,18 @@ public class Registration {
 			this.type = "Adult";
 		else
 			this.type = "Child";
-		
-		//new list
+
+		// new list
 		personList.add(type);
 
 	}
-	
-	//new method
-	public List<Person> getPersonList(){
-		
+
+	// new method
+	public List<Person> getPersonList() {
+
 		return personList;
-		
-	} 
+
+	}
 
 	/**
 	 * 
@@ -123,9 +123,7 @@ public class Registration {
 	 * card in a neat fashion
 	 * 
 	 */
-	
 
-	
 	public void displayCardInfo() {
 
 		System.out.println();
@@ -136,23 +134,23 @@ public class Registration {
 		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
 		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
 		System.out.printf("%13s %9s \n", "Type:", this.type);
-		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState() );
+		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState());
 		System.out.println("--------------------------------------------------");
 	}
 
 	public static void main(String[] args) {
-		Address myAddress = new Address("100", "Staten Island", "10301" ,"New York");
+		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Registration tester = new Registration();
 		Person matt = new Person("Matthew", "Smith", 1999, myAddress);
 		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
-	//	tester.checkForValidCard();
-	//	tester.displayCardInfo();
-		
+		// tester.checkForValidCard();
+		// tester.displayCardInfo();
+
 		Person bill = new Person("bill", "Smith", 1999, myAddress);
 		matt.setPhoneNumber("000-000-0000");
 		tester.register(bill);
-		
+
 		Registration tester1 = new Registration();
 		System.out.println(tester.getPersonList());
 		System.out.println(tester1.getPersonList());

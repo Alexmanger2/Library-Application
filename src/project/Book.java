@@ -265,18 +265,19 @@ public class Book {
 		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
 		try {
-//			CSVHandler.addNewBook(FILEPATH, b);
-//			CSVHandler.searchForBook(FILEPATH, b);
-//			CSVHandler.removeBook(FILEPATH, b);
-//			CSVHandler.searchForBook(FILEPATH, b);
-//			CSVHandler.addNewBook(FILEPATH, b);
-//			CSVHandler.searchForBook(FILEPATH, b);
+			CSVHandler.searchForBook(BOOK_FILEPATH, "Machine Learning For hackers");
+//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
+//			CSVHandler.removeBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
+//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
 
-			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
-			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
-			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
-			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, false);
-			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, false);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
