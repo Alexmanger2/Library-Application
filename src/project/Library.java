@@ -75,163 +75,141 @@ public class Library {
 		checkin.returnBook(p, back);
 
 	}
-	
-	
-	
-	public void yes(Registration reg)
-	{
-		//displays the current list of people
-		//  System.out.println(reg.getPersonList());
-		  
-		  System.out.println("What is your phone number?");
-		  String phoneNumber;
-		  Scanner pNum = new Scanner(System.in);
-		  phoneNumber = pNum.nextLine();
-		  
-		  
+
+	public void yes(Registration reg) {
+		// displays the current list of people
+		// System.out.println(reg.getPersonList());
+
+		System.out.println("What is your phone number?");
+		String phoneNumber;
+		Scanner pNum = new Scanner(System.in);
+		phoneNumber = pNum.nextLine();
+
 //		  
 //		  if(reg.checkForValidCard() == true) {
 //			  reg.displayCardInfo();
 //			  System.out.println("");
-			
-		  
-		  
-			  for(Person element :  reg.getPersonList()) {
-				 if( element.getPhoneNumber().equals( phoneNumber) ) {
-					 
-				//	 System.out.println("This is the phone" + element + "This is the phone number" + phoneNumber);
-					 
-					 Person p = element;
-					 
 
-					  if(reg.checkForValidCard() == true) {
-						  reg.displayCardInfo(p);
-						  System.out.println("");	
-				
-					  while(true) {
-						  String answer = "";  
-						  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-						  Scanner ans = new Scanner(System.in);
-						  answer = ans.nextLine();
-						  
-						  
-						  if(answer.equals("1"))
-						  takeOut(p);
-						  if(answer.equals("2"))
-					      putBack(p);
-						  if(answer.equals("3"))
-					      run(reg);
-						  if(answer.equals("4"))
-						  break;
-						  
-					  }
-					 
-					 
-					 	  
-						  
-				 }
-					  
-				  
-				  
-			 // }
-			 
-			  
-			 
-			  
-			  
-			   
-	}}
-			  System.out.println("Phone number not found, please try again");
-			  ask();  
-	
+		for (Person element : reg.getPersonList()) {
+			if (element.getPhoneNumber().equals(phoneNumber)) {
+
+				// System.out.println("This is the phone" + element + "This is the phone number"
+				// + phoneNumber);
+
+				Person p = element;
+
+				if (reg.checkForValidCard() == true) {
+					reg.displayCardInfo(p);
+					System.out.println("");
+
+					while (true) {
+						String answer = "";
+						System.out.println(
+								"Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+						Scanner ans = new Scanner(System.in);
+						answer = ans.nextLine();
+
+						if (answer.equals("1"))
+							takeOut(p);
+						if (answer.equals("2"))
+							putBack(p);
+						if (answer.equals("3"))
+							run(reg);
+						if (answer.equals("4"))
+							break;
+
+					}
+
+				}
+
+				// }
+
+			}
+		}
+		System.out.println("Phone number not found, please try again");
+		ask();
+
 	}
-	
-	
+
 	public void ask() {
 
 		Registration register = new Registration();
 		run(register);
 	}
-	
-	public void no(Registration reg)
-	{
-		
-		
-		  Scanner firstName = new Scanner(System.in);
-		  Scanner lastName = new Scanner(System.in);
-		  Scanner birthday = new Scanner(System.in);
-		  Scanner number = new Scanner(System.in);
-		  Scanner streetName = new Scanner(System.in);
-		  Scanner userCity = new Scanner(System.in);
-		  Scanner userState = new Scanner(System.in);
-		  Scanner phoneNum = new Scanner(System.in);
-		  Scanner optionAnswer = new Scanner(System.in);
-		  
-		  String first;
-		  String last;
-		  String birth;
-		  String num;
-		  String street;
-		  String city;
-		  String state;
-		  String phone;
-		  String option;
-		  
-		  
-		  System.out.println("Enter your first name: "); 
-		  first = firstName.nextLine();   
-		  
-		  System.out.println("Enter your last name: "); 
-		  last = lastName.nextLine();  
-		  
-		  System.out.println("Enter your birth year: "); 
-		  birth = birthday.nextLine(); 
-		       
-		  System.out.println("Enter your street number: "); 
-		  num = number.nextLine();
-		  System.out.println("Enter your street name: "); 
-		  street = streetName.nextLine();
-		  System.out.println("Enter your city: "); 
-		  city = userCity.nextLine();
-		  System.out.println("Enter your state: "); 
-		  state = userState.nextLine();
-		  
-		  
-		  Address userAddress = new Address(num,street,city,state);
-		  Person user = new Person(first,last,Integer.parseInt(birth),userAddress);
-		  
-		  System.out.println("Enter your phone number seperated by '-': "); 
-		  phone = phoneNum.nextLine();
-		  user.setPhoneNumber(phone);
-		  
-		  reg.register(user);
-		  System.out.println("Thank you for registering, here is your card");
-		  reg.displayCardInfo();
-		  System.out.println("");
-		  
-		  //checks to see what users are in the list
-		//  System.out.println(reg.getPersonList().toString());
-		  
-		  
-		  while(true) {
-			  String answer = "";  
-			  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-			  Scanner ans = new Scanner(System.in);
-			  answer = ans.nextLine();
-			  
-			  
-			  if(answer.equals("1"))
-			  takeOut(user);
-			  if(answer.equals("2"))
-		      putBack(user);
-			  if(answer.equals("3"))
-		      run(reg);
-			  if(answer.equals("4"))
-			  break;
-			  
-		  }
-		  
-		  
+
+	public void no(Registration reg) {
+
+		Scanner firstName = new Scanner(System.in);
+		Scanner lastName = new Scanner(System.in);
+		Scanner birthday = new Scanner(System.in);
+		Scanner number = new Scanner(System.in);
+		Scanner streetName = new Scanner(System.in);
+		Scanner userCity = new Scanner(System.in);
+		Scanner userState = new Scanner(System.in);
+		Scanner phoneNum = new Scanner(System.in);
+		Scanner optionAnswer = new Scanner(System.in);
+
+		String first;
+		String last;
+		String birth;
+		String num;
+		String street;
+		String city;
+		String state;
+		String phone;
+		String option;
+
+		System.out.println("Enter your first name: ");
+		first = firstName.nextLine();
+
+		System.out.println("Enter your last name: ");
+		last = lastName.nextLine();
+
+		System.out.println("Enter your birth year: ");
+		birth = birthday.nextLine();
+
+		System.out.println("Enter your street number: ");
+		num = number.nextLine();
+		System.out.println("Enter your street name: ");
+		street = streetName.nextLine();
+		System.out.println("Enter your city: ");
+		city = userCity.nextLine();
+		System.out.println("Enter your state: ");
+		state = userState.nextLine();
+
+		Address userAddress = new Address(num, street, city, state);
+		Person user = new Person(first, last, Integer.parseInt(birth), userAddress);
+
+		System.out.println("Enter your phone number seperated by '-': ");
+		phone = phoneNum.nextLine();
+		user.setPhoneNumber(phone);
+
+		reg.register(user);
+		System.out.println("Thank you for registering, here is your card");
+		reg.displayCardInfo();
+		System.out.println("");
+
+		// checks to see what users are in the list
+		// System.out.println(reg.getPersonList().toString());
+
+		while (true) {
+			String answer = "";
+			System.out.println(
+					"Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+			Scanner ans = new Scanner(System.in);
+			answer = ans.nextLine();
+
+			if (answer.equals("1"))
+				takeOut(user);
+			if (answer.equals("2"))
+				putBack(user);
+			if (answer.equals("3"))
+				run(reg);
+			if (answer.equals("4"))
+				break;
+
+		}
+
 	}
 
 	public void run(Registration register) {
