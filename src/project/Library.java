@@ -1,11 +1,12 @@
 package project;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 
 public class Library {
 
-	private boolean check = true;
+	
 	public Library() {
 		//run();
 		ask();
@@ -85,7 +86,7 @@ public class Library {
 	
 	public void yes(Registration reg)
 	{
-		  System.out.println(reg.getPersonList());
+		 // System.out.println(reg.getPersonList());
 		  
 		  System.out.println("What is your phone number?");
 		  String phoneNumber;
@@ -93,48 +94,60 @@ public class Library {
 		  phoneNumber = pNum.nextLine();
 		  
 		  
-		  
-		  
-		 //needs to get info from already created user and use that prev user with registration instance...
-		 // check "no" option to see how its done. Probably need to ask the first/last name and then use gets methods to set 
 		  if(reg.checkForValidCard() == true) {
 			  reg.displayCardInfo();
 			  System.out.println("");
 			  
-			  for(Person element :  reg.getPersonList()) {
-				 if( element.getPhoneNumber().equals( phoneNumber) ) {
-					 Person p = element;
-					  if(reg.checkForValidCard() == true) {
-						//  reg.displayCardInfo();
+			  
+			  try {
+				Person p = CSVHandler.getPerson(Person.PERSON_FILEPATH, phoneNumber);
+				  if(reg.checkForValidCard() == true) {
+						reg.displayCardInfo();
 						  System.out.println("");
 				 }
 				  
+				  while(true) {
+					  String answer = "";  
+					  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+					  Scanner ans = new Scanner(System.in);
+					  answer = ans.nextLine();
+					  
+					  
+					  if(answer.equals("1"))
+					  takeOut(p);
+					  if(answer.equals("2"))
+				      putBack(p);
+					  if(answer.equals("3"))
+				      run(reg);
+					  if(answer.equals("4"))
+					  break;
+					  
+				  }
 				  
-			  }
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			  
+		  }}
+//			  for(Person element :  reg.getPersonList()) {
+//				 if( element.getPhoneNumber().equals( phoneNumber) ) {
+//					 Person p = element;
+//					  if(reg.checkForValidCard() == true) {
+//						//  reg.displayCardInfo();
+//						  System.out.println("");
+//				 }
+//				  
+//				  
+//			  }
 			 
 			  
 			 //-------   can't uncomment till above lines are fixed	  --------
 			  
-//			  while(true) {
-//				  String answer = "";  
-//				  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-//				  Scanner ans = new Scanner(System.in);
-//				  answer = ans.nextLine();
-//				  
-//				  
-//				  if(answer.equals("1"))
-//				  takeOut(user);
-//				  if(answer.equals("2"))
-//			      putBack(user);
-//				  if(answer.equals("3"))
-//			      run();
-//				  if(answer.equals("4"))
-//				  break;
-//				  
-//			  }
+			  
 			  
 			   
-	}}}
+	//}//}//}
 	
 	
 	public void ask() {
@@ -199,7 +212,7 @@ public class Library {
 		  reg.displayCardInfo();
 		  System.out.println("");
 		  
-		  System.out.println(reg.getPersonList().toString());
+	//	  System.out.println(reg.getPersonList().toString());
 		  
 		  
 		  while(true) {

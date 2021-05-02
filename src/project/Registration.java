@@ -1,5 +1,6 @@
 package project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -83,7 +84,15 @@ public class Registration {
 			this.type = "Child";
 		
 		//new list
-		personList.add(type);
+		//personList.add(type);
+		
+		
+		try {
+			CSVHandler.addPerson(Person.PERSON_FILEPATH, true, type);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	

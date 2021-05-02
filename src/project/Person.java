@@ -194,7 +194,7 @@ public class Person {
 		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
 		Person bob = new Person("Bob", "Smith", 1875, myAddress);
 		bob.setPhoneNumber("555-444-3332");
-		CSVHandler.write(PERSON_FILEPATH, true, bob);
+		CSVHandler.addPerson(PERSON_FILEPATH, true, bob);
 		Person p2 = new Person();
 		System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
 		p2 = CSVHandler.getPerson(PERSON_FILEPATH, bob.getPhoneNumber());
