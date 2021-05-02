@@ -1,6 +1,8 @@
 package project;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Registration {
 
@@ -17,6 +19,9 @@ public class Registration {
 	private String type; // child/adult
 	
 	private Address holdAddress;
+	
+	
+	private List<Person> personList = new ArrayList<>();
 	
 	public Registration() {
 		
@@ -76,8 +81,18 @@ public class Registration {
 			this.type = "Adult";
 		else
 			this.type = "Child";
+		
+		//new list
+		personList.add(type);
 
 	}
+	
+	//new method
+	public List<Person> getPersonList(){
+		
+		return personList;
+		
+	} 
 
 	/**
 	 * 
@@ -131,9 +146,16 @@ public class Registration {
 		Person matt = new Person("Matthew", "Smith", 1999, myAddress);
 		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
-		tester.checkForValidCard();
-		tester.displayCardInfo();
+	//	tester.checkForValidCard();
+	//	tester.displayCardInfo();
 		
+		Person bill = new Person("bill", "Smith", 1999, myAddress);
+		matt.setPhoneNumber("000-000-0000");
+		tester.register(bill);
+		
+		Registration tester1 = new Registration();
+		System.out.println(tester.getPersonList());
+		System.out.println(tester1.getPersonList());
 	}
 
 }

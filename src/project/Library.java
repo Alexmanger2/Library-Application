@@ -1,3 +1,4 @@
+
 package project;
 
 import java.util.Scanner;
@@ -5,9 +6,10 @@ import java.util.Scanner;
 
 public class Library {
 
-	
+	private boolean check = true;
 	public Library() {
-		run();
+		//run();
+		ask();
 	}
 	
 	
@@ -81,8 +83,71 @@ public class Library {
 	}
 	
 	
-	public void run() {
-			
+	
+	public void yes(Registration reg)
+	{
+		  System.out.println(reg.getPersonList());
+		  
+		  System.out.println("What is your phone number?");
+		  String phoneNumber;
+		  Scanner pNum = new Scanner(System.in);
+		  phoneNumber = pNum.nextLine();
+		  
+		  
+		  
+		  
+		 //needs to get info from already created user and use that prev user with registration instance...
+		 // check "no" option to see how its done. Probably need to ask the first/last name and then use gets methods to set 
+		  if(reg.checkForValidCard() == true) {
+			  reg.displayCardInfo();
+			  System.out.println("");
+			  
+			  for(Person element :  reg.getPersonList()) {
+				 if( element.getPhoneNumber().equals( phoneNumber) ) {
+					 Person p = element;
+					  if(reg.checkForValidCard() == true) {
+						//  reg.displayCardInfo();
+						  System.out.println("");
+				 }
+				  
+				  
+			  }
+			 
+			  
+			 //-------   can't uncomment till above lines are fixed	  --------
+			  
+//			  while(true) {
+//				  String answer = "";  
+//				  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+//				  Scanner ans = new Scanner(System.in);
+//				  answer = ans.nextLine();
+//				  
+//				  
+//				  if(answer.equals("1"))
+//				  takeOut(user);
+//				  if(answer.equals("2"))
+//			      putBack(user);
+//				  if(answer.equals("3"))
+//			      run();
+//				  if(answer.equals("4"))
+//				  break;
+//				  
+//			  }
+			  
+			   
+	}}}
+	
+	
+	public void ask() {
+		
+		Registration register = new Registration();
+		run(register);
+	}
+	
+	public void no(Registration reg)
+	{
+		
+		
 		  Scanner firstName = new Scanner(System.in);
 		  Scanner lastName = new Scanner(System.in);
 		  Scanner birthday = new Scanner(System.in);
@@ -104,112 +169,107 @@ public class Library {
 		  String option;
 		  
 		  
+		  System.out.println("Enter your first name: "); 
+		  first = firstName.nextLine();   
 		  
-		  Registration reg = new Registration();
+		  System.out.println("Enter your last name: "); 
+		  last = lastName.nextLine();  
+		  
+		  System.out.println("Enter your birth year: "); 
+		  birth = birthday.nextLine(); 
+		       
+		  System.out.println("Enter your street number: "); 
+		  num = number.nextLine();
+		  System.out.println("Enter your street name: "); 
+		  street = streetName.nextLine();
+		  System.out.println("Enter your city: "); 
+		  city = userCity.nextLine();
+		  System.out.println("Enter your state: "); 
+		  state = userState.nextLine();
+		  
+		  
+		  Address userAddress = new Address(num,street,city,state);
+		  Person user = new Person(first,last,Integer.parseInt(birth),userAddress);
+		  
+		  System.out.println("Enter your phone number seperated by '-': "); 
+		  phone = phoneNum.nextLine();
+		  user.setPhoneNumber(phone);
+		  
+		  reg.register(user);
+		  System.out.println("Thank you for registering, here is your card");
+		  reg.displayCardInfo();
+		  System.out.println("");
+		  
+		  System.out.println(reg.getPersonList().toString());
+		  
+		  
+		  while(true) {
+			  String answer = "";  
+			  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+			  Scanner ans = new Scanner(System.in);
+			  answer = ans.nextLine();
+			  
+			  
+			  if(answer.equals("1"))
+			  takeOut(user);
+			  if(answer.equals("2"))
+		      putBack(user);
+			  if(answer.equals("3"))
+		      run(reg);
+			  if(answer.equals("4"))
+			  break;
+			  
+		  }
+		  
+		  
+	}
+	
+	public void run(Registration register) {
+			
+		
+		  Scanner firstName = new Scanner(System.in);
+		  Scanner lastName = new Scanner(System.in);
+		  Scanner birthday = new Scanner(System.in);
+		  Scanner number = new Scanner(System.in);
+		  Scanner streetName = new Scanner(System.in);
+		  Scanner userCity = new Scanner(System.in);
+		  Scanner userState = new Scanner(System.in);
+		  Scanner phoneNum = new Scanner(System.in);
+		  Scanner optionAnswer = new Scanner(System.in);
+		  
+		  String first;
+		  String last;
+		  String birth;
+		  String num;
+		  String street;
+		  String city;
+		  String state;
+		  String phone;
+		  String option;
+		  
+		  //Registration register = new Registration();
 			
 		  System.out.println("Do you have a library card?(yes/no): "); 
 		  option = optionAnswer.nextLine();   
 		  
 		  
 		  if(option.equalsIgnoreCase("yes")) {
+			 
+			  yes(register);
 			  
-			  
-			  
-			 //needs to get info from already created user and use that prev user with registration instance...
-			 // check "no" option to see how its done. Probably need to ask the first/last name and then use gets methods to set 
-			  if(reg.checkForValidCard() == true) {
-				  reg.displayCardInfo();
-				  System.out.println("");
-				  
-			
-				  
-				 //-------   can't uncomment till above lines are fixed	  --------
-				  
-//				  while(true) {
-//					  String answer = "";  
-//					  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-//					  Scanner ans = new Scanner(System.in);
-//					  answer = ans.nextLine();
-//					  
-//					  
-//					  if(answer.equals("1"))
-//					  takeOut(user);
-//					  if(answer.equals("2"))
-//				      putBack(user);
-//					  if(answer.equals("3"))
-//				      run();
-//					  if(answer.equals("4"))
-//					  break;
-//					  
-//				  }
-				  
-				  
 			  }
-			  else {
-				  System.out.println("User was not found, try again");
-				  run();
-			  }
+//			  else {
+//				  System.out.println("User was not found, try again");
+//				  run();
+//			  }
 			  
-		  }
+		  
 		  else if(option.equalsIgnoreCase("no")){
-			  
-			  System.out.println("Enter your first name: "); 
-			  first = firstName.nextLine();   
-			  
-			  System.out.println("Enter your last name: "); 
-			  last = lastName.nextLine();  
-			  
-			  System.out.println("Enter your birth year: "); 
-			  birth = birthday.nextLine(); 
-			       
-			  System.out.println("Enter your street number: "); 
-			  num = number.nextLine();
-			  System.out.println("Enter your street name: "); 
-			  street = streetName.nextLine();
-			  System.out.println("Enter your city: "); 
-			  city = userCity.nextLine();
-			  System.out.println("Enter your state: "); 
-			  state = userState.nextLine();
-			  
-			  
-			  Address userAddress = new Address(num,street,city,state);
-			  Person user = new Person(first,last,Integer.parseInt(birth),userAddress);
-			  
-			  System.out.println("Enter your phone number seperated by '-': "); 
-			  phone = phoneNum.nextLine();
-			  user.setPhoneNumber(phone);
-			  
-			  reg.register(user);
-			  System.out.println("Thank you for registering, here is your card");
-			  reg.displayCardInfo();
-			  System.out.println("");
-			  
-			  
-			  
-			  
-			  while(true) {
-				  String answer = "";  
-				  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
-				  Scanner ans = new Scanner(System.in);
-				  answer = ans.nextLine();
-				  
-				  
-				  if(answer.equals("1"))
-				  takeOut(user);
-				  if(answer.equals("2"))
-			      putBack(user);
-				  if(answer.equals("3"))
-			      run();
-				  if(answer.equals("4"))
-				  break;
-				  
-			  }
-			  
-			  
+			  	no(register);
 		  }
 		  else {
 			  System.out.println("Wrong input for valid card, try again");
-			  run();
+			  run(register);
 		  }
 		
 		
