@@ -391,9 +391,9 @@ public class CSVHandler {
 	 * Returns a book to the library.
 	 * 
 	 * @param filePath String filepath of location of books.csv
-	 * @param _title String title of book to return
+	 * @param _title   String title of book to return
 	 * @return boolean true if return successful, false if not
-	 * @throws IOException if the named file exists but is a directory
+	 * @throws IOException           if the named file exists but is a directory
 	 *                               rather than a regular file, does not exist but
 	 *                               cannot be created, or cannot be opened for any
 	 *                               other reason
@@ -439,7 +439,52 @@ public class CSVHandler {
 		parser.close();
 
 		return false;
-	} // END searchForBook()
+	} // END returnBookToLibrary()
+
+	/**
+	 * Method searches for a book and retrieves it from the .csv. It will return a
+	 * book object based off of the passed in title.
+	 * 
+	 * @param filePath String filepath of location of books.csv
+	 * @param _title   String title of book to return
+	 * @return Book object if book with mathing title was found in database or null
+	 *         if none was found.
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	public static Book getBookFromLib(String filePath, String _title) throws IOException, FileNotFoundException {
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+
+		// Checks to see if a title was passed.
+		if (_title.isBlank()) {
+			System.out.println("You didn't enter a title.\n");
+			return null;
+		}
+
+		for (CSVRecord record : parser) {
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+
+			Book b = new Book(title, author, genre, publisher);
+
+			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
+				csvData.close();
+				return b;
+			}
+		} // END FOR LOOP
+		csvData.close();
+		parser.close();
+
+		return null;
+	} // END getBookFromLib()
 
 	public static void main(String[] args) {
 
