@@ -270,12 +270,12 @@ public class Book {
 
 			Person bob = new Person("Bob", "Smith", 1875, myAddress);
 			bob.setPhoneNumber("555-444-3332");
-			
+
 			Book b1 = new Book();
 			System.out.println("b1 before searchAndCheckoutBook: " + b1);
 			b1 = CSVHandler.searchAndCheckoutBook(BOOK_FILEPATH, "   ");
 			System.out.println("b1 after searchAndCheckoutBook: " + b1);
-			
+
 //			CSVHandler.addNewBook(BOOK_FILEPATH, b);
 //			CSVHandler.searchForBook(BOOK_FILEPATH, b);
 //			CSVHandler.removeBook(BOOK_FILEPATH, b);
