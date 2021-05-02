@@ -51,16 +51,16 @@ public class Borrow {
 	public void init(Person p1, Book b) {
 
 		if (p1.getLateBalance() == 0.0) {
-			
-					//if(CSVHandler.getCSVQuantity(Book.filePath, b) < 0) 
+
+			// if(CSVHandler.getCSVQuantity(Book.filePath, b) < 0)
 			try {
-				if (CSVHandler.getCSVQuantity(Book.filePath, b) > 0) {
+				if (CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, b) > 0) {
 
 					if (p1.getBookList().size() < MAX_SIZE) {
 
 						try {
-							CSVHandler.searchForBook(Book.filePath, b);
-							CSVHandler.updateQuantity(Book.filePath, b, false);
+							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
+							CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false);
 
 							// ++bookCount;
 							p1.setBookList(b);
@@ -69,13 +69,21 @@ public class Borrow {
 									+ b.getTitle() + " by " + b.getAuthor());
 
 							System.out.println(p1.getBookList() + "\n");
-							
+
 							System.out.println("-----------------------------------------------------------");
-				/*System.out.printf("|");*/		    System.out.printf("|          %30s                 ", b.getTitle().toUpperCase(),"|");		System.out.printf("|\n");
-				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getAuthor().toUpperCase(), "|");	System.out.printf("|\n");
-				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getGenre().toUpperCase(), "|");		System.out.printf("|\n");
-				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getPublisher().toUpperCase(), "|");	System.out.printf("|\n");
-				
+							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
+									b.getTitle().toUpperCase(), "|");
+							System.out.printf("|\n");
+							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
+									b.getAuthor().toUpperCase(), "|");
+							System.out.printf("|\n");
+							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
+									b.getGenre().toUpperCase(), "|");
+							System.out.printf("|\n");
+							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
+									b.getPublisher().toUpperCase(), "|");
+							System.out.printf("|\n");
+
 							System.out.println("-----------------------------------------------------------");
 
 						} catch (FileNotFoundException e) {
@@ -83,7 +91,7 @@ public class Borrow {
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-			
+
 					} else {
 						System.out.println(
 								"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book");
@@ -95,7 +103,7 @@ public class Borrow {
 					}else
 					System.out.println("This book is currently out of stock, please rent another book");
 				}
-	
+
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

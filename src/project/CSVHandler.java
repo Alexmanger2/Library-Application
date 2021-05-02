@@ -229,9 +229,10 @@ public class CSVHandler {
 //								"Book " + b.getTitle() + ", stock has been decremented to " + b.getIntQuantity());
 						success = true;
 					} else
-						throw new IllegalArgumentException("Can not checkout:\n" + b + " is out of stock!\n");
+//						System.out.println("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
+					throw new IllegalArgumentException("Can not checkout:\n" + b.getTitle() + " is out of stock!\n");
 				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				books.add(b);
 			}
@@ -293,7 +294,92 @@ public class CSVHandler {
 		parser.close();
 
 		return false;
-	} // END searchEntry()
+	} // END searchForBook()
+
+	/**
+	 * Searches for a book and returns a boolean value depending on whether it was
+	 * found.
+	 * 
+	 * @param filePath String Location of the .csv file.
+	 * @param String   _title The title of the book to search for.
+	 * @return boolean True if book is in the CSV, false if it is not.
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	public static boolean searchForBook(String filePath, String _title) throws IOException, FileNotFoundException {
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+		System.out.println("Searching for " + _title);
+
+		for (CSVRecord record : parser) {
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+
+			Book b = new Book(title, author, genre, publisher);
+
+			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
+				System.out.println("Book found!\n");
+				csvData.close();
+				return true;
+			}
+		} // END FOR LOOP
+		System.out.println("Book not found!");
+		csvData.close();
+		parser.close();
+
+		return false;
+	} // END searchForBook()
+
+	/**
+	 * Searches for a book by its title and returns the book if it is found.
+	 * 
+	 * @param filePath String location of the .csv file.
+	 * @param _title   String Name of title of book to search for.
+	 * @return Book object will be returned if found in .csv. null returned if not
+	 *         found
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	public static Book searchAndCheckoutBook(String filePath, String _title) throws IOException, FileNotFoundException {
+		Reader csvData = new FileReader(filePath);
+		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
+		System.out.println("Searching for " + _title);
+
+		for (CSVRecord record : parser) {
+			String title = record.get("Title");
+			String author = record.get("Author");
+			String genre = record.get("Genre");
+			String publisher = record.get("Publisher");
+
+			Book b = new Book(title, author, genre, publisher);
+
+			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
+				System.out.println("Book found in library. Checking for Stock...\n");
+				csvData.close();
+
+				// If book is in stock, return the book
+				if (updateQuantity(Book.BOOK_FILEPATH, b, false))
+					return b;
+			} else
+				return null;
+		} // END FOR LOOP
+		csvData.close();
+		parser.close();
+
+		return null;
+	} // END searchForBook()
 
 	public static void main(String[] args) {
 

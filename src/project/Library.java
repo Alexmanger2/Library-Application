@@ -3,50 +3,48 @@ package project;
 
 import java.util.Scanner;
 
-
 public class Library {
 
 	private boolean check = true;
+
 	public Library() {
-		//run();
+		// run();
 		ask();
 	}
-	
-	
+
 	public void takeOut(Person p) {
-		
+
 		String title;
 		String author;
 		String genre;
 		String publisher;
-		
-		//Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
-		
+
+		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
+
 		System.out.println("Enter the Title/Author/Genre/Publisher");
-		
+
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
-		
+
 		Scanner pickauthor = new Scanner(System.in);
-		author = pickauthor .nextLine();
-		
-		Scanner pickgenre= new Scanner(System.in);
+		author = pickauthor.nextLine();
+
+		Scanner pickgenre = new Scanner(System.in);
 		genre = pickgenre.nextLine();
-		
+
 		Scanner pickpublisher = new Scanner(System.in);
 		publisher = pickpublisher.nextLine();
-		
-			Book take = new Book(title,author,genre,publisher);
-			
-			Borrow checkout = new Borrow();
-			
-	        checkout.borrowBook(p,take);
 
-		
+		Book take = new Book(title, author, genre, publisher);
+
+		Borrow checkout = new Borrow();
+
+		checkout.borrowBook(p, take);
+
 	}
-	
+
 	public void putBack(Person p) {
-		
+
 		Return checkin = new Return();
 		System.out.println("Choose what book to return");
 		System.out.println(p.getBookList().toString());
@@ -55,46 +53,38 @@ public class Library {
 		String author;
 		String genre;
 		String publisher;
-		
-		//Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
-		
+
+		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
+
 		System.out.println("Enter the Title/Author/Genre/Publisher");
-		
+
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
-		
+
 		Scanner pickauthor = new Scanner(System.in);
-		author = pickauthor .nextLine();
-		
-		Scanner pickgenre= new Scanner(System.in);
+		author = pickauthor.nextLine();
+
+		Scanner pickgenre = new Scanner(System.in);
 		genre = pickgenre.nextLine();
-		
+
 		Scanner pickpublisher = new Scanner(System.in);
 		publisher = pickpublisher.nextLine();
-		
-		
-		Book back = new Book(title,author,genre,publisher);
-		
-		
+
+		Book back = new Book(title, author, genre, publisher);
+
 		checkin.returnBook(p, back);
-		
-		
-		
+
 	}
-	
-	
-	
-	public void yes(Registration reg)
-	{
-		//displays the current list of people
-		//  System.out.println(reg.getPersonList());
-		  
-		  System.out.println("What is your phone number?");
-		  String phoneNumber;
-		  Scanner pNum = new Scanner(System.in);
-		  phoneNumber = pNum.nextLine();
-		  
-		  
+
+	public void yes(Registration reg) {
+		// displays the current list of people
+		// System.out.println(reg.getPersonList());
+
+		System.out.println("What is your phone number?");
+		String phoneNumber;
+		Scanner pNum = new Scanner(System.in);
+		phoneNumber = pNum.nextLine();
+
 //		  
 //		  if(reg.checkForValidCard() == true) {
 //			  reg.displayCardInfo();
@@ -153,10 +143,9 @@ public class Library {
 			  ask();  
 	
 	}
-	
-	
+
 	public void ask() {
-		
+
 		Registration register = new Registration();
 		run(register);
 	}
@@ -245,64 +234,57 @@ public class Library {
 		  
 		  
 	}
-	
+
 	public void run(Registration register) {
-			
-		
-		  Scanner firstName = new Scanner(System.in);
-		  Scanner lastName = new Scanner(System.in);
-		  Scanner birthday = new Scanner(System.in);
-		  Scanner number = new Scanner(System.in);
-		  Scanner streetName = new Scanner(System.in);
-		  Scanner userCity = new Scanner(System.in);
-		  Scanner userState = new Scanner(System.in);
-		  Scanner phoneNum = new Scanner(System.in);
-		  Scanner optionAnswer = new Scanner(System.in);
-		  
-		  String first;
-		  String last;
-		  String birth;
-		  String num;
-		  String street;
-		  String city;
-		  String state;
-		  String phone;
-		  String option;
-		  
-		  //Registration register = new Registration();
-			
-		  System.out.println("Do you have a library card?(yes/no): "); 
-		  option = optionAnswer.nextLine();   
-		  
-		  
-		  if(option.equalsIgnoreCase("yes")) {
-			 
-			  yes(register);
-			  
-			  }
+
+		Scanner firstName = new Scanner(System.in);
+		Scanner lastName = new Scanner(System.in);
+		Scanner birthday = new Scanner(System.in);
+		Scanner number = new Scanner(System.in);
+		Scanner streetName = new Scanner(System.in);
+		Scanner userCity = new Scanner(System.in);
+		Scanner userState = new Scanner(System.in);
+		Scanner phoneNum = new Scanner(System.in);
+		Scanner optionAnswer = new Scanner(System.in);
+
+		String first;
+		String last;
+		String birth;
+		String num;
+		String street;
+		String city;
+		String state;
+		String phone;
+		String option;
+
+		// Registration register = new Registration();
+
+		System.out.println("Do you have a library card?(yes/no): ");
+		option = optionAnswer.nextLine();
+
+		if (option.equalsIgnoreCase("yes")) {
+
+			yes(register);
+
+		}
 //			  else {
 //				  System.out.println("User was not found, try again");
 //				  run();
 //			  }
-			  
-		  
-		  else if(option.equalsIgnoreCase("no")){
-			  	no(register);
-		  }
-		  else {
-			  System.out.println("Wrong input for valid card, try again");
-			  run(register);
-		  }
-		
-		
-	}
-	
 
-	
+		else if (option.equalsIgnoreCase("no")) {
+			no(register);
+		} else {
+			System.out.println("Wrong input for valid card, try again");
+			run(register);
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 		Library lib = new Library();
-		
+
 	}
 
 }

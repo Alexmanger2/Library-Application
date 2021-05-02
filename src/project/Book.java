@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Book {
 
-	public static final String filePath = "src/books.csv";
+	public static final String BOOK_FILEPATH = "src/books.csv";
 
 	private String title;
 	private String author;
@@ -265,18 +265,19 @@ public class Book {
 		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
 		try {
-//			CSVHandler.addNewBook(filePath, b);
-//			CSVHandler.searchForBook(filePath, b);
-//			CSVHandler.removeBook(filePath, b);
-//			CSVHandler.searchForBook(filePath, b);
-//			CSVHandler.addNewBook(filePath, b);
-//			CSVHandler.searchForBook(filePath, b);
+			CSVHandler.searchForBook(BOOK_FILEPATH, "Machine Learning For hackers");
+//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
+//			CSVHandler.removeBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
+//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
 
-			CSVHandler.searchForBook(filePath, b2);
-			CSVHandler.updateQuantity(filePath, b2, true);
-			CSVHandler.updateQuantity(filePath, b2, true);
-			CSVHandler.updateQuantity(filePath, b2, false);
-			CSVHandler.searchForBook(filePath, b2);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
+//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, false);
+//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
