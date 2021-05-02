@@ -385,7 +385,7 @@ public class CSVHandler {
 		parser.close();
 
 		return null;
-	} // END searchForBook()
+	} // END searchAndCheckoutBook()
 
 	/**
 	 * Returns a book to the library.
@@ -401,7 +401,7 @@ public class CSVHandler {
 	 *                               rather than a regular file,or for some other
 	 *                               reason cannot be opened for reading.
 	 */
-	public static boolean searchAndReturnBook(String filePath, String _title)
+	public static boolean returnBook(String filePath, String _title)
 			throws IOException, FileNotFoundException {
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
