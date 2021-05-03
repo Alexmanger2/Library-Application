@@ -94,7 +94,7 @@ public class Borrow {
 							for (Entry<Book, java.util.Date> hold : p1.map.entrySet()) {
 									
 									Book c = hold.getKey();
-									System.out.println(c.getTitle() + " by " + c.getAuthor() + " | Rented at: " + hold.getValue());
+									System.out.println(c.getTitle() + " by " + c.getAuthor() + " | Rented on: " + hold.getValue());
 
 								;}
 							
