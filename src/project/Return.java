@@ -20,7 +20,7 @@ public class Return {
 
 		Book rBook = new Book();
 		Book holdBook = b;
-		
+
 		for (Map.Entry<Book, Date> date : p1.map.entrySet()) {
 
 			if (date.getKey().equals(b)) {
@@ -41,7 +41,8 @@ public class Return {
 				if (cal.getTime().compareTo(date.getValue()) == 0) {
 
 					p1.setLateBalance(0.0);
-					System.out.println("\n" + "You returned " + rBook.getTitle() + " by " + rBook.getAuthor() + " on time".toUpperCase());
+					System.out.println("\n" + "You returned " + rBook.getTitle() + " by " + rBook.getAuthor()
+							+ " on time".toUpperCase());
 
 					System.out.println("-----------------------------------------------------------");
 					/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
@@ -63,7 +64,8 @@ public class Return {
 				}
 				if (cal.getTime().compareTo(date.getValue()) < 0) {
 					p1.setLateBalance(0.0);
-					System.out.println("\n" + "You returned " + rBook.getTitle() + " by " + rBook.getAuthor() + " on time".toUpperCase());
+					System.out.println("\n" + "You returned " + rBook.getTitle() + " by " + rBook.getAuthor()
+							+ " on time".toUpperCase());
 
 					System.out.println("-----------------------------------------------------------");
 					/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
@@ -88,7 +90,8 @@ public class Return {
 
 		}
 
-		if (this.check == true && !holdBook.getTitle().equals(" ") && !holdBook.getTitle().equals(null) && !holdBook.getTitle().equals("null")) {
+		if (this.check == true && !holdBook.getTitle().equals(" ") && !holdBook.getTitle().equals(null)
+				&& !holdBook.getTitle().equals("null")) {
 			System.out.println("You did not checkout this book: " + holdBook.getTitle().toUpperCase());
 			System.out.println("");
 		}

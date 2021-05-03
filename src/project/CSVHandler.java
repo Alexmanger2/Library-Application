@@ -166,9 +166,9 @@ public class CSVHandler {
 				return quantity;
 			}
 		} // END FOR LOOP
-	//do something about this
-	//	System.out.println("Book not found!");
-		
+		// do something about this
+		// System.out.println("Book not found!");
+
 		csvData.close();
 		parser.close();
 
@@ -352,19 +352,19 @@ public class CSVHandler {
 	 *                               rather than a regular file,or for some other
 	 *                               reason cannot be opened for reading.
 	 */
-	public static Book searchAndCheckoutBook(String filePath, String _title, boolean flag) throws IOException, FileNotFoundException { //changed*****
+	public static Book searchAndCheckoutBook(String filePath, String _title, boolean flag)
+			throws IOException, FileNotFoundException { // changed*****
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
-		if(flag == true)
-		System.out.println("Searching for " + _title);
+		if (flag == true)
+			System.out.println("Searching for " + _title);
 
 		// Checks to see if a title was passed.
 		if (_title.isBlank()) {
 			System.out.println("You didn't enter a title.\n");
 			return null;
-		}
-		else if(searchForBook(Book.BOOK_FILEPATH,_title) == false) { // new method
-				return null;
+		} else if (searchForBook(Book.BOOK_FILEPATH, _title) == false) { // new method
+			return null;
 		}
 		for (CSVRecord record : parser) {
 			String title = record.get("Title");
@@ -375,8 +375,8 @@ public class CSVHandler {
 			Book b = new Book(title, author, genre, publisher);
 
 			if (b.getTitle().compareToIgnoreCase(_title) == 0) {
-				if(flag == true)
-				System.out.println("Book found in library. Checking for Stock...\n");
+				if (flag == true)
+					System.out.println("Book found in library. Checking for Stock...\n");
 				csvData.close();
 
 				// If book is in stock, return the book
@@ -469,7 +469,7 @@ public class CSVHandler {
 
 		Book nullTitleBook = new Book();
 		nullTitleBook.setTitle("null");
-		
+
 		// Checks to see if a title was passed.
 		if (_title.isBlank()) {
 			System.out.println("You didn't enter a title.\n");
