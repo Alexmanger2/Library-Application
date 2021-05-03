@@ -463,10 +463,13 @@ public class CSVHandler {
 		Reader csvData = new FileReader(filePath);
 		CSVParser parser = CSVParser.parse(csvData, CSVFormat.EXCEL.withFirstRecordAsHeader());
 
+		Book nullTitleBook = new Book();
+		nullTitleBook.setTitle("null");
+		
 		// Checks to see if a title was passed.
 		if (_title.isBlank()) {
 			System.out.println("You didn't enter a title.\n");
-			return null;
+			return nullTitleBook;
 		}
 
 		for (CSVRecord record : parser) {
@@ -485,7 +488,7 @@ public class CSVHandler {
 		csvData.close();
 		parser.close();
 
-		return null;
+		return nullTitleBook;
 	} // END getBookFromLib()
 
 	public static void main(String[] args) {

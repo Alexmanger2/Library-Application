@@ -24,7 +24,7 @@ public class Library {
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
 	//	System.out.println("Enter the Title/Author/Genre/Publisher");
-		System.out.println("Enter the Title of the book you want the rent");
+		System.out.println("Enter the title of the book you want the rent");
 		
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
@@ -73,7 +73,7 @@ public class Library {
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-		System.out.println("Enter the Title of the book you want to return");
+		System.out.println("Enter the title of the book you want to return");
 
 		Scanner pickTitle = new Scanner(System.in);
 		title = pickTitle.nextLine();
@@ -93,6 +93,12 @@ public class Library {
 //			try {
 				
 				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
+				
+				if(back.getTitle().equals("null")) {
+					
+					System.out.println("You did not checkout " + title + "\n");
+				}
+				else
 				checkin.returnBook(p, back);
 //			} catch (FileNotFoundException e) {
 //				// TODO Auto-generated catch block
