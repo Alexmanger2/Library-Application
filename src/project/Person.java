@@ -217,10 +217,12 @@ public class Person {
 		jane.setPhoneNumber("888-888-8888");
 
 		// stuff to test if getPerson can find a person anywhere in the .csv
-		//Person p2 = new Person();
-		//System.out.println("Person p2 before being assigned from CSVHandler.getPerson() " + p2);
-		//p2 = CSVHandler.getPerson(PERSON_FILEPATH, jane.getPhoneNumber());
-		//System.out.println("Person p2 after being assigned from CSVHandler.getPerson() " + p2);
+		// Person p2 = new Person();
+		// System.out.println("Person p2 before being assigned from
+		// CSVHandler.getPerson() " + p2);
+		// p2 = CSVHandler.getPerson(PERSON_FILEPATH, jane.getPhoneNumber());
+		// System.out.println("Person p2 after being assigned from
+		// CSVHandler.getPerson() " + p2);
 
 	}
 
