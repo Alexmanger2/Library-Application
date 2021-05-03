@@ -2,8 +2,11 @@ package project;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Borrow {
 
@@ -68,7 +71,11 @@ public class Borrow {
 							System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has checked out: "
 									+ b.getTitle() + " by " + b.getAuthor());
 
-							System.out.println(p1.getBookList() + "\n");
+
+							
+				//			System.out.println(p1.getBookList() + "\n");    //original --- prints out list info
+							
+							
 							
 							System.out.println("-----------------------------------------------------------");
 				/*System.out.printf("|");*/		    System.out.printf("|          %30s                 ", b.getTitle().toUpperCase(),"|");		System.out.printf("|\n");
@@ -77,6 +84,24 @@ public class Borrow {
 				/*System.out.printf("|");*/			System.out.printf("|          %30s                 ", b.getPublisher().toUpperCase(), "|");	System.out.printf("|\n");
 				
 							System.out.println("-----------------------------------------------------------");
+							
+
+							
+							System.out.println("");
+							System.out.printf("%27s %20s", "" , "Current book List".toUpperCase() + "\n");
+							Map<Book, java.util.Date> map = p1.getBookList();
+						
+							for (Entry<Book, java.util.Date> hold : p1.map.entrySet()) {
+									
+									Book c = hold.getKey();
+									System.out.println(c.getTitle() + " by " + c.getAuthor() + " | Rented on: " + hold.getValue());
+
+								;}
+							
+							
+							System.out.println("");
+							
+
 
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();
