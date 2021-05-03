@@ -9,12 +9,12 @@ public class Library {
 
 	private boolean check = true;
 
-	public Library() {
+	public Library() throws FileNotFoundException, IOException {
 		// run();
 		ask();
 	}
 
-	public void takeOut(Person p) {
+	public void takeOut(Person p) throws FileNotFoundException, IOException {
 
 		String title;
 		String author;
@@ -41,18 +41,18 @@ public class Library {
 //		Book take = new Book(title, author, genre, publisher);
 		
 		//Book take;
-		try {
+//		try {
 			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH , title );
 			Borrow checkout = new Borrow();
 			checkout.borrowBook(p, take);
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 //		Borrow checkout = new Borrow();
 //
@@ -60,7 +60,7 @@ public class Library {
 
 	}
 
-	public void putBack(Person p) {
+	public void putBack(Person p) throws FileNotFoundException, IOException {
 
 		Return checkin = new Return();
 		System.out.println("Choose what book to return");
@@ -90,23 +90,24 @@ public class Library {
 //		Book back = new Book(title, author, genre, publisher);
 
 	
-			try {
+//			try {
+				
 				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
 				checkin.returnBook(p, back);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 		
 //		checkin.returnBook(p, back);
 
 	}
 
-	public void yes(Registration reg) {
+	public void yes(Registration reg) throws FileNotFoundException, IOException {
 		// displays the current list of people
 		// System.out.println(reg.getPersonList());
 
@@ -136,7 +137,7 @@ public class Library {
 				
 					  while(true) {
 						  String answer = "";  
-						  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+						  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
 						  Scanner ans = new Scanner(System.in);
 						  answer = ans.nextLine();
 						  
@@ -145,9 +146,21 @@ public class Library {
 						  takeOut(p);
 						  if(answer.equals("2"))
 					      putBack(p);
-						  if(answer.equals("3"))
+						  if(answer.equals("3")) {
+							  	System.out.println("What book do you want to search for?");
+								String bookTitle;
+								Scanner bTitle = new Scanner(System.in);
+								bookTitle = bTitle.nextLine();
+								
+							  if(CSVHandler.searchForBook(Book.BOOK_FILEPATH, bookTitle) == true) {
+							  Book c = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, bookTitle);
+							  int hold = CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, c);
+							  System.out.println("There are " + hold + " copies remaining of " + bookTitle + "\n");
+							  }
+						  }
+						  if(answer.equals("4"))
 					      run(reg);
-						  if(answer.equals("4")) {
+						  if(answer.equals("5")) {
 						  //break;
 					      System.out.println("Exiting program.....");		  
 						  System.exit(0);
@@ -174,13 +187,13 @@ public class Library {
 	
 	}
 
-	public void ask() {
+	public void ask() throws FileNotFoundException, IOException {
 
 		Registration register = new Registration();
 		run(register);
 	}
 	
-	public void no(Registration reg)
+	public void no(Registration reg) throws FileNotFoundException, IOException
 	{
 		
 		
@@ -242,22 +255,33 @@ public class Library {
 		  
 		  while(true) {
 			  String answer = "";  
-			  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: switch user | 4: Exit) ");
+			  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
 			  Scanner ans = new Scanner(System.in);
 			  answer = ans.nextLine();
 			  
 			  
 			  if(answer.equals("1"))
-			  takeOut(user);
-			  if(answer.equals("2"))
-		      putBack(user);
-			  if(answer.equals("3"))
-		      run(reg);
-			  if(answer.equals("4")) {
-				//break;
-				  System.out.println("Exiting program.....");		  
+				  takeOut(user);
+				  if(answer.equals("2"))
+			      putBack(user);
+				  if(answer.equals("3")) {
+					  	System.out.println("What book do you want to search for?");
+						String bookTitle;
+						Scanner bTitle = new Scanner(System.in);
+						bookTitle = bTitle.nextLine();
+						
+					 if( CSVHandler.searchForBook(Book.BOOK_FILEPATH, bookTitle) == true) {
+					  Book c = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, bookTitle);
+					  int hold = CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, c);
+					  System.out.println("There are " + hold + " copies remaining of " + bookTitle + "\n");
+				  }}
+				  if(answer.equals("4"))
+			      run(reg);
+				  if(answer.equals("5")) {
+				  //break;
+			      System.out.println("Exiting program.....");		  
 				  System.exit(0);
-			  }
+				  }
 			  
 			  
 		  }
@@ -265,7 +289,7 @@ public class Library {
 		  
 	}
 
-	public void run(Registration register) {
+	public void run(Registration register) throws FileNotFoundException, IOException {
 
 		Scanner firstName = new Scanner(System.in);
 		Scanner lastName = new Scanner(System.in);
@@ -311,7 +335,7 @@ public class Library {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		Library lib = new Library();
 
