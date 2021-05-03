@@ -21,11 +21,6 @@ public class Return {
 		Book rBook = new Book();
 		Book holdBook = b;
 		
-		//new
-		if(holdBook.equals(null) || holdBook.equals("") || holdBook.equals(" "))
-			System.out.println("You did not borrow this book");
-		//new
-		
 		for (Map.Entry<Book, Date> date : p1.map.entrySet()) {
 
 			if (date.getKey().equals(b)) {

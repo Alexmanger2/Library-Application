@@ -60,7 +60,7 @@ public class Borrow {
 
 						try {
 							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
-							CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false);
+					//		CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false);  // this is now being done in (searchAndCheckoutBook) in CSVHandler
 
 							// ++bookCount;
 							p1.setBookList(b);
