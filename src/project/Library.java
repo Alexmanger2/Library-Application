@@ -3,6 +3,9 @@ package project;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Library {
@@ -63,20 +66,77 @@ public class Library {
 	public void putBack(Person p) throws FileNotFoundException, IOException {
 
 		Return checkin = new Return();
-		System.out.println("Choose what book to return");
-		System.out.println(p.getBookList().toString());
-		System.out.println("");
-		String title;
-		String author;
-		String genre;
-		String publisher;
+		//System.out.println("Choose what book to return");
+		//System.out.println(p.getBookList().toString());
+		
+		if(p.getBookList().size() != 0) {
+		System.out.println("Current books rented out: ");
+		
+		Map<Book, java.util.Date> map = p.getBookList();
+		
+	for (Entry<Book, java.util.Date> hold : p.map.entrySet()) {
+			
+//			if(p.getBookList().size() == 0) {
+//				System.out.println("\n No book currently rented out \n");
+//			}
+			
+			Book b = hold.getKey();
+			System.out.println(b.getTitle());
+			
+			//+
+		//	System.out.println(hold.getKey().getTitle() //+
+	                             //", Value = " + hold.getValue());
+	    }
+	System.out.println("");
+	String title;
+	String author;
+	String genre;
+	String publisher;
+			System.out.println("Enter the title of the book you want to return");
+			Scanner pickTitle = new Scanner(System.in);
+			title = pickTitle.nextLine();
+			
+			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
+			
+			if(back.getTitle().equals("null") && !title.equals("")) {
+				
+				System.out.println("You did not checkout " + title + "\n");
+			}
+			else
+			checkin.returnBook(p, back);
+	
+		}
+		else {
+			
+			String title;
+			System.out.println("You don't currently have any books rented out");
+			title = "moveOn";
+			
+			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
+			
+			if(back.getTitle().equals("null") && !title.equals("") || title.equals("moveOn")) {
+				if(title.equals("moveOn")) {
+					System.out.println("");
+				}
+				else
+				System.out.println("You did not checkout " + title + "\n");
+			}
+			else
+			checkin.returnBook(p, back);
+		}
+		
+//		System.out.println("");
+//		String title;
+//		String author;
+//		String genre;
+//		String publisher;
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-		System.out.println("Enter the title of the book you want to return");
+	//	System.out.println("Enter the title of the book you want to return");
 
-		Scanner pickTitle = new Scanner(System.in);
-		title = pickTitle.nextLine();
+	//	Scanner pickTitle = new Scanner(System.in);
+	//	title = pickTitle.nextLine();
 
 //		Scanner pickauthor = new Scanner(System.in);
 //		author = pickauthor.nextLine();
@@ -92,14 +152,15 @@ public class Library {
 	
 //			try {
 				
-				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
-				
-				if(back.getTitle().equals("null")) {
-					
-					System.out.println("You did not checkout " + title + "\n");
-				}
-				else
-				checkin.returnBook(p, back);
+//				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
+//				
+//				if(back.getTitle().equals("null") && !title.equals("")) {
+//					
+//					System.out.println("You did not checkout " + title + "\n");
+//				}
+//				else
+//				checkin.returnBook(p, back);
+		
 //			} catch (FileNotFoundException e) {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
@@ -143,7 +204,7 @@ public class Library {
 				
 					  while(true) {
 						  String answer = "";  
-						  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
+						  System.out.println("Please select an option: (1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
 						  Scanner ans = new Scanner(System.in);
 						  answer = ans.nextLine();
 						  
@@ -261,7 +322,7 @@ public class Library {
 		  
 		  while(true) {
 			  String answer = "";  
-			  System.out.println("Do you want to take out or return a book?(1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
+			  System.out.println("Please select an option: (1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
 			  Scanner ans = new Scanner(System.in);
 			  answer = ans.nextLine();
 			  
