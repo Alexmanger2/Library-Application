@@ -273,7 +273,7 @@ public class Book {
 
 			Book b1 = new Book();
 			System.out.println("b1 before searchAndCheckoutBook: " + b1);
-			b1 = CSVHandler.searchAndCheckoutBook(BOOK_FILEPATH, "   ");
+			b1 = CSVHandler.searchAndCheckoutBook(BOOK_FILEPATH, "   ",false);  //changed****
 			System.out.println("b1 after searchAndCheckoutBook: " + b1);
 
 //			CSVHandler.addNewBook(BOOK_FILEPATH, b);

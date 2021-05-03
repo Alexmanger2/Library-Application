@@ -27,6 +27,12 @@ public class Library {
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
 	//	System.out.println("Enter the Title/Author/Genre/Publisher");
+		
+		if(p.getBookList().size() == 3) {
+			System.out.println("You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book \n");
+		}
+		else {
+		
 		System.out.println("Enter the title of the book you want the rent");
 		
 		Scanner pickTitle = new Scanner(System.in);
@@ -45,10 +51,10 @@ public class Library {
 		
 		//Book take;
 //		try {
-			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH , title );
+			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH , title, false ); //changed***
 			Borrow checkout = new Borrow();
 			checkout.borrowBook(p, take);
-			
+		}
 //		} catch (FileNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
