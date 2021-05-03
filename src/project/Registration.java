@@ -126,16 +126,34 @@ public class Registration {
 
 	public void displayCardInfo() {
 
+		
+		
 		System.out.println();
 		System.out.println("--------------------------------------------------");
 		System.out.printf("%24s \n\n", "Card Information");
-		System.out.printf("%13s %17s \n", "Name:", this.name);
-		System.out.printf("%15s %14s \n", "Number:", this.num);
-		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
-		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
-		System.out.printf("%13s %9s \n", "Type:", this.type);
-		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState());
+		System.out.printf("%13s %3s %-17s \n", "Name:"," ",this.name);
+		System.out.printf("%15s %1s %-14s \n", "Number:"," ",this.num);
+		System.out.printf("%15s %1s %-6d \n", "Issued:"," ",getIssuedDate());
+		System.out.printf("%17s %-4d \n", "Exp Date:", (getIssuedDate() + 3));
+		System.out.printf("%13s %3s %-9s \n", "Type:"," ",this.type);
+		System.out.printf("%17s %-6s \n", "Location:",this.holdAddress.getState());
 		System.out.println("--------------------------------------------------");
+		
+		
+		
+		
+		
+		
+//		System.out.println();
+//		System.out.println("--------------------------------------------------");
+//		System.out.printf("%24s \n\n", "Card Information");
+//		System.out.printf("%13s %17s \n", "Name:", this.name);
+//		System.out.printf("%15s %14s \n", "Number:", this.num);
+//		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
+//		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
+//		System.out.printf("%13s %9s \n", "Type:", this.type);
+//		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState());
+//		System.out.println("--------------------------------------------------");
 	}
 
 	/**
@@ -153,13 +171,25 @@ public class Registration {
 		System.out.println();
 		System.out.println("--------------------------------------------------");
 		System.out.printf("%24s \n\n", "Card Information");
-		System.out.printf("%13s %17s \n", "Name:", p.getFirstName() + " " + p.getLastName());
-		System.out.printf("%15s %14s \n", "Number:", p.getPhoneNumber());
-		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
-		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
-		System.out.printf("%13s %9s \n", "Type:", this.type);
-		System.out.printf("%17s %6s \n", "Location:", myAdd.getState());
+		System.out.printf("%13s %3s %-17s \n", "Name:"," ",p.getFirstName() + " " + p.getLastName());
+		System.out.printf("%15s %1s %-14s \n", "Number:"," ",p.getPhoneNumber());
+		System.out.printf("%15s %1s %-6d \n", "Issued:"," ",getIssuedDate());
+		System.out.printf("%17s %-4d \n", "Exp Date:", (getIssuedDate() + 3));
+		System.out.printf("%13s %3s %-9s \n", "Type:"," ", this.type);
+		System.out.printf("%17s %-6s \n", "Location:",myAdd.getState());
 		System.out.println("--------------------------------------------------");
+		
+		
+//		System.out.println();
+//		System.out.println("--------------------------------------------------");
+//		System.out.printf("%24s \n\n", "Card Information");
+//		System.out.printf("%13s %17s \n", "Name:", p.getFirstName() + " " + p.getLastName());
+//		System.out.printf("%15s %14s \n", "Number:", p.getPhoneNumber());
+//		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
+//		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
+//		System.out.printf("%13s %9s \n", "Type:", this.type);
+//		System.out.printf("%17s %6s \n", "Location:", myAdd.getState());
+//		System.out.println("--------------------------------------------------");
 	}
 
 	public static void main(String[] args) {
@@ -168,16 +198,16 @@ public class Registration {
 		Person matt = new Person("Matthew", "Smith", 1999, myAddress);
 		matt.setPhoneNumber("555-444-4534");
 		tester.register(matt);
-		// tester.checkForValidCard();
-		// tester.displayCardInfo();
+		 tester.checkForValidCard();
+		 tester.displayCardInfo();
 
-		Person bill = new Person("bill", "Smith", 1999, myAddress);
-		matt.setPhoneNumber("000-000-0000");
-		tester.register(bill);
-
-		Registration tester1 = new Registration();
-		System.out.println(tester.getPersonList());
-		System.out.println(tester1.getPersonList());
+//		Person bill = new Person("bill", "Smith", 1999, myAddress);
+//		matt.setPhoneNumber("000-000-0000");
+//		tester.register(bill);
+//
+//		Registration tester1 = new Registration();
+//		System.out.println(tester.getPersonList());
+//		System.out.println(tester1.getPersonList());
 	}
 
 }
