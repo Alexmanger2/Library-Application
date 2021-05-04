@@ -257,42 +257,4 @@ public class Book {
 
 		return sb.toString();
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		Book b = new Book("title", "author", "publisher", "genre");
-//		System.out.println(b.toCSV());
-		Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
-		Book b2 = new Book("Signal and the Noise, The", "Silver, Nate", "data_science", "Penguin");
-		try {
-			CSVHandler.searchForBook(BOOK_FILEPATH, "Machine Learning For hackers");
-			Address myAddress = new Address("100", "Staten Island", "10301", "New York");
-
-			Person bob = new Person("Bob", "Smith", 1875, myAddress);
-			bob.setPhoneNumber("555-444-3332");
-
-			Book b1 = new Book();
-			System.out.println("b1 before searchAndCheckoutBook: " + b1);
-			b1 = CSVHandler.searchAndCheckoutBook(BOOK_FILEPATH, "   ", false); // changed****
-			System.out.println("b1 after searchAndCheckoutBook: " + b1);
-
-//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
-//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
-//			CSVHandler.removeBook(BOOK_FILEPATH, b);
-//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
-//			CSVHandler.addNewBook(BOOK_FILEPATH, b);
-//			CSVHandler.searchForBook(BOOK_FILEPATH, b);
-
-//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
-//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
-//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, true);
-//			CSVHandler.updateQuantity(BOOK_FILEPATH, b2, false);
-//			CSVHandler.searchForBook(BOOK_FILEPATH, b2);
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }

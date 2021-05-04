@@ -99,7 +99,6 @@ public class Registration {
 	 * records todays date
 	 * 
 	 */
-
 	public void todayDate() {
 
 		Calendar date = Calendar.getInstance();
@@ -111,7 +110,6 @@ public class Registration {
 	 * 
 	 * @return date the library card was issued
 	 */
-
 	public int getIssuedDate() {
 
 		return this.issuedDate;
@@ -123,7 +121,6 @@ public class Registration {
 	 * card in a neat fashion
 	 * 
 	 */
-
 	public void displayCardInfo() {
 
 		System.out.println();
@@ -156,7 +153,6 @@ public class Registration {
 	 * another class
 	 * 
 	 */
-
 	public void displayCardInfo(Person p) {
 
 		Address myAdd = p.getAddy();
@@ -183,23 +179,4 @@ public class Registration {
 //		System.out.printf("%17s %6s \n", "Location:", myAdd.getState());
 //		System.out.println("--------------------------------------------------");
 	}
-
-	public static void main(String[] args) {
-		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
-		Registration tester = new Registration();
-		Person matt = new Person("Matthew", "Smith", 1999, myAddress);
-		matt.setPhoneNumber("555-444-4534");
-		tester.register(matt);
-		tester.checkForValidCard();
-		tester.displayCardInfo();
-
-//		Person bill = new Person("bill", "Smith", 1999, myAddress);
-//		matt.setPhoneNumber("000-000-0000");
-//		tester.register(bill);
-//
-//		Registration tester1 = new Registration();
-//		System.out.println(tester.getPersonList());
-//		System.out.println(tester1.getPersonList());
-	}
-
 }
