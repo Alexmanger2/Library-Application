@@ -15,7 +15,6 @@ public class Borrow {
 	static final int MAX_SIZE = 3;
 
 	public Borrow() {
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -91,10 +90,8 @@ public class Borrow {
 				} 
 
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -109,5 +106,4 @@ public class Borrow {
 		this.canBorrow = true;
 
 	}
-
 }

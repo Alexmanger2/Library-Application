@@ -186,19 +186,9 @@ public class Person {
 	 * 
 	 * @return Map that contains the books checked out by person
 	 */
-
 	public Map<Book, Date> getBookList() {
 		return map;
 	}
-
-	/*
-	 * @Override public String toString() { return "Person [firstName=" + firstName
-	 * + ", lastName=" + lastName + ", birthYear=" + birthYear + ", phoneNumber=" +
-	 * phoneNumber + ", lateBalance=" + lateBalance + ", map=" + map.keySet() +
-	 * map.values() + "]";
-	 * 
-	 * }
-	 */
 
 	@Override
 	public String toString() {
@@ -206,24 +196,4 @@ public class Person {
 				+ ", phoneNumber=" + phoneNumber + ", lateBalance=" + lateBalance + ", addy=" + addy + ", map="
 				+ map.keySet() + map.values() + "]";
 	}
-
-	public static void main(String[] args) throws IOException {
-		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
-		Person bob = new Person("Bob", "Smith", 1875, myAddress);
-		bob.setPhoneNumber("555-444-3332");
-		Person john = new Person("John", "Doe", 1990, myAddress);
-		john.setPhoneNumber("718-555-5555");
-		Person jane = new Person("Jane", "Doe", 1990, myAddress);
-		jane.setPhoneNumber("888-888-8888");
-
-		// stuff to test if getPerson can find a person anywhere in the .csv
-		// Person p2 = new Person();
-		// System.out.println("Person p2 before being assigned from
-		// CSVHandler.getPerson() " + p2);
-		// p2 = CSVHandler.getPerson(PERSON_FILEPATH, jane.getPhoneNumber());
-		// System.out.println("Person p2 after being assigned from
-		// CSVHandler.getPerson() " + p2);
-
-	}
-
 }

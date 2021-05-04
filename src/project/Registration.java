@@ -99,7 +99,6 @@ public class Registration {
 	 * records todays date
 	 * 
 	 */
-
 	public void todayDate() {
 
 		Calendar date = Calendar.getInstance();
@@ -111,7 +110,6 @@ public class Registration {
 	 * 
 	 * @return date the library card was issued
 	 */
-
 	public int getIssuedDate() {
 
 		return this.issuedDate;
@@ -123,7 +121,6 @@ public class Registration {
 	 * card in a neat fashion
 	 * 
 	 */
-
 	public void displayCardInfo() {
 
 		System.out.println();
@@ -146,7 +143,6 @@ public class Registration {
 	 * another class
 	 * 
 	 */
-
 	public void displayCardInfo(Person p) {
 
 		Address myAdd = p.getAddy();
