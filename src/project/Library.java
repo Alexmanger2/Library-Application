@@ -26,17 +26,17 @@ public class Library {
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-	//	System.out.println("Enter the Title/Author/Genre/Publisher");
-		
-		if(p.getBookList().size() == 3) {
-			System.out.println("You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book \n");
-		}
-		else {
-		
-		System.out.println("Enter the title of the book you want the rent");
-		
-		Scanner pickTitle = new Scanner(System.in);
-		title = pickTitle.nextLine();
+		// System.out.println("Enter the Title/Author/Genre/Publisher");
+
+		if (p.getBookList().size() == 3) {
+			System.out.println(
+					"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book \n");
+		} else {
+
+			System.out.println("Enter the title of the book you want the rent");
+
+			Scanner pickTitle = new Scanner(System.in);
+			title = pickTitle.nextLine();
 
 //		Scanner pickauthor = new Scanner(System.in);
 //		author = pickauthor.nextLine();
@@ -48,10 +48,10 @@ public class Library {
 //		publisher = pickpublisher.nextLine();
 
 //		Book take = new Book(title, author, genre, publisher);
-		
-		//Book take;
+
+			// Book take;
 //		try {
-			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH , title, false ); //changed***
+			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH, title, false); // changed***
 			Borrow checkout = new Borrow();
 			checkout.borrowBook(p, take);
 		}
@@ -72,65 +72,61 @@ public class Library {
 	public void putBack(Person p) throws FileNotFoundException, IOException {
 
 		Return checkin = new Return();
-		//System.out.println("Choose what book to return");
-		//System.out.println(p.getBookList().toString());
-		
-		if(p.getBookList().size() != 0) {
-		System.out.println("Current books rented out: ");
-		
-		Map<Book, java.util.Date> map = p.getBookList();
-		
-	for (Entry<Book, java.util.Date> hold : p.map.entrySet()) {
-			
+		// System.out.println("Choose what book to return");
+		// System.out.println(p.getBookList().toString());
+
+		if (p.getBookList().size() != 0) {
+			System.out.println("Current books rented out: ");
+
+			Map<Book, java.util.Date> map = p.getBookList();
+
+			for (Entry<Book, java.util.Date> hold : p.map.entrySet()) {
+
 //			if(p.getBookList().size() == 0) {
 //				System.out.println("\n No book currently rented out \n");
 //			}
-			
-			Book b = hold.getKey();
-			System.out.println(b.getTitle());
-			
-			//+
-		//	System.out.println(hold.getKey().getTitle() //+
-	                             //", Value = " + hold.getValue());
-	    }
-	System.out.println("");
-	String title;
-	String author;
-	String genre;
-	String publisher;
+
+				Book b = hold.getKey();
+				System.out.println(b.getTitle());
+
+				// +
+				// System.out.println(hold.getKey().getTitle() //+
+				// ", Value = " + hold.getValue());
+			}
+			System.out.println("");
+			String title;
+			String author;
+			String genre;
+			String publisher;
 			System.out.println("Enter the title of the book you want to return");
 			Scanner pickTitle = new Scanner(System.in);
 			title = pickTitle.nextLine();
-			
-			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
-			
-			if(back.getTitle().equals("null") && !title.equals("")) {
-				
+
+			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, title);
+
+			if (back.getTitle().equals("null") && !title.equals("")) {
+
 				System.out.println("You did not checkout " + title + "\n");
-			}
-			else
-			checkin.returnBook(p, back);
-	
-		}
-		else {
-			
+			} else
+				checkin.returnBook(p, back);
+
+		} else {
+
 			String title;
 			System.out.println("You don't currently have any books rented out");
 			title = "moveOn";
-			
-			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
-			
-			if(back.getTitle().equals("null") && !title.equals("") || title.equals("moveOn")) {
-				if(title.equals("moveOn")) {
+
+			Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, title);
+
+			if (back.getTitle().equals("null") && !title.equals("") || title.equals("moveOn")) {
+				if (title.equals("moveOn")) {
 					System.out.println("");
-				}
-				else
-				System.out.println("You did not checkout " + title + "\n");
-			}
-			else
-			checkin.returnBook(p, back);
+				} else
+					System.out.println("You did not checkout " + title + "\n");
+			} else
+				checkin.returnBook(p, back);
 		}
-		
+
 //		System.out.println("");
 //		String title;
 //		String author;
@@ -139,10 +135,10 @@ public class Library {
 
 		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
 
-	//	System.out.println("Enter the title of the book you want to return");
+		// System.out.println("Enter the title of the book you want to return");
 
-	//	Scanner pickTitle = new Scanner(System.in);
-	//	title = pickTitle.nextLine();
+		// Scanner pickTitle = new Scanner(System.in);
+		// title = pickTitle.nextLine();
 
 //		Scanner pickauthor = new Scanner(System.in);
 //		author = pickauthor.nextLine();
@@ -155,9 +151,8 @@ public class Library {
 
 //		Book back = new Book(title, author, genre, publisher);
 
-	
 //			try {
-				
+
 //				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
 //				
 //				if(back.getTitle().equals("null") && !title.equals("")) {
@@ -166,7 +161,7 @@ public class Library {
 //				}
 //				else
 //				checkin.returnBook(p, back);
-		
+
 //			} catch (FileNotFoundException e) {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
@@ -174,8 +169,7 @@ public class Library {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
-			
-		
+
 //		checkin.returnBook(p, back);
 
 	}
@@ -193,71 +187,60 @@ public class Library {
 //		  if(reg.checkForValidCard() == true) {
 //			  reg.displayCardInfo();
 //			  System.out.println("");
-			
-		  
-		  
-			  for(Person element :  reg.getPersonList()) {
-				 if( element.getPhoneNumber().equals( phoneNumber) ) {
-					 
-				//	 System.out.println("This is the phone" + element + "This is the phone number" + phoneNumber);
-					 
-					 Person p = element;
-					 
 
-					  if(reg.checkForValidCard() == true) {
-						  reg.displayCardInfo(p);
-						  System.out.println("");	
-				
-					  while(true) {
-						  String answer = "";  
-						  System.out.println("Please select an option: (1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
-						  Scanner ans = new Scanner(System.in);
-						  answer = ans.nextLine();
-						  
-						  
-						  if(answer.equals("1"))
-						  takeOut(p);
-						  if(answer.equals("2"))
-					      putBack(p);
-						  if(answer.equals("3")) {
-							  	System.out.println("What book do you want to search for?");
-								String bookTitle;
-								Scanner bTitle = new Scanner(System.in);
-								bookTitle = bTitle.nextLine();
-								
-							  if(CSVHandler.searchForBook(Book.BOOK_FILEPATH, bookTitle) == true) {
-							  Book c = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, bookTitle);
-							  int hold = CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, c);
-							  System.out.println("There are " + hold + " copies remaining of " + bookTitle + "\n");
-							  }
-						  }
-						  if(answer.equals("4"))
-					      run(reg);
-						  if(answer.equals("5")) {
-						  //break;
-					      System.out.println("Exiting program.....");		  
-						  System.exit(0);
-						  }
-					  }
-					 
-					 
-					 	  
-						  
-				 }
-					  
-				  
-				  
-			 // }
-			 
-			  
-			 
-			  
-			  
-			   
-	}}
-			  System.out.println("Phone number not found, please try again");
-			  ask();  
-	
+		for (Person element : reg.getPersonList()) {
+			if (element.getPhoneNumber().equals(phoneNumber)) {
+
+				// System.out.println("This is the phone" + element + "This is the phone number"
+				// + phoneNumber);
+
+				Person p = element;
+
+				if (reg.checkForValidCard() == true) {
+					reg.displayCardInfo(p);
+					System.out.println("");
+
+					while (true) {
+						String answer = "";
+						System.out.println(
+								"Please select an option: (1: borrow | 2: return | 3: Search for book | 4: switch user | 5: Exit) ");
+						Scanner ans = new Scanner(System.in);
+						answer = ans.nextLine();
+
+						if (answer.equals("1"))
+							takeOut(p);
+						if (answer.equals("2"))
+							putBack(p);
+						if (answer.equals("3")) {
+							System.out.println("What book do you want to search for?");
+							String bookTitle;
+							Scanner bTitle = new Scanner(System.in);
+							bookTitle = bTitle.nextLine();
+
+							if (CSVHandler.searchForBook(Book.BOOK_FILEPATH, bookTitle) == true) {
+								Book c = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH, bookTitle);
+								int hold = CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, c);
+								System.out.println("There are " + hold + " copies remaining of " + bookTitle + "\n");
+							}
+						}
+						if (answer.equals("4"))
+							run(reg);
+						if (answer.equals("5")) {
+							// break;
+							System.out.println("Exiting program.....");
+							System.exit(0);
+						}
+					}
+
+				}
+
+				// }
+
+			}
+		}
+		System.out.println("Phone number not found, please try again");
+		ask();
+
 	}
 
 	public void ask() throws FileNotFoundException, IOException {
