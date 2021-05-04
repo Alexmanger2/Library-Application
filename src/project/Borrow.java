@@ -14,9 +14,19 @@ public class Borrow {
 
 	static final int MAX_SIZE = 3;
 
+	
+	// constructor
 	public Borrow() {
 	}
 
+	
+	/**
+	 * method checks to see if user can borrow books and doesn't have fee
+	 * calls init method with parameters
+	 * 
+	 * @param p1 Person pass person instance
+	 * @param b Book pass book instance
+	 */
 
 	public void borrowBook(Person p1, Book b) {
 
@@ -26,7 +36,18 @@ public class Borrow {
 		}
 
 	}
+	//END of borrowBook
 
+	/**
+	 * 
+	 * method checks to see if balance is == 0, if so the user can borrow book, otherwise user has to pay fee
+	 * Searches through bookList and displays each book the user current rents out as well as the time it was taken out
+	 *  
+	 * 
+	 * @param p1 person instance to get book List
+	 * @param b	 book instance to search for books
+	 */
+	
 	public void init(Person p1, Book b) {
 
 		if (p1.getLateBalance() == 0.0) {
@@ -106,4 +127,4 @@ public class Borrow {
 		this.canBorrow = true;
 
 	}
-}
+}//	END OF init()
