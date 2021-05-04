@@ -24,9 +24,6 @@ public class Library {
 		String genre;
 		String publisher;
 
-		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
-
-		// System.out.println("Enter the Title/Author/Genre/Publisher");
 
 		if (p.getBookList().size() == 3) {
 			System.out.println(
@@ -38,42 +35,16 @@ public class Library {
 			Scanner pickTitle = new Scanner(System.in);
 			title = pickTitle.nextLine();
 
-//		Scanner pickauthor = new Scanner(System.in);
-//		author = pickauthor.nextLine();
-//
-//		Scanner pickgenre = new Scanner(System.in);
-//		genre = pickgenre.nextLine();
-//
-//		Scanner pickpublisher = new Scanner(System.in);
-//		publisher = pickpublisher.nextLine();
-
-//		Book take = new Book(title, author, genre, publisher);
-
-			// Book take;
-//		try {
 			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH, title, false); // changed***
 			Borrow checkout = new Borrow();
 			checkout.borrowBook(p, take);
 		}
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-//		Borrow checkout = new Borrow();
-//
-//		checkout.borrowBook(p, take);
 
 	}
 
 	public void putBack(Person p) throws FileNotFoundException, IOException {
 
 		Return checkin = new Return();
-		// System.out.println("Choose what book to return");
-		// System.out.println(p.getBookList().toString());
 
 		if (p.getBookList().size() != 0) {
 			System.out.println("Current books rented out: ");
@@ -82,16 +53,10 @@ public class Library {
 
 			for (Entry<Book, java.util.Date> hold : p.map.entrySet()) {
 
-//			if(p.getBookList().size() == 0) {
-//				System.out.println("\n No book currently rented out \n");
-//			}
 
 				Book b = hold.getKey();
 				System.out.println(b.getTitle());
 
-				// +
-				// System.out.println(hold.getKey().getTitle() //+
-				// ", Value = " + hold.getValue());
 			}
 			System.out.println("");
 			String title;
@@ -127,72 +92,22 @@ public class Library {
 				checkin.returnBook(p, back);
 		}
 
-//		System.out.println("");
-//		String title;
-//		String author;
-//		String genre;
-//		String publisher;
-
-		// Book b = new Book("Data Smart", "Foreman, John", "data_science", "Wiley");
-
-		// System.out.println("Enter the title of the book you want to return");
-
-		// Scanner pickTitle = new Scanner(System.in);
-		// title = pickTitle.nextLine();
-
-//		Scanner pickauthor = new Scanner(System.in);
-//		author = pickauthor.nextLine();
-//
-//		Scanner pickgenre = new Scanner(System.in);
-//		genre = pickgenre.nextLine();
-//
-//		Scanner pickpublisher = new Scanner(System.in);
-//		publisher = pickpublisher.nextLine();
-
-//		Book back = new Book(title, author, genre, publisher);
-
-//			try {
-
-//				Book back = CSVHandler.getBookFromLib(Book.BOOK_FILEPATH , title );
-//				
-//				if(back.getTitle().equals("null") && !title.equals("")) {
-//					
-//					System.out.println("You did not checkout " + title + "\n");
-//				}
-//				else
-//				checkin.returnBook(p, back);
-
-//			} catch (FileNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-
-//		checkin.returnBook(p, back);
-
 	}
 
 	public void yes(Registration reg) throws FileNotFoundException, IOException {
-		// displays the current list of people
-		// System.out.println(reg.getPersonList());
+	
 
 		System.out.println("What is your phone number?");
 		String phoneNumber;
 		Scanner pNum = new Scanner(System.in);
 		phoneNumber = pNum.nextLine();
 
-//		  
-//		  if(reg.checkForValidCard() == true) {
-//			  reg.displayCardInfo();
-//			  System.out.println("");
+
 
 		for (Person element : reg.getPersonList()) {
 			if (element.getPhoneNumber().equals(phoneNumber)) {
 
-				// System.out.println("This is the phone" + element + "This is the phone number"
-				// + phoneNumber);
+				
 
 				Person p = element;
 
@@ -234,7 +149,6 @@ public class Library {
 
 				}
 
-				// }
 
 			}
 		}
@@ -286,10 +200,9 @@ public class Library {
 		  
 		 //make sure birthday is an integer value
 		  while(!birthday.hasNextInt()) {
-			  
 			  System.out.println("Please enter an number for birth year "); 
 			  birth = birthday.nextLine(); 
-			  //break;
+
 			  
 		  }
 			birth = birthday.nextLine(); 
@@ -318,7 +231,7 @@ public class Library {
 		  System.out.println("");
 		  
 		  //checks to see what users are in the list
-		//  System.out.println(reg.getPersonList().toString());
+		// System.out.println(reg.getPersonList().toString());
 		  
 		  
 		  while(true) {
@@ -389,10 +302,7 @@ public class Library {
 			yes(register);
 
 		}
-//			  else {
-//				  System.out.println("User was not found, try again");
-//				  run();
-//			  }
+		 
 
 		else if (option.equalsIgnoreCase("no")) {
 			no(register);

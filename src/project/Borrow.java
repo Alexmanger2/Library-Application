@@ -11,7 +11,6 @@ import java.util.Map.Entry;
 public class Borrow {
 
 	private boolean canBorrow = true;
-//	public static int bookCount = 0;
 
 	static final int MAX_SIZE = 3;
 
@@ -19,43 +18,20 @@ public class Borrow {
 		// TODO Auto-generated constructor stub
 	}
 
-	// --------------book status (checks to see if book is available or taken out
-	// and for how long)---------------
+
 	public void borrowBook(Person p1, Book b) {
 
-		// try {
-
-		// if(CSVHandler.searchForBook(Book.filePath,b)) {
-
-		// Needs to check if quantity is > 0 and when the book will be available
-		// again...
+	
 		if (this.canBorrow == true) {
 			init(p1, b);
 		}
 
 	}
 
-//		}
-
-//		}
-//		catch(FileNotFoundException ex) {
-//			ex.printStackTrace();
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-	// updateQuantity
-	// getCSVQuantity
-	// searchForBook
-	// public static boolean updateQuantity(String filePath, Book book, boolean
-	// incTrueDecFalse)
 	public void init(Person p1, Book b) {
 
 		if (p1.getLateBalance() == 0.0) {
 
-			// if(CSVHandler.getCSVQuantity(Book.filePath, b) < 0)
 			try {
 				if (CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, b) > 0) {
 
@@ -63,17 +39,13 @@ public class Borrow {
 
 						try {
 							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
-							// CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false); // this is now being
-							// done in (searchAndCheckoutBook) in CSVHandler
-
-							// ++bookCount;
+						
 							p1.setBookList(b);
 
 							System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has checked out: "
 									+ b.getTitle() + " by " + b.getAuthor());
 
-							// System.out.println(p1.getBookList() + "\n"); //original --- prints out list
-							// info
+						
 
 							System.out.println("-----------------------------------------------------------");
 							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
@@ -116,13 +88,7 @@ public class Borrow {
 						System.out.println(
 								"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book");
 					}
-				} // new
-//				else {
-//					if(b.getTitle().equals(" ")) {
-//					System.out.println("You did not enter a book, try again");
-//					}else
-//					System.out.println("This book is currently out of stock, please rent another book");
-//				}
+				} 
 
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
@@ -143,11 +109,5 @@ public class Borrow {
 		this.canBorrow = true;
 
 	}
-
-//	public static void BookReturned()
-//	{
-//		
-//		bookCount = bookCount - 1;
-//	}
 
 }

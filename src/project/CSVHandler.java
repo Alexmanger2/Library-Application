@@ -496,45 +496,5 @@ public class CSVHandler {
 		return nullTitleBook;
 	} // END getBookFromLib()
 
-	public static void main(String[] args) {
-
-		/*
-		 * CSVHandler test
-		 */
-
-		// display pre-edit
-//		try {
-//			displayCSV(filePath);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-		// create book to add to csv
-		// Book b = new Book("title", "author", "publisher", "genre");
-
-		// add book to csv file
-//		try {
-//			write(filePath, b);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-		/*
-		 * //display new resulting file try { displayCSV(filePath); } catch (IOException
-		 * e) { // TODO Auto-generated catch block e.printStackTrace(); } /* //remove
-		 * the added book try { removeEntry(filePath, b); } catch (IOException e) { //
-		 * TODO Auto-generated catch block e.printStackTrace(); }
-		 */
-
-		// display the new resulting csv file
-//		try {
-//			displayCSV(filePath);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-	}
 
 }
