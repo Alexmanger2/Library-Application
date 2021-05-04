@@ -16,6 +16,15 @@ public class Return {
 
 	}
 
+	/**
+	 * 
+	 * method goes through the users list of borrowed books and checks to see if the book can be returned
+	 * displays the book being returned and the current books the user can return from their book list
+	 * 
+	 * 
+	 * @param p1 person instance to get book list from user
+	 * @param b book instance to check if book matches with book list
+	 */
 	public void returnBook(Person p1, Book b) {
 
 		Book rBook = new Book();
