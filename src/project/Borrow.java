@@ -11,16 +11,12 @@ import java.util.Map.Entry;
 public class Borrow {
 
 	private boolean canBorrow = true;
-//	public static int bookCount = 0;
 
 	static final int MAX_SIZE = 3;
 
 	public Borrow() {
-		// TODO Auto-generated constructor stub
 	}
 
-	// --------------book status (checks to see if book is available or taken out
-	// and for how long)---------------
 	public void borrowBook(Person p1, Book b) {
 
 		// try {
@@ -35,22 +31,6 @@ public class Borrow {
 
 	}
 
-//		}
-
-//		}
-//		catch(FileNotFoundException ex) {
-//			ex.printStackTrace();
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-	// updateQuantity
-	// getCSVQuantity
-	// searchForBook
-	// public static boolean updateQuantity(String filePath, Book book, boolean
-	// incTrueDecFalse)
 	public void init(Person p1, Book b) {
 
 		if (p1.getLateBalance() == 0.0) {
@@ -125,10 +105,8 @@ public class Borrow {
 //				}
 
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -143,11 +121,4 @@ public class Borrow {
 		this.canBorrow = true;
 
 	}
-
-//	public static void BookReturned()
-//	{
-//		
-//		bookCount = bookCount - 1;
-//	}
-
 }
