@@ -145,11 +145,4 @@ public class Address {
 		return "Address [street=" + street + ", city=" + city + ", zip=" + zip + ", state=" + state + "]";
 	}
 
-	public static void main(String[] args) {
-
-		Address myAddress = new Address("100", "Staten Island", "10301", "New York");
-		System.out.println(myAddress);
-
-	}
-
 }
