@@ -297,9 +297,21 @@ public class Library {
 		  System.out.println("Enter your last name: "); 
 		  last = lastName.nextLine();  
 		  
+		  
 		  System.out.println("Enter your birth year: "); 
-		  birth = birthday.nextLine(); 
-		       
+		 // birth = birthday.nextLine(); 
+		  
+		 //make sure birthday is an integer value
+		  while(!birthday.hasNextInt()) {
+			  
+			  System.out.println("Please enter an number for birth year "); 
+			  birth = birthday.nextLine(); 
+			  //break;
+			  
+		  }
+			birth = birthday.nextLine(); 
+		  
+		  
 		  System.out.println("Enter your street number: "); 
 		  num = number.nextLine();
 		  System.out.println("Enter your street name: "); 
