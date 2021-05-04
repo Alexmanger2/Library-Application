@@ -10,13 +10,41 @@ import java.util.Scanner;
 
 public class Library {
 
-	private boolean check = true;
 
+	/*
+	 * 	Library constructor runs the ask method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 * 
+	 * */
+	
 	public Library() throws FileNotFoundException, IOException {
 		// run();
 		ask();
 	}
-
+	//END OF library()
+	
+	/**
+	 * Method checks to see if the user has books rented out. If the user does, they will be returned
+	 * by decrementing the Persons bookList and incrementing the quantity of the book in the database.
+	 * 
+	 * @param p Person instance passed into method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	
 	public void takeOut(Person p) throws FileNotFoundException, IOException {
 
 		String title;
@@ -40,8 +68,23 @@ public class Library {
 			checkout.borrowBook(p, take);
 		}
 
-	}
+	}//END OF takeOUT
 
+	/**
+	 * Method checks to see if the user has books rented out. If the user does, they will be returned
+	 * by decrementing the Persons bookList and incrementing the quantity of the book in the database.
+	 * 
+	 * @param p Person instance passed into method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
+	
 	public void putBack(Person p) throws FileNotFoundException, IOException {
 
 		Return checkin = new Return();
@@ -92,8 +135,23 @@ public class Library {
 				checkin.returnBook(p, back);
 		}
 
-	}
+	}//END OF putBACK()
 
+	
+	/**
+	 * Method used for when user has a library card. The user must provide their phone number
+	 * to access the features of the library
+	 * 
+	 * @param reg Registration instance passed into method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
 	public void yes(Registration reg) throws FileNotFoundException, IOException {
 	
 
@@ -155,14 +213,47 @@ public class Library {
 		System.out.println("Phone number not found, please try again");
 		ask();
 
-	}
+	}//END OF YES()
 
+	
+	
+	/*
+	 * 	method creates Registration instance that will be used for all future users to access
+	 * registration info for each user. Calls the run method with this instance that will give the user
+	 * the ability to have access to future library functionality.
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 * 
+	 * */
+	
 	public void ask() throws FileNotFoundException, IOException {
 
 		Registration register = new Registration();
 		run(register);
 	}
+	//END OF ask()
 	
+	
+	/**
+	 * Method used for when user does not have a library card. Registers the user for a 
+	 * library card and allows them to access the library features
+	 * 
+	 * @param reg Registration instance passed into method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
 	public void no(Registration reg) throws FileNotFoundException, IOException
 	{
 		
@@ -268,7 +359,22 @@ public class Library {
 		  }
 		  
 		  
-	}
+	}//END OF NO
+	
+	
+	/**
+	 * Method checks whether or not the user has a library card
+	 * 
+	 * @param reg Registration instance passed into method
+	 * 
+	 * @throws IOException           if the named file exists but is a directory
+	 *                               rather than a regular file, does not exist but
+	 *                               cannot be created, or cannot be opened for any
+	 *                               other reason
+	 * @throws FileNotFoundException if the named file does not exist,is a directory
+	 *                               rather than a regular file,or for some other
+	 *                               reason cannot be opened for reading.
+	 */
 
 	public void run(Registration register) throws FileNotFoundException, IOException {
 
@@ -311,7 +417,7 @@ public class Library {
 			run(register);
 		}
 
-	}
+	}//END OF RUN()
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
