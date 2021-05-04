@@ -17,14 +17,10 @@ public class Borrow {
 	public Borrow() {
 	}
 
+
 	public void borrowBook(Person p1, Book b) {
 
-		// try {
-
-		// if(CSVHandler.searchForBook(Book.filePath,b)) {
-
-		// Needs to check if quantity is > 0 and when the book will be available
-		// again...
+	
 		if (this.canBorrow == true) {
 			init(p1, b);
 		}
@@ -35,7 +31,6 @@ public class Borrow {
 
 		if (p1.getLateBalance() == 0.0) {
 
-			// if(CSVHandler.getCSVQuantity(Book.filePath, b) < 0)
 			try {
 				if (CSVHandler.getCSVQuantity(Book.BOOK_FILEPATH, b) > 0) {
 
@@ -43,17 +38,13 @@ public class Borrow {
 
 						try {
 							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
-							// CSVHandler.updateQuantity(Book.BOOK_FILEPATH, b, false); // this is now being
-							// done in (searchAndCheckoutBook) in CSVHandler
-
-							// ++bookCount;
+						
 							p1.setBookList(b);
 
 							System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has checked out: "
 									+ b.getTitle() + " by " + b.getAuthor());
 
-							// System.out.println(p1.getBookList() + "\n"); //original --- prints out list
-							// info
+						
 
 							System.out.println("-----------------------------------------------------------");
 							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
@@ -96,13 +87,7 @@ public class Borrow {
 						System.out.println(
 								"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book");
 					}
-				} // new
-//				else {
-//					if(b.getTitle().equals(" ")) {
-//					System.out.println("You did not enter a book, try again");
-//					}else
-//					System.out.println("This book is currently out of stock, please rent another book");
-//				}
+				} 
 
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();

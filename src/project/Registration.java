@@ -134,16 +134,6 @@ public class Registration {
 		System.out.printf("%17s %-6s \n", "Location:", this.holdAddress.getState());
 		System.out.println("--------------------------------------------------");
 
-//		System.out.println();
-//		System.out.println("--------------------------------------------------");
-//		System.out.printf("%24s \n\n", "Card Information");
-//		System.out.printf("%13s %17s \n", "Name:", this.name);
-//		System.out.printf("%15s %14s \n", "Number:", this.num);
-//		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
-//		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
-//		System.out.printf("%13s %9s \n", "Type:", this.type);
-//		System.out.printf("%17s %6s \n", "Location:", this.holdAddress.getState());
-//		System.out.println("--------------------------------------------------");
 	}
 
 	/**
@@ -167,16 +157,7 @@ public class Registration {
 		System.out.printf("%13s %3s %-9s \n", "Type:", " ", this.type);
 		System.out.printf("%17s %-6s \n", "Location:", myAdd.getState());
 		System.out.println("--------------------------------------------------");
-
-//		System.out.println();
-//		System.out.println("--------------------------------------------------");
-//		System.out.printf("%24s \n\n", "Card Information");
-//		System.out.printf("%13s %17s \n", "Name:", p.getFirstName() + " " + p.getLastName());
-//		System.out.printf("%15s %14s \n", "Number:", p.getPhoneNumber());
-//		System.out.printf("%15s %6d \n", "Issued:", getIssuedDate());
-//		System.out.printf("%17s %4d \n", "Exp Date:", (getIssuedDate() + 3));
-//		System.out.printf("%13s %9s \n", "Type:", this.type);
-//		System.out.printf("%17s %6s \n", "Location:", myAdd.getState());
-//		System.out.println("--------------------------------------------------");
 	}
+
+
 }
