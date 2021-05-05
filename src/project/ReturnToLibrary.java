@@ -6,13 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
-public class Return {
+public class ReturnToLibrary {
 
 	boolean remove;
 	int count = 0;
 	boolean check = true;
 
-	public Return() {
+	public ReturnToLibrary() {
 
 	}
 

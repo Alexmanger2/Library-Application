@@ -64,7 +64,7 @@ public class Library {
 			title = pickTitle.nextLine();
 
 			Book take = CSVHandler.searchAndCheckoutBook(Book.BOOK_FILEPATH, title, false); // changed***
-			Borrow checkout = new Borrow();
+			BorrowFromLibrary checkout = new BorrowFromLibrary();
 			checkout.borrowBook(p, take);
 		}
 
@@ -87,7 +87,7 @@ public class Library {
 	
 	public void putBack(Person p) throws FileNotFoundException, IOException {
 
-		Return checkin = new Return();
+		ReturnToLibrary checkin = new ReturnToLibrary();
 
 		if (p.getBookList().size() != 0) {
 			System.out.println("Current books rented out: ");

@@ -8,46 +8,44 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Borrow {
+public class BorrowFromLibrary {
 
 	private boolean canBorrow = true;
 
 	static final int MAX_SIZE = 3;
 
-	
 	// constructor
-	public Borrow() {
+	public BorrowFromLibrary() {
 	}
 
-	
 	/**
-	 * method checks to see if user can borrow books and doesn't have fee
-	 * calls init method with parameters
+	 * method checks to see if user can borrow books and doesn't have fee calls init
+	 * method with parameters
 	 * 
 	 * @param p1 Person pass person instance
-	 * @param b Book pass book instance
+	 * @param b  Book pass book instance
 	 */
 
 	public void borrowBook(Person p1, Book b) {
 
-	
 		if (this.canBorrow == true) {
 			init(p1, b);
 		}
 
 	}
-	//END of borrowBook
+	// END of borrowBook
 
 	/**
 	 * 
-	 * method checks to see if balance is == 0, if so the user can borrow book, otherwise user has to pay fee
-	 * Searches through bookList and displays each book the user current rents out as well as the time it was taken out
-	 *  
+	 * method checks to see if balance is == 0, if so the user can borrow book,
+	 * otherwise user has to pay fee Searches through bookList and displays each
+	 * book the user current rents out as well as the time it was taken out
+	 * 
 	 * 
 	 * @param p1 person instance to get book List
-	 * @param b	 book instance to search for books
+	 * @param b  book instance to search for books
 	 */
-	
+
 	public void init(Person p1, Book b) {
 
 		if (p1.getLateBalance() == 0.0) {
@@ -59,13 +57,11 @@ public class Borrow {
 
 						try {
 							CSVHandler.searchForBook(Book.BOOK_FILEPATH, b);
-						
+
 							p1.setBookList(b);
 
 							System.out.println(p1.getFirstName() + " " + p1.getLastName() + " has checked out: "
 									+ b.getTitle() + " by " + b.getAuthor());
-
-						
 
 							System.out.println("-----------------------------------------------------------");
 							/* System.out.printf("|"); */ System.out.printf("|          %30s                 ",
@@ -108,7 +104,7 @@ public class Borrow {
 						System.out.println(
 								"You have checked out the maximum amount of books allowed, please return a book before trying to rent a new book");
 					}
-				} 
+				}
 
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
@@ -127,4 +123,4 @@ public class Borrow {
 		this.canBorrow = true;
 
 	}
-}//	END OF init()
+}// END OF init()
