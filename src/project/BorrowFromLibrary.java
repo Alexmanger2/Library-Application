@@ -119,6 +119,9 @@ public class BorrowFromLibrary {
 
 	}
 
+	/** Sets the canBorrow boolean to true so that a Person object can borrow a book again.
+	 * 
+	 */
 	public void clearBalance() {
 		this.canBorrow = true;
 

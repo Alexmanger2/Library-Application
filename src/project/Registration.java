@@ -87,7 +87,11 @@ public class Registration {
 
 	}
 
-	// new method
+	/**
+	 * Returns a List object that contains datatype: Person
+	 * 
+	 * @return List<Person> Returns a List of Person objects.
+	 */
 	public List<Person> getPersonList() {
 
 		return personList;
@@ -158,6 +162,5 @@ public class Registration {
 		System.out.printf("%17s %-6s \n", "Location:", myAdd.getState());
 		System.out.println("--------------------------------------------------");
 	}
-
 
 }
